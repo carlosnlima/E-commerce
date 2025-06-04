@@ -8,109 +8,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <link rel="stylesheet" href="/styles/globals.css">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles/globals.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" defer></script>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
+    
 </head>
 
 <body>
     <div class="header">
-        <div class="page-inner-content header-layout-wrapper">
-            <div class="search-container">
-                <i class="fas fa-microphone mic-icon"></i>
-                <input type="text" placeholder="Buscar" />
-                <button class="search-button">
-                    <i class="fas fa-search"></i>
-                </button>
+        <div class="page-inner-content header-content-wrapper">
+            <div class="header-top-row">
+                <div class="icon-group-left">
+                    <div class="favorites-container">
+                        <i class="far fa-heart favorite-counter-icon"></i>
+                        <span class="favorites-count">0</span>
+                        <div class="favorites-list-popup popup">
+                            <h3>Meus Favoritos</h3>
+                            <ul id="favorites-items">
+                            </ul>
+                            <button class="close-popup">Fechar</button>
+                        </div>
+                    </div>
+                    <div class="cart-container">
+                        <i class="fas fa-shopping-bag cart-counter-icon"></i>
+                        <span class="cart-count">0</span>
+                        <div class="cart-list-popup popup">
+                            <h3>Minha Sacola</h3>
+                            <ul id="cart-items">
+                            </ul>
+                            <div class="coupon-section">
+                                <input type="text" id="coupon-input" placeholder="Cupom de Desconto">
+                                <button id="apply-coupon-btn">Aplicar</button>
+                                <p id="coupon-message" class="coupon-message"></p>
+                            </div>
+                            <p class="cart-total">Total: R$ <span id="cart-total-value">0,00</span></p>
+                            <button class="close-popup">Fechar</button>
+                            <button class="checkout-button">Finalizar Compra</button>
+                        </div>
+                    </div>
+                    <div class="account-container">
+                        <i class="fas fa-user-circle account-icon"></i>
+                        <div class="account-popup popup">
+                            <div class="account-options">
+                                <h3>Minha Conta</h3>
+                                <button id="login-btn" class="account-action-btn">Já possui uma conta?</button>
+                                <button id="create-account-btn" class="account-action-btn">Criar uma conta</button>
+                            </div>
+                            <div class="login-form-container">
+                                <h3>Acessar sua conta</h3>
+                                <input type="email" id="login-email" placeholder="E-mail">
+                                <input type="password" id="login-password" placeholder="Senha">
+                                <button id="submit-login-btn">Entrar</button>
+                                <button class="back-to-options-btn">Voltar</button>
+                            </div>
+                            <div class="create-account-form-container">
+                                <h3>Criar uma conta</h3>
+                                <input type="text" id="create-name" placeholder="Nome Completo">
+                                <input type="email" id="create-email" placeholder="E-mail">
+                                <input type="password" id="create-password" placeholder="Senha">
+                                <input type="password" id="confirm-password" placeholder="Confirmar Senha">
+                                <button id="submit-create-btn">Cadastrar</button>
+                                <button class="back-to-options-btn">Voltar</button>
+                            </div>
+                        </div>
+                        <span id="welcome-message" class="welcome-message"></span>
+                    </div>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
             </div>
-
-            <div class="icon-group-left">
-                <div class="favorites-container">
-                    <i class="far fa-heart favorite-counter-icon"></i>
-                    <span class="favorites-count">0</span>
-                    <div class="favorites-list-popup popup">
-                        <h3>Meus Favoritos</h3>
-                        <ul id="favorites-items">
-                        </ul>
-                        <button class="close-popup">Fechar</button>
-                    </div>
+            <div class="search-container-row">
+                <div class="search-container">
+                    <i class="fas fa-microphone mic-icon"></i>
+                    <input type="text" placeholder="Buscar" />
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
-                <div class="cart-container">
-                    <i class="fas fa-shopping-bag cart-counter-icon"></i>
-                    <span class="cart-count">0</span>
-                    <div class="cart-list-popup popup">
-                        <h3>Minha Sacola</h3>
-                        <ul id="cart-items">
-                        </ul>
-                        <div class="coupon-section">
-                            <input type="text" id="coupon-input" placeholder="Cupom de Desconto">
-                            <button id="apply-coupon-btn">Aplicar</button>
-                            <p id="coupon-message" class="coupon-message"></p>
-                        </div>
-                        <p class="cart-total">Total: R$ <span id="cart-total-value">0,00</span></p>
-                        <button class="close-popup">Fechar</button>
-                        <button class="checkout-button">Finalizar Compra</button>
-                    </div>
-                </div>
-                <div class="account-container">
-                    <i class="fas fa-user-circle account-icon"></i>
-                    <div class="account-popup popup">
-                        <div class="account-options">
-                            <h3>Minha Conta</h3>
-                            <button id="login-btn" class="account-action-btn">Já possui uma conta?</button>
-                            <button id="create-account-btn" class="account-action-btn">Criar uma conta</button>
-                        </div>
-                        <div class="login-form-container">
-                            <h3>Acessar sua conta</h3>
-                            <input type="email" id="login-email" placeholder="E-mail">
-                            <input type="password" id="login-password" placeholder="Senha">
-                            <button id="submit-login-btn">Entrar</button>
-                            <button class="back-to-options-btn">Voltar</button>
-                        </div>
-                        <div class="create-account-form-container">
-                            <h3>Criar uma conta</h3>
-                            <input type="text" id="create-name" placeholder="Nome Completo">
-                            <input type="email" id="create-email" placeholder="E-mail">
-                            <input type="password" id="create-password" placeholder="Senha">
-                            <input type="password" id="confirm-password" placeholder="Confirmar Senha">
-                            <button id="submit-create-btn">Cadastrar</button>
-                            <button class="back-to-options-btn">Voltar</button>
-                        </div>
-                    </div>
-                    <span id="welcome-message" class="welcome-message"></span>
-                </div>
-                <i class="fab fa-whatsapp"></i>
             </div>
         </div>
     </div>
 
     <div class="navbar">
-        <div class="page-inner-content">
-            <div class="header-inner-content">
-                <nav>
-                    <ul>
-                        <li><a href="macs.html" class="nav-button">Macs</a></li>
-                        <li>|</li>
-                        <li><a href="iphones.html" class="nav-button">iPhones</a></li>
-                        <li>|</li>
-                        <li><a href="ipads.html" class="nav-button">iPads</a></li>
-                        <li>|</li>
-                        <li><a href="watches.html" class="nav-button">Watches</a></li>
-                        <li>|</li>
-                        <li><a href="airpods.html" class="nav-button">AirPods</a></li>
-                        <li>|</li>
-                        <li><a href="acessorios.html" class="nav-button">Acessórios</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <nav>
+            <ul>
+                <li><a href="macs.html" class="nav-button">Macs</a></li>
+                <li>|</li>
+                <li><a href="iphones.html" class="nav-button">iPhones</a></li>
+                <li>|</li>
+                <li><a href="ipads.html" class="nav-button">iPads</a></li>
+                <li>|</li>
+                <li><a href="watches.html" class="nav-button">Watches</a></li>
+                <li>|</li>
+                <li><a href="airpods.html" class="nav-button">AirPods</a></li>
+                <li>|</li>
+                <li><a href="acessorios.html" class="nav-button">Acessórios</a></li>
+            </ul>
+        </nav>
     </div>
 
     <header>
         <div class="page-inner-content">
-            <div class="header-inner-content">
+            <div>
                 <div class="header-bottom-side">
                     <div class="header-bottom-side-left">
                         <h2>Dê um novo estilo ao seu trabalho!</h2>
@@ -120,7 +121,13 @@
                         </p>
                     </div>
                     <div class="header-bottom-side-right">
-                        <img src="images/macbook_pro_m4.1.png" alt="Macbook Pro M4">
+                        <model-viewer src="images/products/macbook_pro_m3_16_inch_2024 (1).glb" alt="Macbook Pro M4"
+                            auto-rotate camera-controls ar ar-modes="webxr scene-viewer quick-look" shadow-intensity="1"
+                            environment-image="neutral" exposure="1">
+                            <div class="progress-bar hide" slot="progress-bar">
+                                <div class="update-bar"></div>
+                            </div>
+                        </model-viewer>
                         <h3 class="product-name">MacBook Pro M4 - 512GB SSD</h3>
                         <div class="product-rating">
                             <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
@@ -138,12 +145,14 @@
     <main>
         <div class="gray-background">
             <div class="page-inner-content">
+                <h3 class="selection-title">Navegue por Categorias</h3>
+                <div class="blue-line-full-width" style="margin-top: 5px; margin-bottom: 20px;"></div>
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" data-product-id="ipad-air-5gen"
                             data-product-name="iPad Air (5ª Geração) Wi-Fi 64GB - Cinza Espacial"
-                            data-product-price="4899.00" data-product-image="/images/products/ipad-1.png">
-                            <img src="/images/products/ipad-1.png" alt="iPad Air (5ª Geração)" />
+                            data-product-price="4899.00" data-product-image="images/products/ipad-1.png"> <img
+                                src="images/products/ipad-1.png" alt="iPad Air (5ª Geração)" />
                             <div class="product-info">
                                 <div class="rating-stars">★★★★★</div>
                                 <h3 class="product-name">iPad Air (5ª Geração) Wi-Fi 64GB - Cinza Espacial</h3>
@@ -152,8 +161,8 @@
                         </div>
                         <div class="swiper-slide" data-product-id="ipad-pro-11-4gen"
                             data-product-name="iPad Pro 11' (4ª Geração) Wi-Fi 128GB - Prateado"
-                            data-product-price="7299.00" data-product-image="/images/products/ipad-2.png">
-                            <img src="/images/products/ipad-2.png" alt="iPad Pro 11 (4ª Geração)" />
+                            data-product-price="7299.00" data-product-image="images/products/ipad-2.png">
+                            <img src="images/products/ipad-2.png" alt="iPad Pro 11 (4ª Geração)" />
                             <div class="product-info">
                                 <div class="rating-stars">★★★★★</div>
                                 <h3 class="product-name">iPad Pro 11" (4ª Geração) Wi-Fi 128GB - Prateado</h3>
@@ -162,8 +171,8 @@
                         </div>
                         <div class="swiper-slide" data-product-id="ipad-10gen"
                             data-product-name="iPad (10ª Geração) Wi-Fi 256GB - Azul" data-product-price="5199.00"
-                            data-product-image="/images/products/ipad-3.png">
-                            <img src="/images/products/ipad-3.png" alt="iPad (10ª Geração)" />
+                            data-product-image="images/products/ipad-3.png">
+                            <img src="images/products/ipad-3.png" alt="iPad (10ª Geração)" />
                             <div class="product-info">
                                 <div class="rating-stars">★★★★☆</div>
                                 <h3 class="product-name">iPad (10ª Geração) Wi-Fi 256GB - Azul</h3>
@@ -172,12 +181,22 @@
                         </div>
                         <div class="swiper-slide" data-product-id="ipad-mini-6gen"
                             data-product-name="iPad mini (6ª Geração) Wi-Fi 64GB - Rosa" data-product-price="4199.00"
-                            data-product-image="/images/products/ipad-4.png">
-                            <img src="/images/products/ipad-4.png" alt="iPad mini (6ª Geração)" />
+                            data-product-image="images/products/ipad-4.png">
+                            <img src="images/products/ipad-4.png" alt="iPad mini (6ª Geração)" />
                             <div class="product-info">
                                 <div class="rating-stars">★★★★☆</div>
                                 <h3 class="product-name">iPad mini (6ª Geração) Wi-Fi 64GB - Rosa</h3>
                                 <p class="product-price">R$ 4.199,00</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-product-id="macbook-air-m3"
+                            data-product-name="MacBook Air M3 13' 256GB - Estelar" data-product-price="10999.00"
+                            data-product-image="images/products/macbook-air-m3.png">
+                            <img src="images/products/macbook-air-m3.png" alt="MacBook Air M3" />
+                            <div class="product-info">
+                                <div class="rating-stars">★★★★★</div>
+                                <h3 class="product-name">MacBook Air M3 13" 256GB - Estelar</h3>
+                                <p class="product-price">R$ 10.999,00</p>
                             </div>
                         </div>
                     </div>
@@ -189,16 +208,16 @@
         </div>
 
         <section>
-            <div class="page-inner-content">
+            <div class="page-inner-content section-title-container">
                 <h3 class="selection-title">Mais Vistos</h3>
+                <div class="blue-line-full-width"></div>
             </div>
-            <div class="blue-line-full-width"></div>
             <div class="page-inner-content">
                 <div class="cols cols-4">
                     <div class="product" data-product-id="iphone-16-preto"
                         data-product-name="Apple iPhone 16 128GB Preto" data-product-price="5299.00"
-                        data-product-image="/images/products/iphone16.png">
-                        <img src="/images/products/iphone16.png" alt="Apple iPhone 16 128GB Preto" />
+                        data-product-image="images/products/iphone16.png">
+                        <img src="images/products/iphone16.png" alt="Apple iPhone 16 128GB Preto" />
                         <div class="product-icons">
                             <i class="far fa-heart favorite-icon"></i>
                             <i class="fas fa-shopping-bag cart-product-icon"></i>
@@ -210,8 +229,8 @@
 
                     <div class="product" data-product-id="iphone-16-pro"
                         data-product-name="Apple iPhone 16 Pro 256GB Titânio Preto" data-product-price="9399.00"
-                        data-product-image="/images/products/iphone16pro.png">
-                        <img src="/images/products/iphone16pro.png" alt="Apple iPhone 16 Pro 256GB" />
+                        data-product-image="images/products/iphone16pro.png">
+                        <img src="images/products/iphone16pro.png" alt="Apple iPhone 16 Pro 256GB" />
                         <div class="product-icons">
                             <i class="far fa-heart favorite-icon"></i>
                             <i class="fas fa-shopping-bag cart-product-icon"></i>
@@ -223,8 +242,8 @@
 
                     <div class="product" data-product-id="apple-watch-s9"
                         data-product-name="Apple Watch Series 9 meia-noite – 45 mm" data-product-price="2699.90"
-                        data-product-image="/images/products/applewatchs945mm.png">
-                        <img src="/images/products/applewatchs945mm.png" alt="Apple Watch Series 9" />
+                        data-product-image="images/products/applewatchs945mm.png">
+                        <img src="images/products/applewatchs945mm.png" alt="Apple Watch Series 9" />
                         <div class="product-icons">
                             <i class="far fa-heart favorite-icon"></i>
                             <i class="fas fa-shopping-bag cart-product-icon"></i>
@@ -236,8 +255,8 @@
 
                     <div class="product" data-product-id="apple-watch-ultra-2"
                         data-product-name="Apple Watch Ultra 2 Caixa preta de titânio de 49 mm"
-                        data-product-price="8299.00" data-product-image="/images/products/applewatchultra249mm.png">
-                        <img src="/images/products/applewatchultra249mm.png" alt="Apple Watch Ultra 2" />
+                        data-product-price="8299.00" data-product-image="images/products/applewatchultra249mm.png">
+                        <img src="images/products/applewatchultra249mm.png" alt="Apple Watch Ultra 2" />
                         <div class="product-icons">
                             <i class="far fa-heart favorite-icon"></i>
                             <i class="fas fa-shopping-bag cart-product-icon"></i>
@@ -251,16 +270,16 @@
         </section>
 
         <section>
-            <div class="page-inner-content">
+            <div class="page-inner-content section-title-container">
                 <h3 class="selection-title">Produtos em Promoção</h3>
+                <div class="blue-line-full-width"></div>
             </div>
-            <div class="blue-line-full-width"></div>
             <div class="page-inner-content">
                 <div class="cols cols-4">
                     <div class="product" data-product-id="notebook-gamer-msi"
                         data-product-name="Notebook Gamer MSI Katana GF66" data-product-price="4999.00"
-                        data-product-image="/images/products/product-4.png">
-                        <img src="/images/products/product-4.png" alt="Notebook Gamer MSI Katana GF66" />
+                        data-product-image="images/products/product-4.png">
+                        <img src="images/products/product-4.png" alt="Notebook Gamer MSI Katana GF66" />
                         <div class="product-icons">
                             <i class="far fa-heart favorite-icon"></i>
                             <i class="fas fa-shopping-bag cart-product-icon"></i>
@@ -271,7 +290,7 @@
                     </div>
 
                     <div class="product" data-product-id="macbook-pro-m4" data-product-name="MacBook Pro M4 - 512GB SSD"
-                        data-product-price="18499.00" data-product-image="https://i.imgur.com/k91uD3e.png">
+                        data-product-price="18499.00" data-product-image="images/products/airtag4.png">
                         <img src="images/products/airtag4.png" alt="MacBook Pro M4" />
                         <div class="product-icons">
                             <i class="far fa-heart favorite-icon"></i>
@@ -284,7 +303,7 @@
 
                     <div class="product" data-product-id="ipad-10gen-64gb"
                         data-product-name="iPad 10ª Geração Wi-Fi 64GB" data-product-price="3499.00"
-                        data-product-image="/images/products/ipad-2.png"> <img src="/images/products/ipad-2.png"
+                        data-product-image="images/products/ipad-2.png"> <img src="images/products/ipad-2.png"
                             alt="iPad 10ª geração" />
                         <div class="product-icons">
                             <i class="far fa-heart favorite-icon"></i>
@@ -297,8 +316,8 @@
 
                     <div class="product" data-product-id="iphone-16-preto-promo"
                         data-product-name="Apple iPhone 16 128GB Preto" data-product-price="5299.00"
-                        data-product-image="/images/products/iphone16.png">
-                        <img src="/images/products/iphone16.png" alt="iPhone 16" />
+                        data-product-image="images/products/iphone16.png">
+                        <img src="images/products/iphone16.png" alt="iPhone 16" />
                         <div class="product-icons">
                             <i class="far fa-heart favorite-icon"></i>
                             <i class="fas fa-shopping-bag cart-product-icon"></i>
@@ -315,20 +334,30 @@
             <div class="page-inner-content">
                 <div class="header-bottom-side exclusive-container">
                     <div class="header-bottom-side-left">
-                        <h2>Estilo, sofisticação e modernidade!</h2>
-                        <p>A Mi Band 4 é a primeira da linha a contar com display colorido, o que melhora bastante a
-                            experiência e o visual da smartband. Tela AMOLED, 0,95 polegadas e resolução de 240x120
-                            pixels.
+                        <h2>Apple Watch Ultra – O Máximo em Performance, Resistência e Tecnologia</h2>
+                        <p>O relógio robusto e avançado da Apple. Com caixa de titânio de 49 mm, GPS de precisão, botão de Ação personalizável
+                        e bateria de até 60 horas. Resistente à água até 100 metros, traz recursos avançados de saúde, como ECG, oxigênio no
+                        sangue e detecção de acidentes. Perfeito para esportes, aventuras e o dia a dia.
                         </p>
                         <button>Ver Agora &#8594;</button>
                     </div>
                     <div class="header-bottom-side-right">
-                        <img src="/images/exclusive.png" alt="Smartband Mi Band 4">
+                        <model-viewer src="images/products/apple_watch_ultra_-_orange.glb"
+                            alt="Apple Watch Ultra com pulseira laranja" auto-rotate camera-controls ar
+                            ar-modes="webxr scene-viewer quick-look" shadow-intensity="0.8" environment-image="neutral"
+                            exposure="1.2" camera-orbit="0deg 75deg 105%" /* Ajuste inicial da câmera */ disable-zoom>
+                            <div class="progress-bar hide" slot="progress-bar">
+                                <div class="update-bar"></div>
+                            </div>
+                        </model-viewer>
                     </div>
                 </div>
             </div>
 
+
             <div class="page-inner-content">
+                <h3 class="selection-title" style="margin-top: 40px;">Depoimentos</h3>
+                <div class="blue-line-full-width" style="margin-top: 5px; margin-bottom: 20px;"></div>
                 <div class="testimonials">
                     <div class="testimonial">
                         <p>"</p>
@@ -357,11 +386,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Inicialização do Swiper (Carrossel)
             var swiper = new Swiper(".mySwiper", {
                 loop: true,
                 autoplay: {
-                    delay: 3500,
+                    delay: 4500,
                     disableOnInteraction: false,
                 },
                 navigation: {
@@ -372,32 +400,50 @@
                     el: ".swiper-pagination",
                     clickable: true,
                 },
-                slidesPerView: 'auto', // Permite diferentes larguras de slides
-                spaceBetween: 20,
+                slidesPerView: 'auto',
+                spaceBetween: 15,
                 grabCursor: true,
+                watchOverflow: true,
+                breakpoints: {
+                    600: {
+                        slidesPerView: 2,
+                        spaceBetween: 15
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 20
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 20
+                    },
+                    1200: {
+                        slidesPerView: 'auto',
+                        spaceBetween: 20
+                    }
+                }
             });
 
-            // --- FUNÇÃO PARA FECHAR TODOS OS POP-UPS ---
             function closeAllPopups() {
                 document.querySelectorAll('.popup').forEach(popup => {
                     popup.classList.remove('show');
                 });
             }
 
-            // --- LÓGICA DE FAVORITOS ---
             const favoriteCounterIcon = document.querySelector('.favorite-counter-icon');
             const favoritesCount = document.querySelector('.favorites-count');
             const favoritesListPopup = document.querySelector('.favorites-list-popup');
             const favoritesItemsList = document.getElementById('favorites-items');
-            const closeFavoritesPopupBtn = favoritesListPopup.querySelector('.close-popup'); // Seleciona o botão dentro do pop-up correto
+            const closeFavoritesPopupBtn = favoritesListPopup ? favoritesListPopup.querySelector('.close-popup') : null;
 
             let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
             function updateFavoritesCount() {
-                favoritesCount.textContent = favorites.length;
+                if (favoritesCount) favoritesCount.textContent = favorites.length;
             }
 
             function renderFavoritesList() {
+                if (!favoritesItemsList) return;
                 favoritesItemsList.innerHTML = '';
                 if (favorites.length === 0) {
                     favoritesItemsList.innerHTML = '<li>Nenhum item adicionado aos favoritos.</li>';
@@ -410,7 +456,7 @@
                     const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'Preço indisponível';
 
                     listItem.innerHTML = `
-                        <img src="${product.image || '/images/placeholder.png'}" alt="${product.name}" class="favorite-item-image">
+                        <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}" class="favorite-item-image">
                         <div class="favorite-item-details">
                             <p class="favorite-item-name">${product.name || 'Nome indisponível'}</p>
                             <p class="favorite-item-price">R$ ${formattedPrice}</p>
@@ -453,6 +499,7 @@
                     localStorage.setItem('favorites', JSON.stringify(favorites));
                     updateFavoritesCount();
                     renderFavoritesList();
+                    initializeFavoriteIcons();
                     return true;
                 }
                 return false;
@@ -493,48 +540,55 @@
                         return;
                     }
 
+                    // Ajuste para pegar o src da imagem ou do model-viewer
+                    let productImageSrc = productElement.dataset.productImage;
+                    if (!productImageSrc) {
+                        const displayElement = productElement.querySelector('img, model-viewer');
+                        if (displayElement) {
+                            productImageSrc = displayElement.src; // .src para model-viewer também retorna o caminho do modelo
+                        }
+                    }
+
                     const product = {
                         id: productElement.dataset.productId,
                         name: productElement.dataset.productName,
                         price: productPrice,
-                        image: productElement.dataset.productImage
+                        image: productImageSrc
                     };
 
                     const isFavorited = this.classList.contains('favorited');
 
                     if (isFavorited) {
                         removeFromFavorites(product.id);
-                        this.classList.remove('favorited');
-                        this.classList.remove('fas');
-                        this.classList.add('far');
                     } else {
                         addToFavorites(product);
-                        this.classList.add('favorited');
-                        this.classList.remove('far');
-                        this.classList.add('fas');
                     }
+                    initializeFavoriteIcons();
                 });
             });
 
-            favoriteCounterIcon.addEventListener('click', function () {
-                closeAllPopups(); // Fecha outros pop-ups antes de abrir este
-                favoritesListPopup.classList.toggle('show');
-                if (favoritesListPopup.classList.contains('show')) {
-                    renderFavoritesList();
-                }
-            });
+            if (favoriteCounterIcon) {
+                favoriteCounterIcon.addEventListener('click', function () {
+                    closeAllPopups();
+                    if (favoritesListPopup) favoritesListPopup.classList.toggle('show');
+                    if (favoritesListPopup && favoritesListPopup.classList.contains('show')) {
+                        renderFavoritesList();
+                    }
+                });
+            }
 
-            closeFavoritesPopupBtn.addEventListener('click', function () {
-                favoritesListPopup.classList.remove('show');
-            });
+            if (closeFavoritesPopupBtn) {
+                closeFavoritesPopupBtn.addEventListener('click', function () {
+                    if (favoritesListPopup) favoritesListPopup.classList.remove('show');
+                });
+            }
 
-            // --- LÓGICA DO CARRINHO ---
             const cartCounterIcon = document.querySelector('.cart-counter-icon');
             const cartCountSpan = document.querySelector('.cart-count');
             const cartListPopup = document.querySelector('.cart-list-popup');
             const cartItemsList = document.getElementById('cart-items');
             const cartTotalValueSpan = document.getElementById('cart-total-value');
-            const closeCartPopupBtn = cartListPopup.querySelector('.close-popup'); // Seleciona o botão dentro do pop-up correto
+            const closeCartPopupBtn = cartListPopup ? cartListPopup.querySelector('.close-popup') : null;
             const checkoutButton = document.querySelector('.checkout-button');
             const couponInput = document.getElementById('coupon-input');
             const applyCouponBtn = document.getElementById('apply-coupon-btn');
@@ -548,17 +602,18 @@
             };
 
             function updateCartDisplay() {
-                cartCountSpan.textContent = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+                if (cartCountSpan) cartCountSpan.textContent = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
                 let total = 0;
                 cart.forEach(item => {
                     total += (parseFloat(item.price) * (item.quantity || 1));
                 });
 
                 let discountedTotal = total - (total * currentDiscount);
-                cartTotalValueSpan.textContent = discountedTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                if (cartTotalValueSpan) cartTotalValueSpan.textContent = discountedTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             }
 
             function renderCartList() {
+                if (!cartItemsList) return;
                 cartItemsList.innerHTML = '';
                 if (cart.length === 0) {
                     cartItemsList.innerHTML = '<li>Nenhum item adicionado à sacola.</li>';
@@ -570,7 +625,7 @@
                         const listItem = document.createElement('li');
                         listItem.classList.add('cart-item');
                         listItem.innerHTML = `
-                            <img src="${product.image || '/images/placeholder.png'}" alt="${product.name}" class="cart-item-image">
+                            <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}" class="cart-item-image">
                             <div class="cart-item-details">
                                 <p class="cart-item-name">${product.name || 'N/A'}</p>
                                 <p class="cart-item-price">R$ ${formattedPrice}</p>
@@ -625,15 +680,11 @@
 
                 const finalCartCount = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
-                if (finalCartCount < initialCartCount) {
+                if (finalCartCount < initialCartCount || cart.length === 0) {
                     localStorage.setItem('cart', JSON.stringify(cart));
                     updateCartDisplay();
                     renderCartList();
-
-                    const productCartIcon = document.querySelector(`.product[data-product-id="${productId}"] .cart-product-icon`);
-                    if (productCartIcon && !cart.some(item => item.id === productId)) {
-                        productCartIcon.classList.remove('in-cart');
-                    }
+                    initializeCartIcons();
                     return true;
                 }
                 return false;
@@ -644,7 +695,7 @@
                     const productElement = icon.closest('.product');
                     if (!productElement) return;
                     const productId = productElement.dataset.productId;
-                    if (cart.some(item => item.id === productId)) {
+                    if (cart.some(item => item.id === productId && item.quantity > 0)) {
                         icon.classList.add('in-cart');
                     } else {
                         icon.classList.remove('in-cart');
@@ -652,19 +703,26 @@
                 });
             }
 
-            applyCouponBtn.addEventListener('click', function () {
-                const couponCode = couponInput.value.trim().toUpperCase();
-                if (validCoupons[couponCode] !== undefined) {
-                    currentDiscount = validCoupons[couponCode];
-                    couponMessage.textContent = "Cupom aplicado com sucesso!";
-                    couponMessage.style.color = "green";
-                } else {
-                    currentDiscount = 0;
-                    couponMessage.textContent = "Cupom inválido!";
-                    couponMessage.style.color = "red";
-                }
-                updateCartDisplay();
-            });
+            if (applyCouponBtn) {
+                applyCouponBtn.addEventListener('click', function () {
+                    const couponCode = couponInput.value.trim().toUpperCase();
+                    if (validCoupons[couponCode] !== undefined) {
+                        currentDiscount = validCoupons[couponCode];
+                        if (couponMessage) {
+                            couponMessage.textContent = "Cupom aplicado com sucesso!";
+                            couponMessage.style.color = "green";
+                        }
+                    } else {
+                        currentDiscount = 0;
+                        if (couponMessage) {
+                            couponMessage.textContent = "Cupom inválido!";
+                            couponMessage.style.color = "red";
+                        }
+                    }
+                    updateCartDisplay();
+                });
+            }
+
 
             updateCartDisplay();
             initializeCartIcons();
@@ -681,45 +739,47 @@
                         console.error("Preço do produto inválido no card (carrinho):", productElement.dataset.productName, productPriceStr);
                         return;
                     }
+                    // Ajuste para pegar o src da imagem ou do model-viewer
+                    let productImageSrc = productElement.dataset.productImage;
+                    if (!productImageSrc) {
+                        const displayElement = productElement.querySelector('img, model-viewer');
+                        if (displayElement) {
+                            productImageSrc = displayElement.src;
+                        }
+                    }
 
                     const product = {
                         id: productElement.dataset.productId,
                         name: productElement.dataset.productName,
                         price: productPrice,
-                        image: productElement.dataset.productImage
+                        image: productImageSrc
                     };
 
-                    const isInCart = this.classList.contains('in-cart');
-
-                    if (isInCart) {
-                        removeFromCart(product.id);
-                        if (!cart.some(item => item.id === product.id)) {
-                            this.classList.remove('in-cart');
-                        }
-                    } else {
-                        addToCart(product);
-                        this.classList.add('in-cart');
-                    }
+                    addToCart(product);
+                    initializeCartIcons();
                 });
             });
 
-            cartCounterIcon.addEventListener('click', function () {
-                closeAllPopups(); // Fecha outros pop-ups antes de abrir este
-                cartListPopup.classList.toggle('show');
-                if (cartListPopup.classList.contains('show')) {
-                    renderCartList();
-                }
-            });
+            if (cartCounterIcon) {
+                cartCounterIcon.addEventListener('click', function () {
+                    closeAllPopups();
+                    if (cartListPopup) cartListPopup.classList.toggle('show');
+                    if (cartListPopup && cartListPopup.classList.contains('show')) {
+                        renderCartList();
+                    }
+                });
+            }
 
-            closeCartPopupBtn.addEventListener('click', function () {
-                cartListPopup.classList.remove('show');
-                closeCartPopupBtn.classList.add('clicked');
-                setTimeout(() => {
-                    closeCartPopupBtn.classList.remove('clicked');
-                }, 200);
-            });
+            if (closeCartPopupBtn) {
+                closeCartPopupBtn.addEventListener('click', function () {
+                    if (cartListPopup) cartListPopup.classList.remove('show');
+                    closeCartPopupBtn.classList.add('clicked');
+                    setTimeout(() => {
+                        closeCartPopupBtn.classList.remove('clicked');
+                    }, 200);
+                });
+            }
 
-            // --- LÓGICA DE LOGIN/CADASTRO E MENSAGEM DE BOAS-VINDAS ---
             const accountIcon = document.querySelector('.account-icon');
             const accountPopup = document.querySelector('.account-popup');
             const accountOptions = document.querySelector('.account-options');
@@ -732,97 +792,96 @@
             const submitCreateBtn = document.getElementById('submit-create-btn');
             const welcomeMessage = document.getElementById('welcome-message');
 
-            // 1. Oculta o pop-up da conta e os formulários no início
-            accountPopup.classList.remove('show');
-            accountOptions.style.display = 'none';
-            loginFormContainer.style.display = 'none';
-            createAccountFormContainer.style.display = 'none';
+            if (accountPopup) accountPopup.classList.remove('show');
+            if (accountOptions) accountOptions.style.display = 'none';
+            if (loginFormContainer) loginFormContainer.style.display = 'none';
+            if (createAccountFormContainer) createAccountFormContainer.style.display = 'none';
 
-            accountIcon.addEventListener('click', function (event) {
-                event.stopPropagation();
-                closeAllPopups(); // Fecha outros pop-ups antes de abrir este
-                accountPopup.classList.toggle('show');
+            if (accountIcon) {
+                accountIcon.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    closeAllPopups();
+                    if (accountPopup) accountPopup.classList.toggle('show');
 
-                if (accountPopup.classList.contains('show')) {
-                    accountOptions.style.display = 'flex'; // Usar flex para organizar os botões
-                    loginFormContainer.style.display = 'none';
-                    createAccountFormContainer.style.display = 'none';
-                }
-            });
+                    if (accountPopup && accountPopup.classList.contains('show')) {
+                        if (accountOptions) accountOptions.style.display = 'flex';
+                        if (loginFormContainer) loginFormContainer.style.display = 'none';
+                        if (createAccountFormContainer) createAccountFormContainer.style.display = 'none';
+                    }
+                });
+            }
 
-            loginBtn.addEventListener('click', function () {
-                accountOptions.style.display = 'none';
-                loginFormContainer.style.display = 'block';
-            });
+            if (loginBtn) {
+                loginBtn.addEventListener('click', function () {
+                    if (accountOptions) accountOptions.style.display = 'none';
+                    if (loginFormContainer) loginFormContainer.style.display = 'block';
+                });
+            }
 
-            createAccountBtn.addEventListener('click', function () {
-                accountOptions.style.display = 'none';
-                createAccountFormContainer.style.display = 'block';
-            });
+            if (createAccountBtn) {
+                createAccountBtn.addEventListener('click', function () {
+                    if (accountOptions) accountOptions.style.display = 'none';
+                    if (createAccountFormContainer) createAccountFormContainer.style.display = 'block';
+                });
+            }
 
             backToOptionsBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
-                    loginFormContainer.style.display = 'none';
-                    createAccountFormContainer.style.display = 'none';
-                    accountOptions.style.display = 'flex'; // Voltar a usar flex
+                    if (loginFormContainer) loginFormContainer.style.display = 'none';
+                    if (createAccountFormContainer) createAccountFormContainer.style.display = 'none';
+                    if (accountOptions) accountOptions.style.display = 'flex';
                 });
             });
 
-            submitLoginBtn.addEventListener('click', function () {
-                const email = document.getElementById('login-email').value;
-                const password = document.getElementById('login-password').value;
-                alert(`Tentando fazer login com E-mail: ${email} e Senha: ${password}`);
+            if (submitLoginBtn) {
+                submitLoginBtn.addEventListener('click', function () {
+                    const emailInput = document.getElementById('login-email');
+                    const email = emailInput ? emailInput.value : '';
 
-                const userName = email.split('@')[0];
-                welcomeMessage.textContent = `Bem-vindo, ${userName}!`;
-                welcomeMessage.classList.add('show');
-                accountPopup.classList.remove('show');
+                    const userName = email.split('@')[0] || "Usuário";
+                    if (welcomeMessage) {
+                        welcomeMessage.textContent = `Bem-vindo, ${userName}!`;
+                        welcomeMessage.classList.add('show');
+                    }
+                    if (accountPopup) accountPopup.classList.remove('show');
 
-                setTimeout(() => {
-                    welcomeMessage.classList.remove('show');
-                }, 10000);
-            });
+                    setTimeout(() => {
+                        if (welcomeMessage) welcomeMessage.classList.remove('show');
+                    }, 10000);
+                });
+            }
 
-            submitCreateBtn.addEventListener('click', function () {
-                const name = document.getElementById('create-name').value;
-                const email = document.getElementById('create-email').value;
-                const password = document.getElementById('create-password').value;
-                const confirmPassword = document.getElementById('confirm-password').value;
+            if (submitCreateBtn) {
+                submitCreateBtn.addEventListener('click', function () {
+                    const nameInput = document.getElementById('create-name');
+                    const name = nameInput ? nameInput.value : 'Usuário';
 
-                if (password !== confirmPassword) {
-                    alert('As senhas não coincidem!');
-                    return;
-                }
-                alert(`Tentando criar conta para: ${name}, E-mail: ${email}, Senha: ${password}`);
+                    if (welcomeMessage) {
+                        welcomeMessage.textContent = `Bem-vindo, ${name}!`;
+                        welcomeMessage.classList.add('show');
+                    }
+                    if (accountPopup) accountPopup.classList.remove('show');
 
-                welcomeMessage.textContent = `Bem-vindo, ${name}!`;
-                welcomeMessage.classList.add('show');
-                accountPopup.classList.remove('show');
+                    setTimeout(() => {
+                        if (welcomeMessage) welcomeMessage.classList.remove('show');
+                    }, 10000);
+                });
+            }
 
-                setTimeout(() => {
-                    welcomeMessage.classList.remove('show');
-                }, 10000);
-            });
-
-            // Fecha pop-ups ao clicar fora deles
             window.addEventListener('click', function (event) {
-                // Obter todos os popups abertos
                 const openPopups = document.querySelectorAll('.popup.show');
 
                 openPopups.forEach(popup => {
-                    const iconContainer = popup.parentElement; // Elemento pai do popup que contém o ícone
-                    const icon = iconContainer.querySelector('i'); // O ícone que abre este popup
+                    const iconContainer = popup.parentElement;
+                    const icon = iconContainer ? iconContainer.querySelector('i') : null;
 
-                    // Verificar se o clique não foi dentro do popup e nem no ícone que o abriu
-                    // e também garantir que não foi um clique em um ícone de produto (favorito ou carrinho)
-                    if (!popup.contains(event.target) && !icon.contains(event.target) && !event.target.closest('.product-icons')) {
+                    if (!popup.contains(event.target) && icon && !icon.contains(event.target) && !event.target.closest('.product-icons')) {
                         popup.classList.remove('show');
                     }
                 });
 
-                // Lidar com a mensagem de boas-vindas separadamente, pois não é um popup no mesmo sentido
-                if (!welcomeMessage.contains(event.target) && welcomeMessage.classList.contains('show')) {
-                    // Não faça nada, a mensagem de boas-vindas tem seu próprio timer para sumir
+                if (welcomeMessage && !welcomeMessage.contains(event.target) && welcomeMessage.classList.contains('show') && !event.target.closest('.account-container')) {
+
                 }
             });
 

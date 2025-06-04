@@ -27,10 +27,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%;
+    width: 100%;
+    /* Ajustado para ocupar 100% em vez de 50% */
     position: relative;
     min-height: 50px;
-    margin-left: 530px;
+    margin-left: 0;
+    /* Removido margin-left fixo */
     flex-wrap: wrap;
 }
 
@@ -78,8 +80,10 @@ body {
 /* Grupo de Ícones do Lado Direito do Cabeçalho (Favoritos, Carrinho, Usuário, WhatsApp) */
 .icon-group-left {
     display: flex;
-    align-items: height;
-    justify-content: end;
+    align-items: center;
+    /* Alterado para center para alinhar verticalmente */
+    justify-content: flex-end;
+    /* Alterado para flex-end para alinhar à direita */
     gap: 20px;
     font-size: 22px;
     color: #333;
@@ -90,7 +94,8 @@ body {
 
 /* Contêiner dos Ícones de Favoritos e Carrinho */
 .favorites-container,
-.cart-container {
+.cart-container,
+.account-container {
     position: relative;
     display: flex;
     align-items: center;
@@ -99,7 +104,8 @@ body {
 
 /* Estilos dos Ícones de Contador (Coração e Sacola) */
 .favorite-counter-icon,
-.cart-counter-icon {
+.cart-counter-icon,
+.account-icon {
     font-size: 22px;
     color: #333;
 }
@@ -125,15 +131,15 @@ body {
     text-align: center;
 }
 
-/* Pop-ups de Listas de Favoritos e Carrinho */
-.favorites-list-popup,
-.cart-list-popup {
+/* Classe genérica para pop-ups (favoritos, carrinho, conta) */
+.popup {
     display: none;
     /* Escondido por padrão */
     position: absolute;
     top: 40px;
+    /* Posição abaixo do ícone */
     right: 0;
-    left: auto;
+    /* Alinhado à direita do contêiner pai */
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -143,20 +149,40 @@ body {
     z-index: 1000;
 }
 
-/* Exibe o Pop-up quando a classe 'show' é aplicada */
-.favorites-list-popup.show,
-.cart-list-popup.show {
-    display: block;
+/* Pop-up de Conta - usa flex-direction para coluna */
+.account-popup {
+    flex-direction: column;
+    /* Organiza os elementos verticalmente */
+    gap: 15px;
+    /* Espaçamento entre os elementos */
+    align-items: center;
+    text-align: center;
 }
+
+/* Exibe o Pop-up quando a classe 'show' é aplicada */
+.popup.show {
+    display: block;
+    /* Mudar para block para exibir o conteúdo interno */
+}
+
+/* Para o pop-up da conta, que usa flex para o layout interno */
+.account-popup.show {
+    display: flex;
+}
+
 
 /* Títulos dos Pop-ups */
 .favorites-list-popup h3,
-.cart-list-popup h3 {
+.cart-list-popup h3,
+.account-popup h3 {
     margin-top: 0;
     margin-bottom: 10px;
     color: #333;
     border-bottom: 1px solid #eee;
     padding-bottom: 8px;
+    text-align: center;
+    width: 100%;
+    /* Garante que o h3 ocupe a largura total */
 }
 
 /* Listas de Itens nos Pop-ups */
@@ -166,6 +192,8 @@ body {
     padding: 0;
     max-height: 250px;
     overflow-y: auto;
+    width: 100%;
+    /* Garante que a lista ocupe a largura total */
 }
 
 /* Itens Individuais nas Listas dos Pop-ups */
@@ -178,7 +206,7 @@ body {
     border-bottom: 1px dashed #eee;
 }
 
-/* Último item da lista (remove borda inferior) */
+/* Último item da lista (remova borda inferior) */
 .favorites-list-popup ul li:last-child,
 .cart-list-popup ul li:last-child {
     border-bottom: none;
@@ -248,26 +276,8 @@ body {
     border-top: 1px solid #eee;
 }
 
-/* Botão "Fechar" do Pop-up de Favoritos */
-.close-favorites-popup {
-    background-color: #0077ff;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-    transition: background-color 0.2s ease;
-}
-
-/* Efeito Hover no Botão "Fechar" Favoritos */
-.close-favorites-popup:hover {
-    background-color: #005bb5;
-}
-
-/* Botão "Fechar" do Pop-up do Carrinho */
-.close-cart-popup {
+/* Botão "Fechar" dos Pop-ups (classe genérica) */
+.close-popup {
     background-color: #cccccc;
     color: white;
     border: none;
@@ -279,13 +289,13 @@ body {
     transition: background-color 0.2s ease;
 }
 
-/* Efeito Hover no Botão "Fechar" Carrinho */
-.close-cart-popup:hover {
+/* Efeito Hover no Botão "Fechar" */
+.close-popup:hover {
     background-color: #b0b0b0;
 }
 
 /* Efeito de Clique no Botão "Fechar" Carrinho (JS) */
-.close-cart-popup.clicked {
+.close-popup.clicked {
     background-color: #0077ff;
 }
 
@@ -347,6 +357,94 @@ body {
     text-align: center;
     width: 100%;
     font-weight: bold;
+}
+
+/* Estilos para o pop-up de Login/Cadastro */
+/* Os containers de formulário (login e create account) dentro do account-popup */
+.login-form-container,
+.create-account-form-container {
+    display: none;
+    /* Escondido por padrão, só será exibido via JS */
+    width: 100%;
+    padding: 10px 0;
+    /* Ajuste de padding para não ficar colado nas bordas */
+}
+
+/* O container das opções iniciais (Já possui conta?, Criar uma conta) */
+.account-options {
+    display: flex;
+    /* Alterado para flex para alinhar os botões verticalmente */
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.account-popup input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.account-popup button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.account-popup button:hover {
+    background-color: #005bb5;
+}
+
+.account-options .account-action-btn {
+    margin-bottom: 10px;
+    /* Espaçamento entre os botões de opção */
+}
+
+.back-to-options-btn {
+    background-color: #ccc !important;
+    /* Sobrescreve para ser cinza */
+    margin-top: 10px;
+}
+
+.back-to-options-btn:hover {
+    background-color: #b0b0b0 !important;
+}
+
+/* Mensagem de boas-vindas */
+.welcome-message {
+    position: absolute;
+    top: 30px;
+    /* Ajuste conforme necessário para posicionamento */
+    right: 0;
+    left: auto;
+    background-color: #0077ff;
+    /* Cor verde para destaque */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    /* Impede quebra de linha */
+    opacity: 0;
+    /* Começa invisível */
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1001;
+    /* Garante que fique acima do pop-up */
+    display: none;
+    /* Esconde por padrão */
+}
+
+.welcome-message.show {
+    opacity: 1;
+    display: block;
 }
 
 
@@ -578,6 +676,8 @@ main {
     height: 300px;
     object-fit: contain;
     margin-bottom: 10px;
+    align-items: center;
+
 }
 
 /* Oculta slides vazios (comportamento Swiper) */
@@ -865,8 +965,10 @@ main {
     /* Grupo de ícones centralizado em mobile */
     .icon-group-left {
         width: 80%;
-        justify-content: height;
-        margin-left: 40px;
+        justify-content: center;
+        /* Alterado para center para centralizar os ícones */
+        margin-left: 0;
+        /* Removido margin-left fixo */
         margin-right: 0;
         margin-top: 15px;
         order: 2;
@@ -875,7 +977,8 @@ main {
 
     /* Pop-ups centralizados para telas menores */
     .favorites-list-popup,
-    .cart-list-popup {
+    .cart-list-popup,
+    .account-popup {
         left: 50%;
         transform: translateX(-50%);
         right: auto;

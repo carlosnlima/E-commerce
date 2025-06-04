@@ -30,17 +30,17 @@
                 <div class="favorites-container">
                     <i class="far fa-heart favorite-counter-icon"></i>
                     <span class="favorites-count">0</span>
-                    <div class="favorites-list-popup">
+                    <div class="favorites-list-popup popup">
                         <h3>Meus Favoritos</h3>
                         <ul id="favorites-items">
                         </ul>
-                        <button class="close-favorites-popup">Fechar</button>
+                        <button class="close-popup">Fechar</button>
                     </div>
                 </div>
                 <div class="cart-container">
                     <i class="fas fa-shopping-bag cart-counter-icon"></i>
                     <span class="cart-count">0</span>
-                    <div class="cart-list-popup">
+                    <div class="cart-list-popup popup">
                         <h3>Minha Sacola</h3>
                         <ul id="cart-items">
                         </ul>
@@ -50,11 +50,37 @@
                             <p id="coupon-message" class="coupon-message"></p>
                         </div>
                         <p class="cart-total">Total: R$ <span id="cart-total-value">0,00</span></p>
-                        <button class="close-cart-popup">Fechar</button>
+                        <button class="close-popup">Fechar</button>
                         <button class="checkout-button">Finalizar Compra</button>
                     </div>
                 </div>
-                <i class="fas fa-user-circle"></i>
+                <div class="account-container">
+                    <i class="fas fa-user-circle account-icon"></i>
+                    <div class="account-popup popup">
+                        <div class="account-options">
+                            <h3>Minha Conta</h3>
+                            <button id="login-btn" class="account-action-btn">Já possui uma conta?</button>
+                            <button id="create-account-btn" class="account-action-btn">Criar uma conta</button>
+                        </div>
+                        <div class="login-form-container">
+                            <h3>Acessar sua conta</h3>
+                            <input type="email" id="login-email" placeholder="E-mail">
+                            <input type="password" id="login-password" placeholder="Senha">
+                            <button id="submit-login-btn">Entrar</button>
+                            <button class="back-to-options-btn">Voltar</button>
+                        </div>
+                        <div class="create-account-form-container">
+                            <h3>Criar uma conta</h3>
+                            <input type="text" id="create-name" placeholder="Nome Completo">
+                            <input type="email" id="create-email" placeholder="E-mail">
+                            <input type="password" id="create-password" placeholder="Senha">
+                            <input type="password" id="confirm-password" placeholder="Confirmar Senha">
+                            <button id="submit-create-btn">Cadastrar</button>
+                            <button class="back-to-options-btn">Voltar</button>
+                        </div>
+                    </div>
+                    <span id="welcome-message" class="welcome-message"></span>
+                </div>
                 <i class="fab fa-whatsapp"></i>
             </div>
         </div>
@@ -351,12 +377,19 @@
                 grabCursor: true,
             });
 
+            // --- FUNÇÃO PARA FECHAR TODOS OS POP-UPS ---
+            function closeAllPopups() {
+                document.querySelectorAll('.popup').forEach(popup => {
+                    popup.classList.remove('show');
+                });
+            }
+
             // --- LÓGICA DE FAVORITOS ---
             const favoriteCounterIcon = document.querySelector('.favorite-counter-icon');
             const favoritesCount = document.querySelector('.favorites-count');
             const favoritesListPopup = document.querySelector('.favorites-list-popup');
             const favoritesItemsList = document.getElementById('favorites-items');
-            const closeFavoritesPopupBtn = document.querySelector('.close-favorites-popup');
+            const closeFavoritesPopupBtn = favoritesListPopup.querySelector('.close-popup'); // Seleciona o botão dentro do pop-up correto
 
             let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
@@ -373,18 +406,17 @@
                 favorites.forEach(product => {
                     const listItem = document.createElement('li');
                     listItem.classList.add('favorite-item');
-                    // Certifique-se de que product.price é um número antes de formatar
                     const price = typeof product.price === 'number' ? product.price : parseFloat(product.price);
                     const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'Preço indisponível';
 
                     listItem.innerHTML = `
-                <img src="${product.image || '/images/placeholder.png'}" alt="${product.name}" class="favorite-item-image">
-                <div class="favorite-item-details">
-                    <p class="favorite-item-name">${product.name || 'Nome indisponível'}</p>
-                    <p class="favorite-item-price">R$ ${formattedPrice}</p>
-                </div>
-                <button class="remove-favorite-btn" data-product-id="${product.id}"><i class="fas fa-times-circle"></i></button>
-            `;
+                        <img src="${product.image || '/images/placeholder.png'}" alt="${product.name}" class="favorite-item-image">
+                        <div class="favorite-item-details">
+                            <p class="favorite-item-name">${product.name || 'Nome indisponível'}</p>
+                            <p class="favorite-item-price">R$ ${formattedPrice}</p>
+                        </div>
+                        <button class="remove-favorite-btn" data-product-id="${product.id}"><i class="fas fa-times-circle"></i></button>
+                    `;
                     favoritesItemsList.appendChild(listItem);
                 });
                 document.querySelectorAll('.remove-favorite-btn').forEach(button => {
@@ -407,10 +439,10 @@
                     favorites.push(productToAdd);
                     localStorage.setItem('favorites', JSON.stringify(favorites));
                     updateFavoritesCount();
-                    renderFavoritesList(); // Atualiza a lista quando um item é adicionado
-                    return true; // Indica que o item foi adicionado
+                    renderFavoritesList();
+                    return true;
                 }
-                return false; // Indica que o item já existia
+                return false;
             }
 
             function removeFromFavorites(productId) {
@@ -420,10 +452,10 @@
                 if (favorites.length < initialLength) {
                     localStorage.setItem('favorites', JSON.stringify(favorites));
                     updateFavoritesCount();
-                    renderFavoritesList(); // Atualiza a lista quando um item é removido
-                    return true; // Indica que o item foi removido
+                    renderFavoritesList();
+                    return true;
                 }
-                return false; // Indica que o item não foi encontrado
+                return false;
             }
 
             function initializeFavoriteIcons() {
@@ -434,12 +466,12 @@
 
                     if (favorites.some(fav => fav.id === productId)) {
                         icon.classList.add('favorited');
-                        icon.classList.remove('far'); // Coração vazio
-                        icon.classList.add('fas');    // Coração preenchido
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
                     } else {
                         icon.classList.remove('favorited');
-                        icon.classList.remove('fas'); // Coração preenchido
-                        icon.classList.add('far');    // Coração vazio
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
                     }
                 });
             }
@@ -485,6 +517,7 @@
             });
 
             favoriteCounterIcon.addEventListener('click', function () {
+                closeAllPopups(); // Fecha outros pop-ups antes de abrir este
                 favoritesListPopup.classList.toggle('show');
                 if (favoritesListPopup.classList.contains('show')) {
                     renderFavoritesList();
@@ -501,7 +534,7 @@
             const cartListPopup = document.querySelector('.cart-list-popup');
             const cartItemsList = document.getElementById('cart-items');
             const cartTotalValueSpan = document.getElementById('cart-total-value');
-            const closeCartPopupBtn = document.querySelector('.close-cart-popup');
+            const closeCartPopupBtn = cartListPopup.querySelector('.close-popup'); // Seleciona o botão dentro do pop-up correto
             const checkoutButton = document.querySelector('.checkout-button');
             const couponInput = document.getElementById('coupon-input');
             const applyCouponBtn = document.getElementById('apply-coupon-btn');
@@ -537,14 +570,14 @@
                         const listItem = document.createElement('li');
                         listItem.classList.add('cart-item');
                         listItem.innerHTML = `
-                    <img src="${product.image || '/images/placeholder.png'}" alt="${product.name}" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <p class="cart-item-name">${product.name || 'N/A'}</p>
-                        <p class="cart-item-price">R$ ${formattedPrice}</p>
-                        ${product.quantity ? `<p class="cart-item-quantity">Qtd: ${product.quantity}</p>` : ''}
-                    </div>
-                    <button class="remove-cart-item-btn" data-product-id="${product.id}"><i class="fas fa-times-circle"></i></button>
-                `;
+                            <img src="${product.image || '/images/placeholder.png'}" alt="${product.name}" class="cart-item-image">
+                            <div class="cart-item-details">
+                                <p class="cart-item-name">${product.name || 'N/A'}</p>
+                                <p class="cart-item-price">R$ ${formattedPrice}</p>
+                                ${product.quantity ? `<p class="cart-item-quantity">Qtd: ${product.quantity}</p>` : ''}
+                            </div>
+                            <button class="remove-cart-item-btn" data-product-id="${product.id}"><i class="fas fa-times-circle"></i></button>
+                        `;
                         cartItemsList.appendChild(listItem);
                     });
                 }
@@ -568,7 +601,6 @@
 
                 const existingProductIndex = cart.findIndex(item => item.id === productToAdd.id);
                 if (existingProductIndex > -1) {
-                    // Se o produto já existe, incrementa a quantidade.
                     cart[existingProductIndex].quantity = (cart[existingProductIndex].quantity || 1) + 1;
                 } else {
                     cart.push({ ...productToAdd, quantity: 1 });
@@ -576,8 +608,8 @@
 
                 localStorage.setItem('cart', JSON.stringify(cart));
                 updateCartDisplay();
-                renderCartList(); // Atualiza a lista quando um item é adicionado
-                return true; // Indica que o item foi adicionado
+                renderCartList();
+                return true;
             }
 
             function removeFromCart(productId) {
@@ -596,16 +628,15 @@
                 if (finalCartCount < initialCartCount) {
                     localStorage.setItem('cart', JSON.stringify(cart));
                     updateCartDisplay();
-                    renderCartList(); // Atualiza a lista quando um item é removido
+                    renderCartList();
 
-                    // Remove a classe 'in-cart' do ícone do produto apenas se ele não estiver mais no carrinho
                     const productCartIcon = document.querySelector(`.product[data-product-id="${productId}"] .cart-product-icon`);
                     if (productCartIcon && !cart.some(item => item.id === productId)) {
                         productCartIcon.classList.remove('in-cart');
                     }
-                    return true; // Indica que o item foi removido
+                    return true;
                 }
-                return false; // Indica que o item não foi encontrado
+                return false;
             }
 
             function initializeCartIcons() {
@@ -662,7 +693,7 @@
 
                     if (isInCart) {
                         removeFromCart(product.id);
-                        if (!cart.some(item => item.id === product.id)) { // Verifica se ainda há unidades do produto no carrinho
+                        if (!cart.some(item => item.id === product.id)) {
                             this.classList.remove('in-cart');
                         }
                     } else {
@@ -673,6 +704,7 @@
             });
 
             cartCounterIcon.addEventListener('click', function () {
+                closeAllPopups(); // Fecha outros pop-ups antes de abrir este
                 cartListPopup.classList.toggle('show');
                 if (cartListPopup.classList.contains('show')) {
                     renderCartList();
@@ -687,25 +719,115 @@
                 }, 200);
             });
 
-            window.addEventListener('click', function (event) {
-                // Fecha pop-up de favoritos
-                if (!favoritesListPopup.contains(event.target) && !favoriteCounterIcon.contains(event.target) && !favoritesCount.contains(event.target)) {
-                    // Adicionado condição para não fechar se o clique foi em um coração de produto que está sendo clicado para adicionar/remover
-                    if (!event.target.closest('.favorite-icon') || !event.target.classList.contains('favorite-icon')) {
-                        favoritesListPopup.classList.remove('show');
-                    }
-                }
-                // Fecha pop-up do carrinho
-                if (!cartListPopup.contains(event.target) && !cartCounterIcon.contains(event.target) && !cartCountSpan.contains(event.target)) {
-                    // Adicionado condição para não fechar se o clique foi em uma sacola de produto que está sendo clicado para adicionar/remover
-                    if (!event.target.closest('.cart-product-icon') || !event.target.classList.contains('cart-product-icon')) {
-                        cartListPopup.classList.remove('show');
-                    }
+            // --- LÓGICA DE LOGIN/CADASTRO E MENSAGEM DE BOAS-VINDAS ---
+            const accountIcon = document.querySelector('.account-icon');
+            const accountPopup = document.querySelector('.account-popup');
+            const accountOptions = document.querySelector('.account-options');
+            const loginFormContainer = document.querySelector('.login-form-container');
+            const createAccountFormContainer = document.querySelector('.create-account-form-container');
+            const loginBtn = document.getElementById('login-btn');
+            const createAccountBtn = document.getElementById('create-account-btn');
+            const backToOptionsBtns = document.querySelectorAll('.back-to-options-btn');
+            const submitLoginBtn = document.getElementById('submit-login-btn');
+            const submitCreateBtn = document.getElementById('submit-create-btn');
+            const welcomeMessage = document.getElementById('welcome-message');
+
+            // 1. Oculta o pop-up da conta e os formulários no início
+            accountPopup.classList.remove('show');
+            accountOptions.style.display = 'none';
+            loginFormContainer.style.display = 'none';
+            createAccountFormContainer.style.display = 'none';
+
+            accountIcon.addEventListener('click', function (event) {
+                event.stopPropagation();
+                closeAllPopups(); // Fecha outros pop-ups antes de abrir este
+                accountPopup.classList.toggle('show');
+
+                if (accountPopup.classList.contains('show')) {
+                    accountOptions.style.display = 'flex'; // Usar flex para organizar os botões
+                    loginFormContainer.style.display = 'none';
+                    createAccountFormContainer.style.display = 'none';
                 }
             });
+
+            loginBtn.addEventListener('click', function () {
+                accountOptions.style.display = 'none';
+                loginFormContainer.style.display = 'block';
+            });
+
+            createAccountBtn.addEventListener('click', function () {
+                accountOptions.style.display = 'none';
+                createAccountFormContainer.style.display = 'block';
+            });
+
+            backToOptionsBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    loginFormContainer.style.display = 'none';
+                    createAccountFormContainer.style.display = 'none';
+                    accountOptions.style.display = 'flex'; // Voltar a usar flex
+                });
+            });
+
+            submitLoginBtn.addEventListener('click', function () {
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                alert(`Tentando fazer login com E-mail: ${email} e Senha: ${password}`);
+
+                const userName = email.split('@')[0];
+                welcomeMessage.textContent = `Bem-vindo, ${userName}!`;
+                welcomeMessage.classList.add('show');
+                accountPopup.classList.remove('show');
+
+                setTimeout(() => {
+                    welcomeMessage.classList.remove('show');
+                }, 10000);
+            });
+
+            submitCreateBtn.addEventListener('click', function () {
+                const name = document.getElementById('create-name').value;
+                const email = document.getElementById('create-email').value;
+                const password = document.getElementById('create-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+
+                if (password !== confirmPassword) {
+                    alert('As senhas não coincidem!');
+                    return;
+                }
+                alert(`Tentando criar conta para: ${name}, E-mail: ${email}, Senha: ${password}`);
+
+                welcomeMessage.textContent = `Bem-vindo, ${name}!`;
+                welcomeMessage.classList.add('show');
+                accountPopup.classList.remove('show');
+
+                setTimeout(() => {
+                    welcomeMessage.classList.remove('show');
+                }, 10000);
+            });
+
+            // Fecha pop-ups ao clicar fora deles
+            window.addEventListener('click', function (event) {
+                // Obter todos os popups abertos
+                const openPopups = document.querySelectorAll('.popup.show');
+
+                openPopups.forEach(popup => {
+                    const iconContainer = popup.parentElement; // Elemento pai do popup que contém o ícone
+                    const icon = iconContainer.querySelector('i'); // O ícone que abre este popup
+
+                    // Verificar se o clique não foi dentro do popup e nem no ícone que o abriu
+                    // e também garantir que não foi um clique em um ícone de produto (favorito ou carrinho)
+                    if (!popup.contains(event.target) && !icon.contains(event.target) && !event.target.closest('.product-icons')) {
+                        popup.classList.remove('show');
+                    }
+                });
+
+                // Lidar com a mensagem de boas-vindas separadamente, pois não é um popup no mesmo sentido
+                if (!welcomeMessage.contains(event.target) && welcomeMessage.classList.contains('show')) {
+                    // Não faça nada, a mensagem de boas-vindas tem seu próprio timer para sumir
+                }
+            });
+
         });
     </script>
-
 </body>
 
 </html>

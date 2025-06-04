@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BlueStore | E-commerce</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="/styles/globals.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" defer></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="page-inner-content header-layout-wrapper">
+            <div class="search-container">
+                <i class="fas fa-microphone mic-icon"></i>
+                <input type="text" placeholder="Buscar" />
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="icon-group-left">
+                <div class="favorites-container">
+                    <i class="far fa-heart favorite-counter-icon"></i>
+                    <span class="favorites-count">0</span>
+                    <div class="favorites-list-popup">
+                        <h3>Meus Favoritos</h3>
+                        <ul id="favorites-items">
+                        </ul>
+                        <button class="close-favorites-popup">Fechar</button>
+                    </div>
+                </div>
+                <div class="cart-container">
+                    <i class="fas fa-shopping-bag cart-counter-icon"></i>
+                    <span class="cart-count">0</span>
+                    <div class="cart-list-popup">
+                        <h3>Minha Sacola</h3>
+                        <ul id="cart-items">
+                        </ul>
+                        <div class="coupon-section">
+                            <input type="text" id="coupon-input" placeholder="Cupom de Desconto">
+                            <button id="apply-coupon-btn">Aplicar</button>
+                            <p id="coupon-message" class="coupon-message"></p>
+                        </div>
+                        <p class="cart-total">Total: R$ <span id="cart-total-value">0,00</span></p>
+                        <button class="close-cart-popup">Fechar</button>
+                        <button class="checkout-button">Finalizar Compra</button>
+                    </div>
+                </div>
+                <i class="fas fa-user-circle"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="page-inner-content">
+            <div class="header-inner-content">
+                <nav>
+                    <ul>
+                        <li><a href="macs.html" class="nav-button">Macs</a></li>
+                        <li>|</li>
+                        <li><a href="iphones.html" class="nav-button">iPhones</a></li>
+                        <li>|</li>
+                        <li><a href="ipads.html" class="nav-button">iPads</a></li>
+                        <li>|</li>
+                        <li><a href="watches.html" class="nav-button">Watches</a></li>
+                        <li>|</li>
+                        <li><a href="airpods.html" class="nav-button">AirPods</a></li>
+                        <li>|</li>
+                        <li><a href="acessorios.html" class="nav-button">Acessórios</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="page-inner-content">
+            <div class="header-inner-content">
+                <div class="header-bottom-side">
+                    <div class="header-bottom-side-left">
+                        <h2>Dê um novo estilo ao seu trabalho!</h2>
+                        <p>Imagine um notebook que acompanha o seu ritmo, que entende sua criatividade e eleva sua
+                            produtividade a um novo patamar. Chegou a hora de transformar a maneira como você trabalha —
+                            com leveza, performance e design que impressiona.
+                        </p>
+                    </div>
+                    <div class="header-bottom-side-right">
+                        <img src="images/macbook_pro_m4.1.png" alt="Macbook Pro M4">
+                        <h3 class="product-name">MacBook Pro M4 - 512GB SSD</h3>
+                        <div class="product-rating">
+                            <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        </div>
+                        <div class="price-and-button">
+                            <p class="product-price">R$ 18.499,00</p>
+                            <button class="buy-now-button">Comprar Agora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="gray-background">
+            <div class="page-inner-content">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" data-product-id="ipad-air-5gen"
+                            data-product-name="iPad Air (5ª Geração) Wi-Fi 64GB - Cinza Espacial"
+                            data-product-price="4899.00" data-product-image="/images/products/ipad-1.png">
+                            <img src="/images/products/ipad-1.png" alt="iPad Air (5ª Geração)" />
+                            <div class="product-info">
+                                <div class="rating-stars">★★★★★</div>
+                                <h3 class="product-name">iPad Air (5ª Geração) Wi-Fi 64GB - Cinza Espacial</h3>
+                                <p class="product-price">R$ 4.899,00</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-product-id="ipad-pro-11-4gen"
+                            data-product-name="iPad Pro 11' (4ª Geração) Wi-Fi 128GB - Prateado"
+                            data-product-price="7299.00" data-product-image="/images/products/ipad-2.png">
+                            <img src="/images/products/ipad-2.png" alt="iPad Pro 11 (4ª Geração)" />
+                            <div class="product-info">
+                                <div class="rating-stars">★★★★★</div>
+                                <h3 class="product-name">iPad Pro 11" (4ª Geração) Wi-Fi 128GB - Prateado</h3>
+                                <p class="product-price">R$ 7.299,00</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-product-id="ipad-10gen"
+                            data-product-name="iPad (10ª Geração) Wi-Fi 256GB - Azul" data-product-price="5199.00"
+                            data-product-image="/images/products/ipad-3.png">
+                            <img src="/images/products/ipad-3.png" alt="iPad (10ª Geração)" />
+                            <div class="product-info">
+                                <div class="rating-stars">★★★★☆</div>
+                                <h3 class="product-name">iPad (10ª Geração) Wi-Fi 256GB - Azul</h3>
+                                <p class="product-price">R$ 5.199,00</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-product-id="ipad-mini-6gen"
+                            data-product-name="iPad mini (6ª Geração) Wi-Fi 64GB - Rosa" data-product-price="4199.00"
+                            data-product-image="/images/products/ipad-4.png">
+                            <img src="/images/products/ipad-4.png" alt="iPad mini (6ª Geração)" />
+                            <div class="product-info">
+                                <div class="rating-stars">★★★★☆</div>
+                                <h3 class="product-name">iPad mini (6ª Geração) Wi-Fi 64GB - Rosa</h3>
+                                <p class="product-price">R$ 4.199,00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div class="page-inner-content">
+                <h3 class="selection-title">Mais Vistos</h3>
+            </div>
+            <div class="blue-line-full-width"></div>
+            <div class="page-inner-content">
+                <div class="cols cols-4">
+                    <div class="product" data-product-id="iphone-16-preto"
+                        data-product-name="Apple iPhone 16 128GB Preto" data-product-price="5299.00"
+                        data-product-image="/images/products/iphone16.png">
+                        <img src="/images/products/iphone16.png" alt="Apple iPhone 16 128GB Preto" />
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon"></i>
+                        </div>
+                        <p class="product-name">Apple iPhone 16 128GB Preto</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="product-price">R$ 5.299,00</p>
+                    </div>
+
+                    <div class="product" data-product-id="iphone-16-pro"
+                        data-product-name="Apple iPhone 16 Pro 256GB Titânio Preto" data-product-price="9399.00"
+                        data-product-image="/images/products/iphone16pro.png">
+                        <img src="/images/products/iphone16pro.png" alt="Apple iPhone 16 Pro 256GB" />
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon"></i>
+                        </div>
+                        <p class="product-name">Apple iPhone 16 Pro 256GB Titânio Preto</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="product-price">R$ 9.399,00</p>
+                    </div>
+
+                    <div class="product" data-product-id="apple-watch-s9"
+                        data-product-name="Apple Watch Series 9 meia-noite – 45 mm" data-product-price="2699.90"
+                        data-product-image="/images/products/applewatchs945mm.png">
+                        <img src="/images/products/applewatchs945mm.png" alt="Apple Watch Series 9" />
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon"></i>
+                        </div>
+                        <p class="product-name">Apple Watch Series 9 meia-noite – 45 mm</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="product-price">R$ 2.699,90</p>
+                    </div>
+
+                    <div class="product" data-product-id="apple-watch-ultra-2"
+                        data-product-name="Apple Watch Ultra 2 Caixa preta de titânio de 49 mm"
+                        data-product-price="8299.00" data-product-image="/images/products/applewatchultra249mm.png">
+                        <img src="/images/products/applewatchultra249mm.png" alt="Apple Watch Ultra 2" />
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon"></i>
+                        </div>
+                        <p class="product-name">Apple Watch Ultra 2 Caixa preta de titânio de 49 mm</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="product-price">R$ 8.299,00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="page-inner-content">
+                <h3 class="selection-title">Produtos em Promoção</h3>
+            </div>
+            <div class="blue-line-full-width"></div>
+            <div class="page-inner-content">
+                <div class="cols cols-4">
+                    <div class="product" data-product-id="notebook-gamer-msi"
+                        data-product-name="Notebook Gamer MSI Katana GF66" data-product-price="4999.00"
+                        data-product-image="/images/products/product-4.png">
+                        <img src="/images/products/product-4.png" alt="Notebook Gamer MSI Katana GF66" />
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon"></i>
+                        </div>
+                        <p class="product-name">Notebook Gamer MSI Katana GF66</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="product-price">R$ 4.999,00</p>
+                    </div>
+
+                    <div class="product" data-product-id="macbook-pro-m4" data-product-name="MacBook Pro M4 - 512GB SSD"
+                        data-product-price="18499.00" data-product-image="https://i.imgur.com/k91uD3e.png">
+                        <img src="images/products/airtag4.png" alt="MacBook Pro M4" />
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon"></i>
+                        </div>
+                        <p class="product-name">MacBook Pro M4 - 512GB SSD</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="product-price">R$ 18.499,00</p>
+                    </div>
+
+                    <div class="product" data-product-id="ipad-10gen-64gb"
+                        data-product-name="iPad 10ª Geração Wi-Fi 64GB" data-product-price="3499.00"
+                        data-product-image="/images/products/ipad-2.png"> <img src="/images/products/ipad-2.png"
+                            alt="iPad 10ª geração" />
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon"></i>
+                        </div>
+                        <p class="product-name">iPad 10ª Geração Wi-Fi 64GB</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="product-price">R$ 3.499,00</p>
+                    </div>
+
+                    <div class="product" data-product-id="iphone-16-preto-promo"
+                        data-product-name="Apple iPhone 16 128GB Preto" data-product-price="5299.00"
+                        data-product-image="/images/products/iphone16.png">
+                        <img src="/images/products/iphone16.png" alt="iPhone 16" />
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon"></i>
+                        </div>
+                        <p class="product-name">Apple iPhone 16 128GB Preto</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="product-price">R$ 5.299,00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="gray-background">
+            <div class="page-inner-content">
+                <div class="header-bottom-side exclusive-container">
+                    <div class="header-bottom-side-left">
+                        <h2>Estilo, sofisticação e modernidade!</h2>
+                        <p>A Mi Band 4 é a primeira da linha a contar com display colorido, o que melhora bastante a
+                            experiência e o visual da smartband. Tela AMOLED, 0,95 polegadas e resolução de 240x120
+                            pixels.
+                        </p>
+                        <button>Ver Agora &#8594;</button>
+                    </div>
+                    <div class="header-bottom-side-right">
+                        <img src="/images/exclusive.png" alt="Smartband Mi Band 4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-inner-content">
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p>"</p>
+                        <p>Atendimento incrível e produtos de altíssima qualidade. Recomendo!</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p>Fernanda Souza</p>
+                    </div>
+
+                    <div class="testimonial">
+                        <p>"</p>
+                        <p>Entrega rápida e produto bem embalado. Voltarei a comprar!</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p>Lucas Silva</p>
+                    </div>
+
+                    <div class="testimonial">
+                        <p>"</p>
+                        <p>Ótima loja! Atendimento nota 10 e site fácil de navegar.</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p>Maria Oliveira</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inicialização do Swiper (Carrossel)
+            var swiper = new Swiper(".mySwiper", {
+                loop: true,
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                slidesPerView: 'auto', // Permite diferentes larguras de slides
+                spaceBetween: 20,
+                grabCursor: true,
+            });
+
+            // --- LÓGICA DE FAVORITOS ---
+            const favoriteCounterIcon = document.querySelector('.favorite-counter-icon');
+            const favoritesCount = document.querySelector('.favorites-count');
+            const favoritesListPopup = document.querySelector('.favorites-list-popup');
+            const favoritesItemsList = document.getElementById('favorites-items');
+            const closeFavoritesPopupBtn = document.querySelector('.close-favorites-popup');
+
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+            function updateFavoritesCount() {
+                favoritesCount.textContent = favorites.length;
+            }
+
+            function renderFavoritesList() {
+                favoritesItemsList.innerHTML = '';
+                if (favorites.length === 0) {
+                    favoritesItemsList.innerHTML = '<li>Nenhum item adicionado aos favoritos.</li>';
+                    return;
+                }
+                favorites.forEach(product => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('favorite-item');
+                    // Certifique-se de que product.price é um número antes de formatar
+                    const price = typeof product.price === 'number' ? product.price : parseFloat(product.price);
+                    const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'Preço indisponível';
+
+                    listItem.innerHTML = `
+                <img src="${product.image || '/images/placeholder.png'}" alt="${product.name}" class="favorite-item-image">
+                <div class="favorite-item-details">
+                    <p class="favorite-item-name">${product.name || 'Nome indisponível'}</p>
+                    <p class="favorite-item-price">R$ ${formattedPrice}</p>
+                </div>
+                <button class="remove-favorite-btn" data-product-id="${product.id}"><i class="fas fa-times-circle"></i></button>
+            `;
+                    favoritesItemsList.appendChild(listItem);
+                });
+                document.querySelectorAll('.remove-favorite-btn').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const productId = this.dataset.productId;
+                        removeFromFavorites(productId);
+                    });
+                });
+            }
+
+            function addToFavorites(product) {
+                const priceAsNumber = parseFloat(product.price);
+                if (isNaN(priceAsNumber)) {
+                    console.error("Erro: Tentativa de adicionar produto com preço inválido aos favoritos.", product);
+                    return;
+                }
+                const productToAdd = { ...product, price: priceAsNumber };
+
+                if (!favorites.some(fav => fav.id === productToAdd.id)) {
+                    favorites.push(productToAdd);
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                    updateFavoritesCount();
+                    renderFavoritesList(); // Atualiza a lista quando um item é adicionado
+                    return true; // Indica que o item foi adicionado
+                }
+                return false; // Indica que o item já existia
+            }
+
+            function removeFromFavorites(productId) {
+                const initialLength = favorites.length;
+                favorites = favorites.filter(fav => fav.id !== productId);
+
+                if (favorites.length < initialLength) {
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                    updateFavoritesCount();
+                    renderFavoritesList(); // Atualiza a lista quando um item é removido
+                    return true; // Indica que o item foi removido
+                }
+                return false; // Indica que o item não foi encontrado
+            }
+
+            function initializeFavoriteIcons() {
+                document.querySelectorAll('.favorite-icon').forEach(icon => {
+                    const productElement = icon.closest('.product');
+                    if (!productElement) return;
+                    const productId = productElement.dataset.productId;
+
+                    if (favorites.some(fav => fav.id === productId)) {
+                        icon.classList.add('favorited');
+                        icon.classList.remove('far'); // Coração vazio
+                        icon.classList.add('fas');    // Coração preenchido
+                    } else {
+                        icon.classList.remove('favorited');
+                        icon.classList.remove('fas'); // Coração preenchido
+                        icon.classList.add('far');    // Coração vazio
+                    }
+                });
+            }
+
+            updateFavoritesCount();
+            initializeFavoriteIcons();
+
+            document.querySelectorAll('.favorite-icon').forEach(icon => {
+                icon.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    const productElement = this.closest('.product');
+                    if (!productElement) return;
+
+                    const productPriceStr = productElement.dataset.productPrice;
+                    const productPrice = parseFloat(productPriceStr);
+
+                    if (isNaN(productPrice)) {
+                        console.error("Preço do produto inválido no card:", productElement.dataset.productName, productPriceStr);
+                        return;
+                    }
+
+                    const product = {
+                        id: productElement.dataset.productId,
+                        name: productElement.dataset.productName,
+                        price: productPrice,
+                        image: productElement.dataset.productImage
+                    };
+
+                    const isFavorited = this.classList.contains('favorited');
+
+                    if (isFavorited) {
+                        removeFromFavorites(product.id);
+                        this.classList.remove('favorited');
+                        this.classList.remove('fas');
+                        this.classList.add('far');
+                    } else {
+                        addToFavorites(product);
+                        this.classList.add('favorited');
+                        this.classList.remove('far');
+                        this.classList.add('fas');
+                    }
+                });
+            });
+
+            favoriteCounterIcon.addEventListener('click', function () {
+                favoritesListPopup.classList.toggle('show');
+                if (favoritesListPopup.classList.contains('show')) {
+                    renderFavoritesList();
+                }
+            });
+
+            closeFavoritesPopupBtn.addEventListener('click', function () {
+                favoritesListPopup.classList.remove('show');
+            });
+
+            // --- LÓGICA DO CARRINHO ---
+            const cartCounterIcon = document.querySelector('.cart-counter-icon');
+            const cartCountSpan = document.querySelector('.cart-count');
+            const cartListPopup = document.querySelector('.cart-list-popup');
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotalValueSpan = document.getElementById('cart-total-value');
+            const closeCartPopupBtn = document.querySelector('.close-cart-popup');
+            const checkoutButton = document.querySelector('.checkout-button');
+            const couponInput = document.getElementById('coupon-input');
+            const applyCouponBtn = document.getElementById('apply-coupon-btn');
+            const couponMessage = document.getElementById('coupon-message');
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let currentDiscount = 0;
+            const validCoupons = {
+                "DESCONTO10": 0.10,
+                "FRETEGRATIS": 0
+            };
+
+            function updateCartDisplay() {
+                cartCountSpan.textContent = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+                let total = 0;
+                cart.forEach(item => {
+                    total += (parseFloat(item.price) * (item.quantity || 1));
+                });
+
+                let discountedTotal = total - (total * currentDiscount);
+                cartTotalValueSpan.textContent = discountedTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+
+            function renderCartList() {
+                cartItemsList.innerHTML = '';
+                if (cart.length === 0) {
+                    cartItemsList.innerHTML = '<li>Nenhum item adicionado à sacola.</li>';
+                } else {
+                    cart.forEach(product => {
+                        const price = typeof product.price === 'number' ? product.price : parseFloat(product.price);
+                        const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'N/A';
+
+                        const listItem = document.createElement('li');
+                        listItem.classList.add('cart-item');
+                        listItem.innerHTML = `
+                    <img src="${product.image || '/images/placeholder.png'}" alt="${product.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <p class="cart-item-name">${product.name || 'N/A'}</p>
+                        <p class="cart-item-price">R$ ${formattedPrice}</p>
+                        ${product.quantity ? `<p class="cart-item-quantity">Qtd: ${product.quantity}</p>` : ''}
+                    </div>
+                    <button class="remove-cart-item-btn" data-product-id="${product.id}"><i class="fas fa-times-circle"></i></button>
+                `;
+                        cartItemsList.appendChild(listItem);
+                    });
+                }
+                updateCartDisplay();
+
+                document.querySelectorAll('.remove-cart-item-btn').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const productId = this.dataset.productId;
+                        removeFromCart(productId);
+                    });
+                });
+            }
+
+            function addToCart(product) {
+                const priceAsNumber = parseFloat(product.price);
+                if (isNaN(priceAsNumber)) {
+                    console.error("Erro: Tentativa de adicionar produto com preço inválido ao carrinho.", product);
+                    return;
+                }
+                const productToAdd = { ...product, price: priceAsNumber };
+
+                const existingProductIndex = cart.findIndex(item => item.id === productToAdd.id);
+                if (existingProductIndex > -1) {
+                    // Se o produto já existe, incrementa a quantidade.
+                    cart[existingProductIndex].quantity = (cart[existingProductIndex].quantity || 1) + 1;
+                } else {
+                    cart.push({ ...productToAdd, quantity: 1 });
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+                renderCartList(); // Atualiza a lista quando um item é adicionado
+                return true; // Indica que o item foi adicionado
+            }
+
+            function removeFromCart(productId) {
+                const initialCartCount = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+
+                const productIndex = cart.findIndex(item => item.id === productId);
+                if (productIndex > -1) {
+                    cart[productIndex].quantity = (cart[productIndex].quantity || 1) - 1;
+                    if (cart[productIndex].quantity <= 0) {
+                        cart.splice(productIndex, 1);
+                    }
+                }
+
+                const finalCartCount = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+
+                if (finalCartCount < initialCartCount) {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartDisplay();
+                    renderCartList(); // Atualiza a lista quando um item é removido
+
+                    // Remove a classe 'in-cart' do ícone do produto apenas se ele não estiver mais no carrinho
+                    const productCartIcon = document.querySelector(`.product[data-product-id="${productId}"] .cart-product-icon`);
+                    if (productCartIcon && !cart.some(item => item.id === productId)) {
+                        productCartIcon.classList.remove('in-cart');
+                    }
+                    return true; // Indica que o item foi removido
+                }
+                return false; // Indica que o item não foi encontrado
+            }
+
+            function initializeCartIcons() {
+                document.querySelectorAll('.cart-product-icon').forEach(icon => {
+                    const productElement = icon.closest('.product');
+                    if (!productElement) return;
+                    const productId = productElement.dataset.productId;
+                    if (cart.some(item => item.id === productId)) {
+                        icon.classList.add('in-cart');
+                    } else {
+                        icon.classList.remove('in-cart');
+                    }
+                });
+            }
+
+            applyCouponBtn.addEventListener('click', function () {
+                const couponCode = couponInput.value.trim().toUpperCase();
+                if (validCoupons[couponCode] !== undefined) {
+                    currentDiscount = validCoupons[couponCode];
+                    couponMessage.textContent = "Cupom aplicado com sucesso!";
+                    couponMessage.style.color = "green";
+                } else {
+                    currentDiscount = 0;
+                    couponMessage.textContent = "Cupom inválido!";
+                    couponMessage.style.color = "red";
+                }
+                updateCartDisplay();
+            });
+
+            updateCartDisplay();
+            initializeCartIcons();
+
+            document.querySelectorAll('.cart-product-icon').forEach(icon => {
+                icon.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    const productElement = this.closest('.product');
+                    if (!productElement) return;
+
+                    const productPriceStr = productElement.dataset.productPrice;
+                    const productPrice = parseFloat(productPriceStr);
+                    if (isNaN(productPrice)) {
+                        console.error("Preço do produto inválido no card (carrinho):", productElement.dataset.productName, productPriceStr);
+                        return;
+                    }
+
+                    const product = {
+                        id: productElement.dataset.productId,
+                        name: productElement.dataset.productName,
+                        price: productPrice,
+                        image: productElement.dataset.productImage
+                    };
+
+                    const isInCart = this.classList.contains('in-cart');
+
+                    if (isInCart) {
+                        removeFromCart(product.id);
+                        if (!cart.some(item => item.id === product.id)) { // Verifica se ainda há unidades do produto no carrinho
+                            this.classList.remove('in-cart');
+                        }
+                    } else {
+                        addToCart(product);
+                        this.classList.add('in-cart');
+                    }
+                });
+            });
+
+            cartCounterIcon.addEventListener('click', function () {
+                cartListPopup.classList.toggle('show');
+                if (cartListPopup.classList.contains('show')) {
+                    renderCartList();
+                }
+            });
+
+            closeCartPopupBtn.addEventListener('click', function () {
+                cartListPopup.classList.remove('show');
+                closeCartPopupBtn.classList.add('clicked');
+                setTimeout(() => {
+                    closeCartPopupBtn.classList.remove('clicked');
+                }, 200);
+            });
+
+            window.addEventListener('click', function (event) {
+                // Fecha pop-up de favoritos
+                if (!favoritesListPopup.contains(event.target) && !favoriteCounterIcon.contains(event.target) && !favoritesCount.contains(event.target)) {
+                    // Adicionado condição para não fechar se o clique foi em um coração de produto que está sendo clicado para adicionar/remover
+                    if (!event.target.closest('.favorite-icon') || !event.target.classList.contains('favorite-icon')) {
+                        favoritesListPopup.classList.remove('show');
+                    }
+                }
+                // Fecha pop-up do carrinho
+                if (!cartListPopup.contains(event.target) && !cartCounterIcon.contains(event.target) && !cartCountSpan.contains(event.target)) {
+                    // Adicionado condição para não fechar se o clique foi em uma sacola de produto que está sendo clicado para adicionar/remover
+                    if (!event.target.closest('.cart-product-icon') || !event.target.classList.contains('cart-product-icon')) {
+                        cartListPopup.classList.remove('show');
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

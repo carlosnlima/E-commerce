@@ -1,0 +1,912 @@
+/* Reset Básico de Estilos */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilos Globais do Corpo da Página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f7;
+}
+
+/* Estilos do Cabeçalho Principal */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+/* Wrapper Interno do Cabeçalho para Layout */
+.page-inner-content.header-layout-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    position: relative;
+    min-height: 50px;
+    margin-left: 530px;
+    flex-wrap: wrap;
+}
+
+/* Contêiner da Barra de Pesquisa */
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 5px 10px;
+    width: 750px;
+    max-width: calc(100% - 200px);
+    background-color: white;
+    margin: 0 auto;
+    /* Centralização da barra de pesquisa */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
+/* Campo de Input da Pesquisa */
+.search-container input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Ícone de Microfone na Pesquisa */
+.mic-icon {
+    color: #333;
+    margin-right: 10px;
+}
+
+/* Botão de Pesquisa */
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #0077ff;
+    padding: 0 10px;
+}
+
+/* Grupo de Ícones do Lado Direito do Cabeçalho (Favoritos, Carrinho, Usuário, WhatsApp) */
+.icon-group-left {
+    display: flex;
+    align-items: height;
+    justify-content: end;
+    gap: 20px;
+    font-size: 22px;
+    color: #333;
+    margin-left: 50px;
+    /* Empurra o grupo para a direita */
+    margin-right: 1px;
+}
+
+/* Contêiner dos Ícones de Favoritos e Carrinho */
+.favorites-container,
+.cart-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Estilos dos Ícones de Contador (Coração e Sacola) */
+.favorite-counter-icon,
+.cart-counter-icon {
+    font-size: 22px;
+    color: #333;
+}
+
+/* Estilo da Sacola de Compras quando Ativa/Clicada */
+.cart-container:active .cart-counter-icon,
+.cart-container.active .cart-counter-icon {
+    color: #0077ff;
+}
+
+/* Contadores de Favoritos e Carrinho */
+.favorites-count,
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #0077ff;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 2px 6px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Pop-ups de Listas de Favoritos e Carrinho */
+.favorites-list-popup,
+.cart-list-popup {
+    display: none;
+    /* Escondido por padrão */
+    position: absolute;
+    top: 40px;
+    right: 0;
+    left: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px;
+    z-index: 1000;
+}
+
+/* Exibe o Pop-up quando a classe 'show' é aplicada */
+.favorites-list-popup.show,
+.cart-list-popup.show {
+    display: block;
+}
+
+/* Títulos dos Pop-ups */
+.favorites-list-popup h3,
+.cart-list-popup h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+/* Listas de Itens nos Pop-ups */
+.favorites-list-popup ul,
+.cart-list-popup ul {
+    list-style: none;
+    padding: 0;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* Itens Individuais nas Listas dos Pop-ups */
+.favorites-list-popup ul li,
+.cart-list-popup ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #eee;
+}
+
+/* Último item da lista (remove borda inferior) */
+.favorites-list-popup ul li:last-child,
+.cart-list-popup ul li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Imagens dos Itens nos Pop-ups */
+.favorite-item-image,
+.cart-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+/* Detalhes dos Itens nos Pop-ups */
+.favorite-item-details,
+.cart-item-details {
+    flex-grow: 1;
+}
+
+/* Nomes dos Itens nos Pop-ups */
+.favorite-item-name,
+.cart-item-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    margin: 0;
+}
+
+/* Preços dos Itens nos Pop-ups */
+.favorite-item-price,
+.cart-item-price {
+    font-size: 13px;
+    color: #0077ff;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Botões de Remover Item nos Pop-ups */
+.remove-favorite-btn,
+.remove-cart-item-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: color 0.2s ease;
+}
+
+/* Efeito Hover nos Botões de Remover */
+.remove-favorite-btn:hover,
+.remove-cart-item-btn:hover {
+    color: #c82333;
+}
+
+/* Total do Carrinho */
+.cart-total {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+/* Botão "Fechar" do Pop-up de Favoritos */
+.close-favorites-popup {
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+/* Efeito Hover no Botão "Fechar" Favoritos */
+.close-favorites-popup:hover {
+    background-color: #005bb5;
+}
+
+/* Botão "Fechar" do Pop-up do Carrinho */
+.close-cart-popup {
+    background-color: #cccccc;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+/* Efeito Hover no Botão "Fechar" Carrinho */
+.close-cart-popup:hover {
+    background-color: #b0b0b0;
+}
+
+/* Efeito de Clique no Botão "Fechar" Carrinho (JS) */
+.close-cart-popup.clicked {
+    background-color: #0077ff;
+}
+
+/* Botão "Finalizar Compra" do Carrinho */
+.checkout-button {
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+    transition: background-color 0.2s ease;
+}
+
+/* Efeito Hover no Botão "Finalizar Compra" */
+.checkout-button:hover {
+    background-color: #005bb5;
+}
+
+/* Seção de Cupom de Desconto no Carrinho */
+.coupon-section {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 5px;
+    align-items: center;
+}
+
+/* Campo de Input do Cupom */
+.coupon-section input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Botão "Aplicar" Cupom */
+.coupon-section button {
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Efeito Hover no Botão "Aplicar" Cupom */
+.coupon-section button:hover {
+    background-color: #005bb5;
+}
+
+/* Mensagem de Status do Cupom */
+.coupon-message {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+}
+
+
+/* Barra de Navegação (Navbar) */
+.navbar {
+    background-color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Lista de Navegação */
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Itens da Lista de Navegação */
+nav ul li {
+    margin: 0 10px;
+}
+
+/* Botões de Navegação (links) */
+nav ul li a.nav-button {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+/* Efeito Hover nos Botões de Navegação */
+nav ul li a.nav-button:hover {
+    background-color: #0077ff;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Separadores ("Pipes") na Navegação */
+nav ul li:nth-child(even) {
+    color: #ccc;
+    cursor: default;
+}
+
+/* Efeito Hover nos Separadores (removido) */
+nav ul li:nth-child(even):hover {
+    background-color: transparent;
+    transform: none;
+}
+
+/* Seção Principal do Cabeçalho com Destaque */
+header {
+    background-image: radial-gradient(#f5f5f7, #f5f5f7);
+    margin-right: 0;
+}
+
+/* Lado Inferior do Cabeçalho (layout de flexbox) */
+.header-bottom-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Lado Esquerdo do Conteúdo de Destaque */
+.header-bottom-side-left {
+    flex: 1;
+    min-width: 300px;
+    padding-left: 60px;
+}
+
+/* Título no Lado Esquerdo do Destaque */
+.header-bottom-side-left h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    margin-left: 100px;
+    text-align: center;
+}
+
+/* Parágrafo no Lado Esquerdo do Destaque */
+.header-bottom-side-left p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    margin-left: 100px;
+    text-align: justify;
+    font-size: large;
+}
+
+/* Botão no Lado Esquerdo do Destaque */
+.header-bottom-side-left button {
+    background-color: #0077ff;
+    border: none;
+    cursor: pointer;
+    padding: 0.8rem 3.8rem;
+    border-radius: 9999px;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-left: 100px;
+}
+
+/* Efeito Hover no Botão do Lado Esquerdo do Destaque */
+.header-bottom-side-left button:hover {
+    background-color: #005bb5;
+}
+
+/* Lado Direito do Conteúdo de Destaque (Produto Principal) */
+.header-bottom-side-right {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+    position: relative;
+}
+
+/* Imagem do Produto no Destaque */
+.header-bottom-side-right img {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Avaliação do Produto no Destaque (estrelas) */
+.header-bottom-side-right .product-rating {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+/* Contêiner para Preço e Botão de Compra no Destaque */
+.header-bottom-side-right .price-and-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Preço do Produto no Destaque */
+.header-bottom-side-right .product-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+/* Botão "Comprar Agora" no Destaque */
+.header-bottom-side-right .buy-now-button {
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+/* Efeito Hover no Botão "Comprar Agora" */
+.buy-now-button:hover {
+    background-color: #005bb5;
+}
+
+
+/* Estilos da Seção Principal e Seções Diversas */
+main {
+    background-color: #fff;
+}
+
+/* Fundo Cinza para Seções Específicas */
+.gray-background {
+    background-color: #f1f1f1;
+    padding: 40px 0;
+}
+
+/* Conteúdo Interno da Página (largura máxima e padding) */
+.page-inner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Linha Horizontal Azul de Largura Total */
+.blue-line-full-width {
+    width: 70%;
+    height: 3px;
+    background-color: #0077ff;
+    margin: 10px 0 30px 0;
+    border-radius: 2px;
+}
+
+/* Estilos do Carrossel de Produtos (Swiper) */
+.swiper {
+    width: 80%;
+    max-width: 900px;
+    margin: 40px auto;
+    position: relative;
+}
+
+/* Wrapper dos Slides do Carrossel */
+.swiper-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+/* Slides Individuais do Carrossel */
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0;
+    width: 190px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+/* Imagens dentro dos Slides do Carrossel */
+.swiper-slide img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* Oculta slides vazios (comportamento Swiper) */
+.swiper-slide:empty {
+    display: none;
+}
+
+/* Informações do Produto dentro do Carrossel */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0 5px;
+}
+
+/* Estrelas de Avaliação dentro do Carrossel */
+.rating-stars {
+    font-size: 13px;
+    color: #ffc107;
+    margin-bottom: 2px;
+}
+
+/* Nome do Produto (geral, usado em vários locais) */
+.product-name {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
+    height: auto;
+    overflow: visible;
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    -webkit-box-orient: unset;
+}
+
+/* Preço do Produto (geral, usado em vários locais) */
+.product-price {
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+/* Botões de Navegação (Próximo/Anterior) do Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: transparent;
+    border-radius: 0;
+    width: 30px;
+    height: 30px;
+    box-shadow: none;
+    color: #333;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Pseudo-elementos para os ícones dos botões de navegação do Swiper */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Efeito Hover nos Botões de Navegação do Swiper */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: transparent;
+    color: #007bff;
+}
+
+/* Paginação do Swiper (bolinhas) */
+.swiper-pagination {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+}
+
+/* Bolinhas da Paginação do Swiper */
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+/* Bolinha Ativa da Paginação do Swiper */
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background-color: #555;
+}
+
+/* Estilos de Layout de Grade (Flexível) */
+.cols {
+    display: grid;
+    justify-content: space-evenly;
+    padding: 4rem 1rem;
+}
+
+/* Grade de 4 Colunas */
+.cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+/* Contêiner Individual do Produto (usado nas grades) */
+.product {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+/* Efeito Hover nos Produtos da Grade */
+.product:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagens dos Produtos nas Grades */
+.product img {
+    width: 100%;
+    background-color: #fff;
+    max-width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 0;
+}
+
+/* Ícones de Ação sobre o Produto (coração, sacola) */
+.product-icons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+/* Estilos dos Ícones de Favorito e Sacola nos Produtos */
+.favorite-icon,
+.cart-product-icon {
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Cor Azul para Ícone de Favorito quando Ativo (Favoritado) */
+.favorite-icon.favorited {
+    color: #0077ff;
+}
+
+/* Cor Azul para Ícone de Sacola quando o Produto está no Carrinho */
+.cart-product-icon.in-cart {
+    color: #0077ff;
+}
+
+/* Avaliação de Estrelas (geral) */
+.rate {
+    color: #ffc107;
+    font-size: 1.3rem;
+}
+
+/* Seção de Conteúdo Exclusivo */
+.exclusive-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 5rem 1rem;
+    flex-wrap: wrap;
+}
+
+/* Imagem na Seção Exclusiva */
+.exclusive-container img {
+    max-width: 500px;
+}
+
+/* Seção de Depoimentos */
+.testimonials {
+    display: flex;
+    padding: 3rem 2rem;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Cartão de Depoimento Individual */
+.testimonial {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px #ddd;
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* Efeito Hover nos Depoimentos */
+.testimonial:hover {
+    transform: translateY(-5px);
+}
+
+/* Aspas Grandes nos Depoimentos */
+.testimonial p:first-child {
+    font-weight: bold;
+    font-size: 4rem;
+    color: #0077ff;
+    line-height: 1;
+}
+
+/* Nome do Autor do Depoimento */
+.testimonial p:last-child {
+    font-weight: bold;
+}
+
+/* --- Estilos Responsivos --- */
+
+/* Ajustes para Telas Maiores (até 1240px) */
+@media (max-width: 1240px) {
+
+    /* Padding lateral para o conteúdo principal */
+    .page-inner-content {
+        padding: 0 10px;
+    }
+}
+
+/* Ajustes para Tablets e Telas Médias (até 1024px) */
+@media (max-width: 1024px) {
+
+    /* Grade de produtos muda para 2 colunas */
+    .cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Lado inferior do cabeçalho empilha elementos */
+    .header-bottom-side {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Conteúdo exclusivo inverte a ordem */
+    .exclusive-container {
+        flex-direction: column-reverse;
+    }
+
+    /* Ajuste de padding para o lado esquerdo do destaque */
+    .header-bottom-side-left {
+        padding-left: 20px;
+    }
+
+    /* Ajustes para o cabeçalho em mobile (elementos empilhados e centralizados) */
+    .page-inner-content.header-layout-wrapper {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    /* Barra de pesquisa ocupa toda a largura em mobile */
+    .search-container {
+        width: 100%;
+        max-width: none;
+        margin: 10px 0;
+        order: 1;
+        /* Ordem visual */
+    }
+
+    /* Grupo de ícones centralizado em mobile */
+    .icon-group-left {
+        width: 80%;
+        justify-content: height;
+        margin-left: 40px;
+        margin-right: 0;
+        margin-top: 15px;
+        order: 2;
+        /* Ordem visual */
+    }
+
+    /* Pop-ups centralizados para telas menores */
+    .favorites-list-popup,
+    .cart-list-popup {
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        width: 90%;
+        max-width: 300px;
+    }
+}
+
+/* Ajustes para Smartphones e Telas Pequenas (até 600px) */
+@media (max-width: 600px) {
+
+    /* Navegação centralizada e com rolagem horizontal */
+    nav ul {
+        justify-content: center;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Margem reduzida para itens da navegação */
+    nav ul li {
+        margin: 0 8px;
+    }
+
+    /* Tamanho de fonte e padding reduzidos para botões da navegação */
+    nav ul li a.nav-button {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    /* Padding reduzido para o lado esquerdo do destaque */
+    .header-bottom-side-left {
+        padding-left: 10px;
+    }
+}

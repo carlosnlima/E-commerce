@@ -5,101 +5,147 @@
     margin: 0;
 }
 
+/* Variáveis CSS Globais */
+:root {
+    --primary-color: #0077ff;
+    --primary-color-hover: #005bb5;
+    --danger-color: #dc3545;
+    --danger-color-hover: #c82333;
+    --light-gray-color: #f5f5f7;
+    --medium-gray-color: #eee;
+    --dark-gray-color: #ccc;
+    --text-color-dark: #333;
+    --text-color-light: #555;
+    --white-color: #fff;
+    --font-family-base: 'Arial', sans-serif;
+    --box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --box-shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow-heavy: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+
 /* Estilos Globais do Corpo da Página */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f7;
+    font-family: var(--font-family-base);
+    background-color: var(--light-gray-color);
+    color: var(--text-color-dark);
 }
 
 /* Estilos do Cabeçalho Principal */
 .header {
     display: flex;
     padding: 10px 20px;
-    /* Padding geral do header, afeta a distância das bordas da tela */
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow-light);
+    position: sticky;
+    /* Adicionado para header fixo, se desejado */
+    top: 0;
+    /* Adicionado para header fixo */
+    z-index: 1020;
+    /* Garante que o header fique acima de outros conteúdos */
 }
 
-/* Wrapper Interno do Cabeçalho para Layout */
+.page-inner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 15px;
+    /* Padding base para telas menores */
+    padding-right: 15px;
+    /* Padding base para telas menores */
+}
+
 .page-inner-content.header-content-wrapper {
-    /* Antigo header-layout-wrapper */
     display: flex;
     flex-direction: column;
-    /* Empilha a linha de ícones e a linha da pesquisa */
     align-items: center;
     width: 100%;
     gap: 15px;
-    /* Espaço entre a linha dos ícones e a linha da pesquisa */
+    padding-left: 0;
+    /* Resetar padding para o wrapper interno do header */
+    padding-right: 0;
 }
 
-/* Linha Superior do Cabeçalho (para ícones) */
 .header-top-row {
     display: flex;
     justify-content: flex-end;
-    /* Alinha o grupo de ícones à direita */
     align-items: center;
     width: 100%;
     min-height: 40px;
-    /* Altura mínima para a linha dos ícones */
+    padding: 0 10px;
+    /* Adicionado padding para os ícones não colarem nas bordas */
 }
 
-/* Grupo de Ícones do Lado Direito do Cabeçalho (Favoritos, Carrinho, Usuário, WhatsApp) */
 .icon-group-left {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 25px;
-    /* Aumentado para melhor respiro entre os ícones */
     font-size: 22px;
-    color: #333;
+    color: var(--text-color-dark);
 }
 
-/* Linha da Barra de Pesquisa */
+/* Estilo para o ícone do WhatsApp no cabeçalho */
+.whatsapp-header-icon {
+    font-size: 22px;
+    color: var(--text-color-dark);
+    /* Cor do WhatsApp */
+    transition: color 0.2s ease;
+    text-decoration: none;
+    /* Remover sublinhado */
+}
+
+.whatsapp-header-icon:hover {
+    color: #25D366);
+    /* Cor mais escura no hover */
+}
+
+
 .search-container-row {
     display: flex;
     justify-content: center;
-    /* Centraliza o search-container */
     align-items: center;
     width: 100%;
+    padding: 0 10px;
+    /* Adicionado padding para a barra de busca não colar nas bordas */
 }
 
-/* Contêiner da Barra de Pesquisa */
 .search-container {
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
+    border: 1px solid var(--dark-gray-color);
     border-radius: 30px;
     padding: 8px 15px;
     width: 100%;
     max-width: 750px;
-    background-color: white;
+    background-color: var(--white-color);
 }
 
-/* Campo de Input da Pesquisa */
 .search-container input {
     border: none;
     outline: none;
     flex: 1;
     padding: 10px;
     font-size: 16px;
+    background-color: transparent;
+    /* Garante que o input não tenha fundo próprio */
 }
 
-/* Ícone de Microfone na Pesquisa */
 .mic-icon {
-    color: #333;
+    color: var(--text-color-dark);
     margin-right: 10px;
+    cursor: pointer;
 }
 
-/* Botão de Pesquisa */
 .search-button {
     background: none;
     border: none;
     cursor: pointer;
-    color: #0077ff;
+    color: var(--primary-color);
     padding: 0 10px;
+    font-size: 18px;
+    /* Ajuste no tamanho do ícone da lupa */
 }
 
-/* Contêiner dos Ícones de Favoritos e Carrinho */
 .favorites-container,
 .cart-container,
 .account-container {
@@ -109,48 +155,54 @@ body {
     cursor: pointer;
 }
 
-/* Estilos dos Ícones de Contador (Coração e Sacola) */
 .favorite-counter-icon,
 .cart-counter-icon,
 .account-icon {
     font-size: 22px;
-    color: #333;
+    color: var(--text-color-dark);
+    transition: color 0.2s ease;
 }
 
-/* Estilo da Sacola de Compras quando Ativa/Clicada */
-.cart-container:active .cart-counter-icon,
-.cart-container.active .cart-counter-icon {
-    color: #0077ff;
+.favorite-counter-icon:hover,
+.cart-counter-icon:hover,
+.account-icon:hover {
+    color: var(--primary-color);
 }
 
-/* Contadores de Favoritos e Carrinho */
 .favorites-count,
 .cart-count {
     position: absolute;
     top: -8px;
     right: -10px;
-    background-color: #0077ff;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     font-size: 12px;
     border-radius: 50%;
     padding: 2px 6px;
     min-width: 20px;
     text-align: center;
+    font-weight: bold;
 }
 
-/* Classe genérica para pop-ups (favoritos, carrinho, conta) */
 .popup {
     display: none;
     position: absolute;
-    top: 40px;
+    top: 45px;
+    /* Aumentado para não sobrepor o ícone */
     right: 0;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color-light, #ddd);
+    box-shadow: var(--box-shadow-medium);
     border-radius: 8px;
     padding: 15px;
-    width: 300px;
-    z-index: 1000;
+    width: 320px;
+    /* Largura padrão */
+    z-index: 1050;
+    /* Acima do header sticky */
+    max-height: calc(100vh - 100px);
+    /* Evita que o popup seja maior que a tela */
+    overflow-y: auto;
+    /* Permite rolagem se o conteúdo for grande */
 }
 
 .account-popup {
@@ -166,169 +218,231 @@ body {
 
 .account-popup.show {
     display: flex;
+    /* Para sobrescrever o display: block se necessário */
 }
 
-
-.favorites-list-popup h3,
-.cart-list-popup h3,
-.account-popup h3 {
+.popup h3 {
     margin-top: 0;
-    margin-bottom: 10px;
-    color: #333;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 8px;
+    margin-bottom: 15px;
+    /* Aumentado espaçamento */
+    color: var(--text-color-dark);
+    border-bottom: 1px solid var(--medium-gray-color);
+    padding-bottom: 10px;
+    /* Aumentado padding */
     text-align: center;
     width: 100%;
+    font-size: 1.1rem;
+    /* Tamanho do título do popup */
 }
 
-.favorites-list-popup ul,
-.cart-list-popup ul {
+.popup ul {
     list-style: none;
     padding: 0;
-    max-height: 250px;
-    overflow-y: auto;
+    margin: 0;
+    /* Reset margin para ul */
     width: 100%;
+    max-height: 280px;
+    /* Aumentado um pouco */
+    overflow-y: auto;
+    /* Garante rolagem interna da lista */
 }
 
-.favorites-list-popup ul li,
-.cart-list-popup ul li {
+.popup ul li {
+    /* Estilo para itens de lista em popups (favoritos, carrinho) */
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px dashed #eee;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    /* Aumentado padding */
+    border-bottom: 1px dashed var(--medium-gray-color);
 }
 
-.favorites-list-popup ul li:last-child,
-.cart-list-popup ul li:last-child {
+.popup ul li:last-child {
     border-bottom: none;
     margin-bottom: 0;
 }
 
 .favorite-item-image,
 .cart-item-image {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    /* Aumentado tamanho da imagem */
+    height: 60px;
     object-fit: contain;
-    margin-right: 10px;
-    border: 1px solid #eee;
+    margin-right: 12px;
+    /* Aumentado margem */
+    border: 1px solid var(--medium-gray-color);
     border-radius: 4px;
+    flex-shrink: 0;
+    /* Impede que a imagem encolha */
 }
 
 .favorite-item-details,
 .cart-item-details {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* Espaço entre nome, preço, controles */
 }
 
 .favorite-item-name,
 .cart-item-name {
     font-size: 14px;
     font-weight: 500;
-    color: #555;
+    color: var(--text-color-light);
     margin: 0;
+    line-height: 1.3;
 }
 
 .favorite-item-price,
 .cart-item-price {
-    font-size: 13px;
-    color: #0077ff;
+    font-size: 14px;
+    /* Ajustado para consistência */
+    color: var(--primary-color);
     font-weight: bold;
     margin: 0;
 }
 
+.cart-item-quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.cart-item-quantity-controls button {
+    background-color: var(--medium-gray-color);
+    border: 1px solid var(--dark-gray-color, #ccc);
+    color: var(--text-color-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 3px 9px;
+    line-height: 1;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.cart-item-quantity-controls button:hover {
+    background-color: var(--dark-gray-color, #bbb);
+}
+
+.cart-item-quantity-controls .quantity-display {
+    padding: 0 5px;
+    font-size: 14px;
+    min-width: 20px;
+    /* Para manter o alinhamento */
+    text-align: center;
+}
+
+
 .remove-favorite-btn,
 .remove-cart-item-btn {
+    /* Agora é o botão de lixeira */
     background: none;
     border: none;
-    color: #dc3545;
+    color: var(--danger-color);
     font-size: 18px;
+    /* Ajustado */
     cursor: pointer;
     margin-left: 10px;
+    padding: 5px;
+    /* Área de clique maior */
     transition: color 0.2s ease;
+    align-self: center;
+    /* Alinha o botão de remover no centro do item */
 }
 
 .remove-favorite-btn:hover,
 .remove-cart-item-btn:hover {
-    color: #c82333;
+    color: var(--danger-color-hover);
 }
 
 .cart-total {
-    font-size: 16px;
+    font-size: 1.1rem;
+    /* Aumentado */
     font-weight: bold;
     text-align: right;
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
+    margin-top: 20px;
+    /* Aumentado */
+    padding-top: 15px;
+    /* Aumentado */
+    border-top: 1px solid var(--medium-gray-color);
 }
 
-.close-popup {
-    background-color: #cccccc;
-    color: white;
+.close-popup,
+.checkout-button,
+.account-popup button {
     border: none;
-    padding: 8px 15px;
+    padding: 10px 15px;
+    /* Aumentado padding */
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
     margin-top: 10px;
     transition: background-color 0.2s ease;
+    font-weight: 500;
+    font-size: 15px;
+    /* Ajustado */
+}
+
+.close-popup {
+    background-color: var(--dark-gray-color, #ccc);
+    color: var(--text-color-dark);
+    /* Mudado para melhor contraste */
 }
 
 .close-popup:hover {
     background-color: #b0b0b0;
 }
 
-.close-popup.clicked {
-    background-color: #0077ff;
-}
-
 .checkout-button {
-    background-color: #0077ff;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 5px;
-    transition: background-color 0.2s ease;
+    background-color: var(--primary-color);
+    color: var(--white-color);
 }
 
 .checkout-button:hover {
-    background-color: #005bb5;
+    background-color: var(--primary-color-hover);
 }
 
 .coupon-section {
     display: flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    gap: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    gap: 8px;
     align-items: center;
 }
 
 .coupon-section input {
     flex: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    /* Aumentado */
+    border: 1px solid var(--dark-gray-color);
     border-radius: 4px;
+    font-size: 14px;
 }
 
 .coupon-section button {
-    background-color: #0077ff;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     border: none;
-    padding: 8px 12px;
+    padding: 10px 15px;
+    /* Aumentado */
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    font-size: 14px;
 }
 
 .coupon-section button:hover {
-    background-color: #005bb5;
+    background-color: var(--primary-color-hover);
 }
 
 .coupon-message {
-    font-size: 12px;
-    margin-top: 5px;
+    font-size: 13px;
+    /* Aumentado */
+    margin-top: 8px;
+    /* Aumentado */
     text-align: center;
     width: 100%;
     font-weight: bold;
@@ -345,38 +459,41 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 10px;
+    /* Adicionado gap */
 }
-
 
 .account-popup input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
+    padding: 12px;
+    /* Aumentado */
+    margin-bottom: 12px;
+    /* Aumentado */
+    border: 1px solid var(--border-color-light, #ddd);
     border-radius: 5px;
+    font-size: 15px;
+    /* Ajustado */
 }
 
 .account-popup button {
-    width: 100%;
-    padding: 10px;
-    background-color: #0077ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    /* Estilo geral para botões no popup de conta */
+    background-color: var(--primary-color);
+    color: var(--white-color);
 }
 
 .account-popup button:hover {
-    background-color: #005bb5;
+    background-color: var(--primary-color-hover);
 }
 
 .account-options .account-action-btn {
-    margin-bottom: 10px;
+    margin-bottom: 0;
+    /* Removido, usando gap do flex container */
 }
 
 .back-to-options-btn {
-    background-color: #ccc !important;
+    background-color: var(--dark-gray-color, #ccc) !important;
+    /* Mantém !important se necessário para sobrescrever */
+    color: var(--text-color-dark) !important;
     margin-top: 10px;
 }
 
@@ -385,34 +502,44 @@ body {
 }
 
 .welcome-message {
-    position: absolute;
-    top: 30px;
-    right: 0;
-    left: auto;
-    background-color: #0077ff;
-    color: white;
-    padding: 8px 15px;
+    position: fixed;
+    /* Mudado para fixed para melhor visibilidade */
+    top: 60px;
+    /* Ajustado para abaixo do header fixo */
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px 18px;
+    /* Aumentado */
     border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
     white-space: nowrap;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 1001;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    /* Adicionada transição de transform */
+    z-index: 1060;
+    /* Acima dos popups */
     display: none;
+    transform: translateY(-20px);
+    /* Posição inicial para animação */
 }
 
 .welcome-message.show {
     opacity: 1;
     display: block;
+    transform: translateY(0);
+    /* Posição final da animação */
 }
-
 
 /* Barra de Navegação (Navbar) */
 .navbar {
-    background-color: #fff;
-    padding: 15px 0;
-    border-bottom: 1px solid #e5e5e5;
+    background-color: var(--white-color);
+    padding: 12px 0;
+    /* Ajustado */
+    border-bottom: 1px solid var(--medium-gray-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    /* Sombra sutil */
 }
 
 nav ul {
@@ -421,88 +548,118 @@ nav ul {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    /* Permite quebra de linha em telas menores */
+    gap: 5px 0;
+    /* Espaçamento vertical quando quebrar linha */
 }
 
 nav ul li {
-    margin: 0 10px;
+    margin: 0 8px;
+    /* Ajustado */
 }
 
 nav ul li a.nav-button {
-    color: #333;
+    color: var(--text-color-dark);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
+    /* Ajustado */
     font-weight: 500;
-    padding: 8px 12px;
+    padding: 8px 15px;
+    /* Ajustado */
     border-radius: 20px;
     transition: all 0.2s ease;
+    display: inline-block;
+    /* Para padding funcionar corretamente */
 }
 
 nav ul li a.nav-button:hover {
-    background-color: #0077ff;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     transform: translateY(-2px);
 }
 
 nav ul li:nth-child(even) {
-    color: #ccc;
+    /* Separador "|" */
+    color: var(--dark-gray-color);
     cursor: default;
+    user-select: none;
+    /* Impede seleção do separador */
 }
 
 nav ul li:nth-child(even):hover {
+    /* Garante que o separador não tenha hover */
     background-color: transparent;
     transform: none;
+    color: var(--dark-gray-color);
 }
 
+
+/* Header Principal (com produto em destaque) */
 header {
-    /* Este é o <header> do corpo, não o .header da classe */
-    background-image: radial-gradient(#f5f5f7, #f5f5f7);
-    margin-right: 0;
+    /* Tag <header> do corpo */
+    background-color: var(--light-gray-color);
+    /* Simplificado, gradiente pode ser pesado */
+    padding: 2rem 0;
+    /* Adicionado padding vertical */
 }
 
 .header-bottom-side {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
+    justify-content: space-between;
+    /* Melhor distribuição */
+    padding: 2rem 0;
+    /* Removido padding horizontal, já no page-inner-content */
     flex-wrap: wrap;
+    gap: 30px;
+    /* Espaçamento entre left e right quando empilhado */
 }
 
 .header-bottom-side-left {
     flex: 1;
     min-width: 300px;
-    padding-left: 60px;
+    /* Mantido */
+    padding-right: 20px;
+    /* Espaçamento para o lado direito */
+    text-align: left;
+    /* Alinhamento padrão para LTR */
 }
 
 .header-bottom-side-left h2 {
-    font-size: 2rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    /* Tamanho de fonte responsivo */
     margin-bottom: 1.5rem;
-    margin-left: 100px;
-    text-align: Justify;
+    color: var(--text-color-dark);
+    line-height: 1.3;
 }
 
 .header-bottom-side-left p {
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    margin-left: 100px;
-    text-align: justify;
-    font-size: large;
+    line-height: 1.7;
+    /* Aumentado para melhor legibilidade */
+    margin-bottom: 2rem;
+    /* Aumentado */
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    /* Responsivo */
+    color: var(--text-color-light);
 }
 
 .header-bottom-side-left button {
-    background-color: #0077ff;
+    background-color: var(--primary-color);
     border: none;
     cursor: pointer;
-    padding: 0.8rem 3.8rem;
-    border-radius: 9999px;
-    color: white;
+    padding: 0.9rem 3rem;
+    /* Ajustado */
+    border-radius: 50px;
+    /* Mais arredondado */
+    color: var(--white-color);
     font-weight: 500;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
-    margin-left: 100px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .header-bottom-side-left button:hover {
-    background-color: #005bb5;
+    background-color: var(--primary-color-hover);
+    transform: translateY(-2px);
 }
 
 .header-bottom-side-right {
@@ -513,486 +670,662 @@ header {
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 5px;
+    gap: 10px;
+    /* Aumentado */
     position: relative;
+    /* Para elementos posicionados dentro, se houver */
 }
 
-.header-bottom-side-right img {
+.header-bottom-side-right model-viewer {
+    /* Estilo para model-viewer */
     width: 100%;
-    max-width: 500px;
+    max-width: 480px;
+    /* Ajustado */
+    height: 400px;
+    /* Mantido, ajuste conforme o modelo */
+    border-radius: 8px;
+    /* Opcional */
+}
+
+.header-bottom-side-right .product-name {
+    /* Nome do produto no header */
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
 }
 
 .header-bottom-side-right .product-rating {
     color: #ffc107;
-    font-size: 1.2rem;
-    margin-bottom: 0;
+    font-size: 1.1rem;
+    /* Ajustado */
 }
 
 .header-bottom-side-right .price-and-button {
     display: flex;
+    flex-direction: column;
+    /* Empilhar em telas menores se necessário */
     align-items: center;
     justify-content: center;
     gap: 15px;
+    /* Mantido */
+    margin-top: 10px;
 }
 
 .header-bottom-side-right .product-price {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    /* Aumentado */
     font-weight: bold;
-    margin-bottom: 0;
+    color: var(--text-color-dark);
 }
 
 .header-bottom-side-right .buy-now-button {
-    background-color: #0077ff;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 9999px;
+    padding: 0.8rem 2rem;
+    /* Ajustado */
+    border-radius: 50px;
     cursor: pointer;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     text-decoration: none;
 }
 
-.buy-now-button:hover {
-    background-color: #005bb5;
+.header-bottom-side-right .buy-now-button:hover {
+    background-color: var(--primary-color-hover);
+    transform: translateY(-2px);
 }
 
-
+/* Main Content */
 main {
-    background-color: #fff;
+    background-color: var(--white-color);
+    padding-top: 1px;
+    /* Para evitar colapso de margem com o header, se não for sticky */
 }
 
 .gray-background {
-    background-color: #f1f1f1;
-    padding: 40px 0;
+    background-color: var(--light-gray-color);
+    /* Remove padding aqui para gerenciar via classes de espaçamento */
 }
 
-.page-inner-content {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Classes para espaçamento padronizado */
+.section-spacing {
+    padding: 60px 0;
+    /* Espaçamento padrão entre as seções */
 }
 
-.page-inner-content.section-title-container,
-.page-inner-content:not(.header-content-wrapper) {
-    padding-left: 20px;
-    padding-right: 20px;
+.first-section-spacing {
+    padding-top: 80px;
+    /* Maior espaçamento do topo da página (entre o header e a 1ª seção) */
+    padding-bottom: 60px;
+    /* Mantém o espaçamento padrão abaixo */
 }
 
+.last-section-spacing {
+    padding-top: 60px;
+    /* Mantém o espaçamento padrão acima */
+    padding-bottom: 80px;
+    /* Maior espaçamento da parte inferior da página (entre a última seção e o footer) */
+}
+
+
+.section-title-container {
+    margin-bottom: 20px;
+    /* Espaço após o título da seção */
+}
 
 .blue-line-full-width {
-    width: 70%;
-    height: 3px;
-    background-color: #0077ff;
+    width: clamp(500px, 100%, 1200px);
+    /* Linha responsiva, máximo 200px */
+    height: 6px;
+    /* Aumentado */
+    background-color: var(--primary-color);
     margin: 10px auto 30px auto;
-    border-radius: 2px;
+    /* Centralizado por padrão */
+    border-radius: 20px;
 }
 
+/* Alinhamento dos títulos */
 .selection-title {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 5px;
+    /* Padrão centralizado */
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+    /* Responsivo */
+    margin-bottom: 10px;
+    /* Ajustado */
+    color: var(--text-color-dark);
+    font-weight: 600;
 }
 
+.selection-title.align-left {
+    text-align: left;
+    /* Alinha à esquerda */
+    margin-left: 0;
+    /* Garante que não tenha margem de auto */
+}
+
+.selection-title.align-left+.blue-line-full-width {
+    margin-left: 0;
+    /* Alinha a linha azul com o título à esquerda */
+    margin-right: auto;
+    /* Garante que a linha azul não vá para a direita */
+}
+
+/* Swiper (Carrossel de Categorias/Produtos) */
 .swiper {
     width: 100%;
-    max-width: 900px;
+    /* max-width: 900px; Removido, deixa o page-inner-content controlar */
     margin: 20px auto 40px auto;
     position: relative;
+    padding: 0 10px;
+    /* Espaço para setas não cobrirem os slides nas bordas */
 }
 
 .swiper-wrapper {
     display: flex;
+    /* Já é padrão do Swiper */
 }
 
 .swiper-slide {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
+    /* Para alinhar o conteúdo */
     align-items: center;
     flex-shrink: 0;
     text-align: center;
-    padding-bottom: 10px;
-    background-color: #fff;
+    background-color: var(--white-color);
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--box-shadow-light);
     overflow: hidden;
-    width: 200px !important;
+    /* width: 200px !important; Removido, Swiper controla isso com slidesPerView */
+    height: auto;
+    /* Para conteúdo dinâmico */
+    padding-bottom: 15px;
+    /* Espaço interno inferior */
 }
 
 .swiper-slide img {
     width: 100%;
-    height: 180px;
+    height: 170px;
+    /* Ajustado */
     object-fit: contain;
     margin-bottom: 10px;
     padding: 10px;
 }
 
-.swiper-slide:empty {
-    display: none;
-}
-
 .product-info {
+    /* Para Swiper e cards de produto */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: 0 10px 10px 10px;
+    gap: 5px;
+    /* Ajustado */
+    padding: 0 10px;
     width: 100%;
+    flex-grow: 1;
+    /* Para ocupar espaço disponível */
 }
 
 .rating-stars {
-    font-size: 13px;
+    font-size: 14px;
+    /* Ajustado */
     color: #ffc107;
-    margin-bottom: 2px;
 }
 
 .product-name {
-    /* Nome genérico do produto */
+    /* Nome genérico do produto (Swiper, cards) */
     font-size: 0.9rem;
-    color: #333;
+    color: var(--text-color-dark);
     font-weight: 500;
-    line-height: 1.3;
-    margin: 0 0 4px 0;
-    height: 2.6em;
-    /* Para duas linhas */
+    line-height: 1.4;
+    /* Ajustado */
+    margin: 0;
+    height: 2.8em;
+    /* Para aprox. 2 linhas, ajustado */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    width: 100%;
+    /* Garante que o texto não ultrapasse o card */
 }
 
 .product-price {
-    /* Preço genérico do produto */
+    /* Preço genérico do produto (Swiper, cards) */
     font-size: 1rem;
-    color: #000;
+    color: var(--text-color-dark);
+    /* Mudado para preto para destaque */
     font-weight: bold;
-    margin-top: 4px;
+    margin-top: auto;
+    /* Empurra o preço para baixo se houver espaço */
+    padding-top: 5px;
+    /* Espaço acima do preço */
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.85);
+    /* Mais opaco */
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-    color: #333;
+    width: 40px;
+    /* Aumentado */
+    height: 40px;
+    box-shadow: var(--box-shadow-light);
+    color: var(--text-color-dark);
+    /* Cor da seta */
     top: 50%;
     transform: translateY(-50%);
-}
-
-.swiper-button-next {
-    right: 5px;
-}
-
-.swiper-button-prev {
-    left: 5px;
-}
-
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-    font-size: 16px;
-    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #007bff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.swiper-button-next {
+    right: -5px;
+}
+
+/* Ajustado para melhor posicionamento */
+.swiper-button-prev {
+    left: -5px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 18px;
+    /* Aumentado */
+    font-weight: bold;
 }
 
 .swiper-pagination {
     position: relative;
+    /* Ajustado para fluxo normal */
     bottom: auto;
-    margin-top: 20px;
+    margin-top: 25px;
+    /* Aumentado */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 6px;
+    /* Já é padrão */
+    justify-content: center;
+    /* Centraliza os bullets */
+    gap: 8px;
+    /* Aumentado */
 }
 
 .swiper-pagination-bullet {
     width: 10px;
+    /* Ajustado */
     height: 10px;
-    background-color: #ccc;
+    background-color: var(--dark-gray-color);
     border-radius: 50%;
-    opacity: 0.8;
+    opacity: 0.7;
+    /* Ajustado */
     transition: opacity 0.3s, background-color 0.3s;
 }
 
 .swiper-pagination-bullet-active {
     opacity: 1;
-    background-color: #0077ff;
+    background-color: var(--primary-color);
 }
 
+
+/* Grade de Produtos */
 .cols {
     display: grid;
     padding: 2rem 0;
+    /* Padding vertical */
+    gap: 20px;
+    /* Espaçamento padrão */
 }
 
 .cols-4 {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* Responsividade automática */
 }
 
 .product {
-    /* Estilo para cards de produto em grade */
-    background: #fff;
-    padding: 20px;
+    /* Card de produto em grade */
+    background: var(--white-color);
+    padding: 15px;
+    /* Ajustado */
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-medium);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    /* Ajustado */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
+    /* Para product-icons */
+    overflow: hidden;
+    /* Para garantir que nada escape */
 }
 
 .product:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--box-shadow-heavy);
 }
 
 .product img {
     width: 100%;
-    background-color: #fff;
-    max-width: 160px;
-    height: 160px;
+    max-width: 180px;
+    /* Aumentado */
+    height: 180px;
+    /* Aumentado */
     object-fit: contain;
-    margin-bottom: 0;
 }
 
 .product-icons {
     position: absolute;
     top: 10px;
-    left: 10px;
+    right: 10px;
+    /* Movido para a direita para padrão comum */
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    /* Ícones empilhados verticalmente */
+    gap: 8px;
     z-index: 10;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* Fundo sutil para melhor visibilidade */
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .favorite-icon,
 .cart-product-icon {
-    font-size: 1.5rem;
-    color: #ccc;
+    font-size: 1.4rem;
+    /* Ajustado */
+    color: var(--dark-gray-color);
+    /* Cor padrão */
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 3px;
+    /* Pequeno padding para área de clique */
 }
 
-.favorite-icon.favorited {
-    color: #0077ff;
+.favorite-icon:hover,
+.cart-product-icon:hover {
+    transform: scale(1.1);
+    /* Efeito de zoom no hover */
 }
 
+.favorite-icon.favorited,
 .cart-product-icon.in-cart {
-    color: #0077ff;
+    /* .in-cart será adicionada via JS */
+    color: var(--primary-color);
+    /* Cor quando ativo */
 }
+
 
 .product .product-name {
-    /* Nome do produto dentro do card de grade */
-    font-size: 1rem;
-    min-height: 2.6em;
+    /* Nome do produto no card de grade */
+    font-size: 0.95rem;
+    /* Levemente maior */
+    min-height: auto;
+    /* Removido min-height fixo, usa line-clamp */
+    height: 2.8em;
+    /* Mantém consistência com swiper */
+    margin-top: 5px;
+    /* Pequena margem superior */
+}
+
+.product .rate {
+    /* Estrelas no card de produto */
+    color: #ffc107;
+    font-size: 0.9rem;
+    /* Ajustado */
+    margin: 5px 0;
+    /* Espaçamento vertical */
 }
 
 .product .product-price {
-    /* Preço do produto dentro do card de grade */
-    font-size: 1.1rem;
+    /* Preço no card de produto */
+    font-size: 1.15rem;
+    /* Levemente maior */
+    margin-top: auto;
+    /* Empurra para baixo */
 }
 
-
-.rate {
-    color: #ffc107;
-    font-size: 1rem;
-}
-
+/* Seção Exclusiva (Ex: Apple Watch Ultra) */
 .exclusive-container {
+    /* Reutiliza .header-bottom-side mas pode ter variações */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 40px;
     padding: 3rem 0;
     flex-wrap: wrap;
 }
 
-.exclusive-container img {
-    max-width: 100%;
-    width: 450px;
+.exclusive-container .header-bottom-side-left {
+    /* Estilos específicos se necessário */
+    order: 1;
+    /* Padrão, texto à esquerda */
 }
 
+.exclusive-container .header-bottom-side-right {
+    order: 2;
+    /* Padrão, imagem à direita */
+}
+
+.exclusive-container model-viewer {
+    width: 100%;
+    max-width: 420px;
+    /* Ajustado */
+    height: 380px;
+    /* Ajustado */
+    border-radius: 8px;
+}
+
+/* Depoimentos */
 .testimonials {
-    display: flex;
+    display: grid;
+    /* Usando grid para melhor responsividade */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    /* Aumentado */
     padding: 2rem 0;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
 }
 
 .testimonial {
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 15px #ddd;
+    background: var(--white-color);
+    padding: 2rem;
+    /* Aumentado */
+    border-radius: 10px;
+    /* Aumentado */
+    box-shadow: var(--box-shadow-medium);
     text-align: center;
-    flex: 1;
-    min-width: 250px;
-    max-width: 350px;
-    cursor: pointer;
+    cursor: default;
+    /* Não precisa ser clicável a menos que leve a algum lugar */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .testimonial:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-heavy);
 }
 
 .testimonial p:first-child {
     /* Aspas */
     font-weight: bold;
-    font-size: 3rem;
-    color: #0077ff;
-    line-height: 1;
-    margin-bottom: 0.5rem;
+    font-size: 3.5rem;
+    /* Aumentado */
+    color: var(--primary-color);
+    line-height: 0.8;
+    /* Ajustado */
+    margin-bottom: 0.8rem;
+    /* Aumentado */
 }
 
 .testimonial p:nth-child(2) {
     /* Texto do depoimento */
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #555;
-    margin-bottom: 0.8rem;
-}
-
-
-.testimonial p:last-child {
-    /* Nome do autor */
-    font-weight: bold;
     font-size: 1rem;
-    color: #333;
+    /* Aumentado */
+    line-height: 1.6;
+    /* Aumentado */
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
+    /* Aumentado */
+    min-height: 3.2em;
+    /* Para aprox. 2 linhas de texto */
 }
 
 .testimonial .rate {
     /* Estrelas no depoimento */
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    /* Aumentado */
+    font-size: 1.1rem;
 }
 
-
-/* --- Estilos Responsivos --- */
-@media (max-width: 1240px) {
-    /* .page-inner-content já tem max-width, padding é aplicado contextualmente */
+.testimonial p:last-child {
+    /* Nome do autor */
+    font-weight: 600;
+    /* Mais destaque */
+    font-size: 1.05rem;
+    /* Aumentado */
+    color: var(--text-color-dark);
+    margin-top: 0.5rem;
 }
 
-@media (max-width: 1024px) {
-    .cols-4 {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* --- Media Queries --- */
 
-    .header-bottom-side {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.5rem;
+/* Notebooks e Desktops Menores (ex: 1280px) */
+@media (max-width: 1200px) {
+    .page-inner-content {
+        /* max-width é 1200px, então aqui já é o limite.
+           Padding lateral já está em .page-inner-content */
     }
 
     .header-bottom-side-left,
-    .header-bottom-side-right {
-        padding-left: 0;
-        margin-left: 0;
+    .exclusive-container .header-bottom-side-left {
+        padding-right: 10px;
+        /* Reduz padding se necessário */
     }
 
     .header-bottom-side-left h2 {
         margin-left: 0;
+        /* Removendo margens específicas se houver */
+        text-align: left;
     }
 
     .header-bottom-side-left p {
         margin-left: 0;
+        text-align: left;
     }
 
     .header-bottom-side-left button {
         margin-left: 0;
     }
+}
 
 
+/* Tablets (ex: 768px a 1024px) */
+@media (max-width: 1024px) {
+    .icon-group-left {
+        gap: 20px;
+        /* Reduz gap entre ícones */
+        font-size: 20px;
+    }
+
+    .header-bottom-side,
     .exclusive-container {
-        flex-direction: column-reverse;
+        flex-direction: column;
+        text-align: center;
+        /* Centraliza texto quando empilhado */
     }
 
-    .search-container {
-        max-width: 90%;
+    .header-bottom-side-left,
+    .header-bottom-side-right,
+    .exclusive-container .header-bottom-side-left,
+    .exclusive-container .header-bottom-side-right {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        width: 100%;
+        /* Ocupar toda a largura */
+        max-width: 500px;
+        /* Limita a largura do conteúdo de texto */
+        align-items: center;
+        /* Centraliza conteúdo interno */
     }
 
-    .favorites-list-popup,
-    .cart-list-popup,
-    .account-popup {
+    .header-bottom-side-left h2,
+    .header-bottom-side-left p,
+    .header-bottom-side-left button,
+    .exclusive-container .header-bottom-side-left h2,
+    .exclusive-container .header-bottom-side-left p,
+    .exclusive-container .header-bottom-side-left button {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .exclusive-container .header-bottom-side-left {
+        order: 2;
+    }
+
+    /* Texto abaixo da imagem */
+    .exclusive-container .header-bottom-side-right {
+        order: 1;
+    }
+
+    .popup {
+        /* Popups em telas menores */
         left: 50%;
         transform: translateX(-50%);
         right: auto;
-        width: 90%;
-        max-width: 320px;
+        width: clamp(280px, 90vw, 350px);
+        /* Largura responsiva para popups */
+    }
+
+    .cols-4 {
+        /* Em tablets, 2 colunas */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
     }
 
     .product .product-name {
         font-size: 0.9rem;
     }
+
+    /* Espaçamento ajustado para tablets */
+    .section-spacing {
+        padding: 50px 0;
+    }
+
+    .first-section-spacing {
+        padding-top: 70px;
+        padding-bottom: 50px;
+    }
+
+    .last-section-spacing {
+        padding-top: 50px;
+        padding-bottom: 70px;
+    }
+
+    /* Ajuste para títulos alinhados à esquerda em tablets */
+    .selection-title.align-left {
+        margin-left: 15px;
+        /* Alinha com o page-inner-content padding */
+        margin-right: 15px;
+    }
+
+    .selection-title.align-left+.blue-line-full-width {
+        margin-left: 15px;
+    }
 }
 
-@media (max-width: 768px) {
-    .cols-4 {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .product {
-        padding: 15px;
-    }
-
-    .header-bottom-side-left h2 {
-        font-size: 2.5rem;
-    }
-
-    .swiper-slide {
-        width: 180px !important;
-    }
-
-    .swiper-slide img {
-        height: 160px;
-    }
-
-    .product-name {
-        font-size: 0.85rem;
-    }
-
-    /* Afeta todos os .product-name */
-
-    .selection-title {
-        font-size: 1.8rem;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-    nav ul {
-        justify-content: flex-start;
-        padding-left: 10px;
-        padding-right: 10px;
-        overflow-x: auto;
-        /* Habilita rolagem horizontal para a navbar */
-        white-space: nowrap;
-        /* Impede que os itens da navbar quebrem linha */
-
-    }
-
-    nav ul li {
-        margin: 0 6px;
-    }
-
-    nav ul li a.nav-button {
-        font-size: 13px;
-        padding: 6px 8px;
-    }
-
+/* Celulares Maiores e Tablets Menores (ex: até 767px) */
+@media (max-width: 767px) {
     .header {
         padding: 10px 15px;
     }
@@ -1001,19 +1334,25 @@ main {
         gap: 10px;
     }
 
+    .header-top-row {
+        padding: 0 5px;
+    }
+
     .icon-group-left {
         gap: 15px;
-        font-size: 20px;
     }
 
     .favorite-counter-icon,
     .cart-counter-icon,
-    .account-icon {
+    .account-icon,
+    .whatsapp-header-icon {
+        /* Aplicar também ao ícone do cabeçalho */
         font-size: 20px;
     }
 
     .search-container {
         padding: 6px 12px;
+        max-width: 100%;
     }
 
     .search-container input {
@@ -1021,67 +1360,539 @@ main {
         padding: 8px;
     }
 
+    nav ul {
+        justify-content: flex-start;
+        /* Alinha à esquerda */
+        padding-left: 10px;
+        padding-right: 10px;
+        overflow-x: auto;
+        /* Rolagem horizontal para navbar */
+        white-space: nowrap;
+        /* Impede quebra de linha dos itens */
+        -webkit-overflow-scrolling: touch;
+        /* Melhora rolagem em iOS */
+    }
+
+    nav ul li {
+        margin: 0 6px;
+    }
+
+    nav ul li a.nav-button {
+        font-size: 14px;
+        padding: 7px 10px;
+    }
+
     .header-bottom-side-left h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .header-bottom-side-left p {
-        font-size: medium;
+        font-size: 0.95rem;
     }
 
     .header-bottom-side-left button {
-        padding: 0.7rem 2.5rem;
+        padding: 0.8rem 2.5rem;
+        font-size: 0.95rem;
+    }
+
+    .cols-4 {
+        /* Em celulares, 1 ou 2 colunas dependendo do minmax */
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        /* Tentar manter 2 colunas se couber */
+        gap: 12px;
+    }
+
+    .product {
+        padding: 12px;
+    }
+
+    .product img {
+        max-width: 140px;
+        height: 140px;
+    }
+
+    .product .product-name {
+        font-size: 0.85rem;
+        height: 2.5em;
+    }
+
+    .product .product-price {
+        font-size: 1rem;
+    }
+
+    .product-icons {
+        right: 5px;
+        top: 5px;
+        gap: 5px;
+        padding: 3px;
+    }
+
+    .favorite-icon,
+    .cart-product-icon {
+        font-size: 1.2rem;
+    }
+
+
+    .swiper-slide {
+        /* Swiper já tem breakpoints, mas podemos forçar um tamanho se necessário */
+        /* width: 160px !important; Geralmente evitamos !important */
+    }
+
+    .swiper-slide img {
+        height: 140px;
+    }
+
+    /* Ajuste para slides do Swiper */
+
+    .selection-title {
+        font-size: 1.6rem;
+    }
+
+    .blue-line-full-width {
+        width: clamp(80px, 40%, 150px);
+    }
+
+    .testimonials {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Uma coluna para depoimentos */
+    .testimonial {
+        padding: 1.5rem;
+    }
+
+    .testimonial p:first-child {
+        font-size: 3rem;
+    }
+
+    .testimonial p:nth-child(2) {
+        font-size: 0.9rem;
+    }
+
+    /* Espaçamento ajustado para celulares maiores */
+    .section-spacing {
+        padding: 40px 0;
+    }
+
+    .first-section-spacing {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+
+    .last-section-spacing {
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+
+    /* Ajuste para títulos alinhados à esquerda em celulares */
+    .selection-title.align-left {
+        margin-left: 15px;
+        /* Alinha com o page-inner-content padding */
+        margin-right: 15px;
+    }
+
+    .selection-title.align-left+.blue-line-full-width {
+        margin-left: 15px;
+    }
+}
+
+/* Celulares menores (ex: abaixo de 480px) */
+@media (max-width: 480px) {
+    .icon-group-left {
+        gap: 10px;
+    }
+
+    /* Ainda menor */
+    .search-container input {
+        font-size: 14px;
+    }
+
+    .mic-icon {
+        display: none;
+    }
+
+    /* Opcional: esconder microfone se não houver espaço */
+
+    .header-bottom-side-left h2 {
+        font-size: 1.6rem;
+    }
+
+    .header-bottom-side-left p {
+        font-size: 0.9rem;
+    }
+
+    .header-bottom-side-left button {
+        padding: 0.7rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .header-bottom-side-right .product-price {
+        font-size: 1.4rem;
+    }
+
+    .header-bottom-side-right .buy-now-button {
+        padding: 0.7rem 1.8rem;
         font-size: 0.9rem;
     }
 
     .cols-4 {
         grid-template-columns: 1fr;
+        /* Forçar uma coluna em telas muito pequenas */
+        gap: 15px;
     }
 
-    .swiper-slide {
-        width: 150px !important;
+    .product img {
+        max-width: 150px;
+        height: 150px;
     }
 
-    .swiper-slide img {
-        height: 130px;
+    /* Imagem pode ser um pouco maior em 1 coluna */
+
+
+    .popup {
+        width: calc(100vw - 30px);
+        /* Quase largura total com margens */
     }
 
-    .product-name {
+    .favorite-item-image,
+    .cart-item-image {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .favorite-item-name,
+    .cart-item-name {
+        font-size: 13px;
+    }
+
+    .favorite-item-price,
+    .cart-item-price {
+        font-size: 13px;
+    }
+
+    .cart-item-quantity-controls button {
+        padding: 2px 7px;
+        font-size: 13px;
+    }
+
+    .cart-item-quantity-controls .quantity-display {
+        font-size: 13px;
+    }
+
+    /* Espaçamento ajustado para celulares menores */
+    .section-spacing {
+        padding: 30px 0;
+    }
+
+    .first-section-spacing {
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
+
+    .last-section-spacing {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    /* Ajuste para títulos alinhados à esquerda em celulares muito pequenos */
+    .selection-title.align-left {
+        margin-left: 15px;
+        /* Alinha com o page-inner-content padding */
+        margin-right: 15px;
+    }
+
+    .selection-title.align-left+.blue-line-full-width {
+        margin-left: 15px;
+    }
+}
+
+/* Ajustes específicos para model-viewer se necessário */
+model-viewer {
+    display: block;
+    /* Garante que o model-viewer se comporte como um bloco */
+    margin: 0 auto;
+    /* Centraliza se tiver largura definida menor que o pai */
+}
+
+/* Footer */
+.footer {
+    background-color: var(--white-color);
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid var(--medium-gray-color);
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer h3 {
+    color: var(--text-color-dark);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-social-media {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 24px;
+}
+
+.social-icons a {
+    color: var(--text-color-dark);
+    transition: color 0.2s ease;
+}
+
+/* Estilos para que os ícones de redes sociais tenham suas cores originais */
+.social-icons .fab {
+    transition: color 0.2s ease, filter 0.2s ease;
+}
+
+.social-icons a[aria-label="Instagram"] .fab {
+    color: #C13584;
+}
+
+.social-icons a[aria-label="Facebook"] .fab {
+    color: #3b5998;
+}
+
+.social-icons a[aria-label="YouTube"] .fab {
+    color: #FF0000;
+}
+
+.social-icons a[aria-label="Pinterest"] .fab {
+    color: #E60023;
+}
+
+.social-icons a[aria-label="WhatsApp"] .fab {
+    color: #25D366;
+}
+
+.social-icons a:hover .fab {
+    filter: brightness(1.2);
+    color: inherit;
+}
+
+.footer-bottom-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 0 15px;
+}
+
+.footer-payment-methods,
+.footer-security-seal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 280px;
+    flex: 1;
+}
+
+.payment-icons {
+    display: flex;
+    /* Usar flexbox para alinhar as imagens */
+    flex-wrap: wrap;
+    /* Permite que as imagens quebrem linha */
+    justify-content: center;
+    /* Centraliza as imagens */
+    align-items: center;
+    /* Alinha verticalmente no centro */
+    gap: 15px;
+    /* Espaçamento entre as imagens */
+}
+
+.payment-icons img {
+    width: 60px;
+    /* Largura padrão para todas as imagens de pagamento */
+    height: 40px;
+    /* Altura padrão para todas as imagens de pagamento */
+    object-fit: contain;
+    /* Garante que a imagem se ajuste dentro das dimensões sem cortar */
+    filter: none;
+    /* Remove o filtro de grayscale */
+    opacity: 1;
+    /* Garante opacidade total */
+    transition: none;
+    /* Remove qualquer transição desnecessária aqui */
+}
+
+/* Remove o efeito de hover desnecessário já que as cores devem ser mantidas */
+.payment-icons img:hover {
+    filter: none;
+    opacity: 1;
+}
+
+
+.security-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.security-badges img {
+    height: 70px;
+    object-fit: contain;
+}
+
+.footer-info {
+    width: 100%;
+    max-width: 900px;
+    padding: 0 15px;
+    border-top: 1px solid var(--medium-gray-color);
+    padding-top: 25px;
+    margin-top: 15px;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    font-size: 0.85rem;
+    text-align: justify;
+}
+
+/* WhatsApp Fixed Button */
+.whatsapp-fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: var(--white-color);
+    padding: 12px 18px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 1000;
+}
+
+.whatsapp-fixed-button:hover {
+    transform: translateY(-3px);
+    background-color: #1DA851;
+}
+
+.whatsapp-fixed-button i {
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments for Footer */
+@media (max-width: 768px) {
+    .footer {
+        padding: 25px 15px;
+    }
+
+    .footer h3 {
+        margin-bottom: 15px;
+    }
+
+    .social-icons {
+        font-size: 22px;
+        gap: 20px;
+    }
+
+    .footer-bottom-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .footer-payment-methods,
+    .footer-security-seal {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .payment-icons img {
+        width: 50px;
+        /* Ajuste para telas menores */
+        height: 35px;
+        /* Ajuste para telas menores */
+        gap: 10px;
+    }
+
+    .security-badges {
+        gap: 15px;
+    }
+
+    .security-badges img {
+        height: 60px;
+    }
+
+    .footer-info {
+        padding-top: 20px;
         font-size: 0.8rem;
     }
 
-    /* Afeta todos os .product-name */
-    .selection-title {
-        font-size: 1.5rem;
+    .whatsapp-fixed-button {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .whatsapp-fixed-button i {
+        font-size: 1.1rem;
     }
 }
 
-/* Estilo para o model-viewer principal (header) */
-.header-bottom-side-right model-viewer {
-    /* Mais específico para o primeiro model-viewer */
-    width: 100%;
-    max-width: 500px;
-    height: 400px;
-}
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px 10px;
+    }
 
-/* Estilo para o model-viewer na seção "exclusive-container" */
-.exclusive-container .header-bottom-side-right model-viewer {
-    /* Mais específico para o segundo model-viewer */
-    width: 100%;
-    /* Ocupa a largura do contêiner pai */
-    max-width: 450px;
-    /* Baseado no CSS original .exclusive-container img { width: 450px; } */
-    height: 400px;
-    /* Ajuste a altura conforme necessário para este modelo */
-    border-radius: 8px;
-    /* Opcional, para consistência se desejar */
-}
+    .social-icons {
+        font-size: 20px;
+        gap: 15px;
+    }
 
-/* Estilo para o model-viewer dentro de um card de produto (se houver outros) */
-.product model-viewer {
-    width: 100%;
-    max-width: 160px;
-    height: 160px;
-    border-radius: 4px;
-    background-color: #ffffff;
+    .footer-bottom-section {
+        gap: 20px;
+    }
+
+    .payment-icons img {
+        width: 45px;
+        /* Ajuste para telas muito pequenas */
+        height: 30px;
+        /* Ajuste para telas muito pequenas */
+        gap: 8px;
+    }
+
+    .security-badges img {
+        height: 50px;
+    }
+
+    .footer-info {
+        padding-top: 15px;
+        font-size: 0.75rem;
+    }
+
+    .whatsapp-fixed-button {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .whatsapp-fixed-button i {
+        font-size: 1rem;
+    }
 }

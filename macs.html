@@ -1,61 +1,682 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MacBooks - BlueStore</title>
-    <link rel="stylesheet" href="style_macs.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueStore | Macs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles/macs.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" defer></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
 </head>
 
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <ul>
-                <li class="active">Macs</li>
-                <li>MacBook Air</li>
-                <li>MacBook Pro</li>
-                <li>Mac Mini</li>
-                <li>Mac Studio</li>
-                <li>iPhones</li>
-                <li>iPads</li>
-                <li>Watches</li>
-                <li>Câmeras</li>
-                <li>AirPods</li>
-                <li>Acessórios</li>
-                <li>Seminovos</li>
-            </ul>
-        </aside>
+    <div class="header">
+        <div class="page-inner-content header-content-wrapper">
+            <div class="header-top-row">
+                <div class="icon-group-left">
+                    <div class="favorites-container">
+                        <i class="far fa-heart favorite-counter-icon"></i>
+                        <span class="favorites-count">0</span>
+                        <div class="favorites-list-popup popup">
+                            <h3>Meus Favoritos</h3>
+                            <ul id="favorites-items">
+                            </ul>
+                            <button class="close-popup">Fechar</button>
+                        </div>
+                    </div>
+                    <div class="cart-container">
+                        <i class="fas fa-shopping-bag cart-counter-icon"></i>
+                        <span class="cart-count">0</span>
+                        <div class="cart-list-popup popup">
+                            <h3>Minha Sacola</h3>
+                            <ul id="cart-items">
+                            </ul>
+                            <div class="coupon-section">
+                                <input type="text" id="coupon-input" placeholder="Cupom de Desconto">
+                                <button id="apply-coupon-btn">Aplicar</button>
+                                <p id="coupon-message" class="coupon-message"></p>
+                            </div>
+                            <p class="cart-total">Total: R$ <span id="cart-total-value">0,00</span></p>
+                            <button class="close-popup">Fechar</button>
+                            <button class="checkout-button">Finalizar Compra</button>
+                        </div>
+                    </div>
+                    <div class="account-container">
+                        <i class="fas fa-user-circle account-icon"></i>
+                        <div class="account-popup popup">
+                            <div class="account-options">
+                                <h3>Minha Conta</h3>
+                                <button id="login-btn" class="account-action-btn">Já possui uma conta?</button>
+                                <button id="create-account-btn" class="account-action-btn">Criar uma conta</button>
+                            </div>
+                            <div class="login-form-container" style="display: none;">
+                                <h3>Acessar sua conta</h3>
+                                <input type="email" id="login-email" placeholder="E-mail">
+                                <input type="password" id="login-password" placeholder="Senha">
+                                <button id="submit-login-btn">Entrar</button>
+                                <button class="back-to-options-btn">Voltar</button>
+                            </div>
+                            <div class="create-account-form-container" style="display: none;">
+                                <h3>Criar uma conta</h3>
+                                <input type="text" id="create-name" placeholder="Nome Completo">
+                                <input type="email" id="create-email" placeholder="E-mail">
+                                <input type="password" id="create-password" placeholder="Senha">
+                                <input type="password" id="confirm-password" placeholder="Confirmar Senha">
+                                <button id="submit-create-btn">Cadastrar</button>
+                                <button class="back-to-options-btn">Voltar</button>
+                            </div>
+                        </div>
+                        <span id="welcome-message" class="welcome-message"></span>
+                    </div>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="search-container-row">
+                <div class="search-container">
+                    <i class="fas fa-microphone mic-icon"></i>
+                    <input type="text" placeholder="Buscar" />
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <main>
-            <div class="header">
-                <h1>MacBooks</h1>
-                <select>
-                    <option>Padrão</option>
-                    <option>Preço: menor</option>
-                    <option>Preço: maior</option>
-                </select>
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li><a href="macs.html" class="nav-button">Macs</a></li>
+                <li>|</li>
+                <li><a href="iphones.html" class="nav-button">iPhones</a></li>
+                <li>|</li>
+                <li><a href="ipad.html" class="nav-button">iPads</a></li>
+                <li>|</li>
+                <li><a href="watches.html" class="nav-button">Watches</a></li>
+                <li>|</li>
+                <li><a href="airpods.html" class="nav-button">AirPods</a></li>
+                <li>|</li>
+                <li><a href="acessorios.html" class="nav-button">Acessórios</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <div class="page-inner-content">
+            <div class="section-title-container">
+                <h3 class="selection-title">Macs</h3>
+                <div class="blue-line-full-width"></div>
             </div>
 
-            <div class="products">
-                <div class="product-card">
-                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mb-air-spacegray-select-202206_GEO_BR?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1653493200207"
-                        alt="MacBook Air">
-                    <h2>MacBook Air 13" (2025)<br>M3 / 16GB / 256GB SSD</h2>
-                    <div class="price">
-                        <span class="old-price">R$ 9.999,00</span>
-                        <span class="current-price">R$ 8.599,00</span>
-                        <span class="pix">no pix</span>
+            <section class="product-listing">
+                <div class="listing-header">
+                    <div class="sort-options">
+                        <label for="sort-by">Ordenar por:</label>
+                        <select id="sort-by" name="sort-by">
+                            <option value="padrao">Padrão</option>
+                            <option value="preco-menor">Preço: Menor para Maior</option>
+                            <option value="preco-maior">Preço: Maior para Menor</option>
+                            <option value="mais-vendidos">Mais Vendidos</option>
+                        </select>
                     </div>
-                    <button>Comprar</button>
                 </div>
 
-                <!-- Repita esse bloco para mais produtos -->
-            </div>
-        </main>
-    </div>
+                <div class="cols cols-4 product-grid">
+                    <div class="product" data-product-id="macbook-pro-14-m4max"
+                        data-product-name="MacBook Pro 14 M4 Max / 36GB / 1TB SSD" data-product-price="24799.00"
+                        data-product-image="https://via.placeholder.com/150/333/FFF?text=MacBook+Pro">
+                        <img src="https://via.placeholder.com/150/333/FFF?text=MacBook+Pro" alt="MacBook Pro 14 M4 Max">
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon" title="Favoritar"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon" title="Adicionar à sacola"></i>
+                        </div>
+                        <p class="product-name">MacBook Pro 14" M4 Max / 36GB / 1TB SSD</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                        <p class="original-price">R$ 29.799,00</p>
+                        <p class="product-price discounted-price">R$ 24.799,00 <span class="pix-label">no pix</span>
+                        </p>
+                        <button class="buy-now-button">Comprar</button>
+                    </div>
+
+                    <div class="product" data-product-id="mac-mini-m4-16gb-256gb"
+                        data-product-name="Mac Mini M4, 16GB de Ram, 256GB SSD" data-product-price="5299.00"
+                        data-product-image="https://via.placeholder.com/150/CCC/000?text=Mac+Mini">
+                        <img src="https://via.placeholder.com/150/CCC/000?text=Mac+Mini" alt="Mac Mini M4 16GB 256GB">
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon" title="Favoritar"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon" title="Adicionar à sacola"></i>
+                        </div>
+                        <p class="product-name">Mac Mini M4, 16GB de Ram, 256GB SSD</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="original-price">R$ 5.599,00</p>
+                        <p class="product-price discounted-price">R$ 5.299,00 <span class="pix-label">no pix</span>
+                        </p>
+                        <button class="buy-now-button">Comprar</button>
+                    </div>
+
+                    <div class="product" data-product-id="mac-mini-m4-16gb-512gb"
+                        data-product-name="Mac Mini M4, 16GB de Ram, 512GB SSD" data-product-price="6699.00"
+                        data-product-image="https://via.placeholder.com/150/CCC/000?text=Mac+Mini+512GB">
+                        <img src="https://via.placeholder.com/150/CCC/000?text=Mac+Mini+512GB"
+                            alt="Mac Mini M4 16GB 512GB">
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon" title="Favoritar"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon" title="Adicionar à sacola"></i>
+                        </div>
+                        <p class="product-name">Mac Mini M4, 16GB de Ram, 512GB SSD</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        <p class="original-price">R$ 6.999,00</p>
+                        <p class="product-price discounted-price">R$ 6.699,00 <span class="pix-label">no pix</span>
+                        </p>
+                        <button class="buy-now-button">Comprar</button>
+                    </div>
+
+                    <div class="product" data-product-id="mac-mini-m4-24gb-512gb"
+                        data-product-name="Mac Mini M4, 24GB de Ram, 512GB SSD" data-product-price="8999.00"
+                        data-product-image="https://via.placeholder.com/150/CCC/000?text=Mac+Mini+24GB">
+                        <img src="https://via.placeholder.com/150/CCC/000?text=Mac+Mini+24GB"
+                            alt="Mac Mini M4 24GB 512GB">
+                        <div class="product-icons">
+                            <i class="far fa-heart favorite-icon" title="Favoritar"></i>
+                            <i class="fas fa-shopping-bag cart-product-icon" title="Adicionar à sacola"></i>
+                        </div>
+                        <p class="product-name">Mac Mini M4, 24GB de Ram, 512GB SSD</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                        <p class="original-price">R$ 9.599,00</p>
+                        <p class="product-price discounted-price">R$ 8.999,00 <span class="pix-label">no pix</span>
+                        </p>
+                        <button class="buy-now-button">Comprar</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Swiper (pode ser inicializado mesmo que não haja .mySwiper nesta página específica)
+            if (document.querySelector(".mySwiper")) {
+                new Swiper(".mySwiper", {
+                    loop: true,
+                    autoplay: { delay: 4500, disableOnInteraction: false },
+                    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+                    pagination: { el: ".swiper-pagination", clickable: true },
+                    slidesPerView: 'auto', spaceBetween: 15, grabCursor: true, watchOverflow: true,
+                    breakpoints: {
+                        600: { slidesPerView: 2, spaceBetween: 15 },
+                        768: { slidesPerView: 3, spaceBetween: 20 },
+                        1024: { slidesPerView: 4, spaceBetween: 20 },
+                        1200: { slidesPerView: 'auto', spaceBetween: 20 }
+                    }
+                });
+            }
+
+            function closeAllPopups() {
+                document.querySelectorAll('.popup.show').forEach(popup => {
+                    popup.classList.remove('show');
+                });
+            }
+
+            // --- Lógica de Favoritos ---
+            const favoriteCounterIcon = document.querySelector('.favorite-counter-icon');
+            const favoritesCountSpan = document.querySelector('.favorites-count');
+            const favoritesListPopup = document.querySelector('.favorites-list-popup');
+            const favoritesItemsList = document.getElementById('favorites-items');
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+            function updateFavoritesState() {
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                if (favoritesCountSpan) favoritesCountSpan.textContent = favorites.length;
+                if (favoritesListPopup && favoritesListPopup.classList.contains('show')) {
+                    renderFavoritesList();
+                }
+                updateFavoriteIcons();
+            }
+
+            function renderFavoritesList() {
+                if (!favoritesItemsList) return;
+                favoritesItemsList.innerHTML = '';
+                if (favorites.length === 0) {
+                    favoritesItemsList.innerHTML = '<li>Nenhum item adicionado aos favoritos.</li>';
+                    return;
+                }
+                favorites.forEach(product => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('favorite-item'); // Alterado para 'favorite-item' para padronizar
+                    const price = parseFloat(product.price);
+                    const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'Preço indisponível';
+                    listItem.innerHTML = `
+                        <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}" class="favorite-item-image">
+                        <div class="favorite-item-details">
+                            <p class="favorite-item-name">${product.name || 'Nome indisponível'}</p>
+                            <p class="favorite-item-price">${formattedPrice}</p>
+                        </div>
+                        <button class="remove-favorite-btn" data-product-id="${product.id}" title="Remover dos Favoritos"><i class="fas fa-times-circle"></i></button>
+                    `;
+                    favoritesItemsList.appendChild(listItem);
+                });
+                // Adiciona listeners para os botões de remover dentro da lista de favoritos
+                favoritesItemsList.querySelectorAll('.remove-favorite-btn').forEach(button => {
+                    button.addEventListener('click', function (event) {
+                        event.stopPropagation();
+                        const productId = this.dataset.productId;
+                        toggleFavorite(productId); // Chama toggleFavorite para remover
+                    });
+                });
+            }
+
+            function toggleFavorite(productId, productData = null) {
+                const existingIndex = favorites.findIndex(fav => fav.id === productId);
+                if (existingIndex > -1) {
+                    favorites.splice(existingIndex, 1);
+                } else if (productData) {
+                    const priceAsNumber = parseFloat(productData.price);
+                    if (isNaN(priceAsNumber)) {
+                        console.error("Erro: Tentativa de adicionar produto com preço inválido aos favoritos.", productData);
+                        return;
+                    }
+                    favorites.push({ ...productData, price: priceAsNumber });
+                }
+                updateFavoritesState();
+            }
+
+            function updateFavoriteIcons() {
+                document.querySelectorAll('.favorite-icon').forEach(icon => {
+                    const productElement = icon.closest('.product');
+                    if (!productElement) return;
+                    const productId = productElement.dataset.productId;
+                    if (favorites.some(fav => fav.id === productId)) {
+                        icon.classList.add('favorited', 'fas');
+                        icon.classList.remove('far');
+                        icon.title = "Remover dos Favoritos";
+                    } else {
+                        icon.classList.remove('favorited', 'fas');
+                        icon.classList.add('far');
+                        icon.title = "Favoritar";
+                    }
+                });
+            }
+
+            // --- Lógica do Carrinho ---
+            const cartCounterIcon = document.querySelector('.cart-counter-icon');
+            const cartCountSpan = document.querySelector('.cart-count');
+            const cartListPopup = document.querySelector('.cart-list-popup');
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotalValueSpan = document.getElementById('cart-total-value');
+            const couponInput = document.getElementById('coupon-input');
+            const applyCouponBtn = document.getElementById('apply-coupon-btn');
+            const couponMessage = document.getElementById('coupon-message');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let currentDiscount = parseFloat(localStorage.getItem('currentDiscount')) || 0;
+            const validCoupons = {
+                "DESCONTO10": 0.10, // 10% de desconto
+                "BLUESALE": 0.15, // 15% de desconto
+            };
+
+            function updateCartState() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 0), 0);
+                if (cartCountSpan) cartCountSpan.textContent = totalItems;
+
+                let subtotal = 0;
+                cart.forEach(item => {
+                    subtotal += (parseFloat(item.price) * (item.quantity || 0));
+                });
+
+                const discountAmount = subtotal * currentDiscount;
+                const total = subtotal - discountAmount;
+
+                if (cartTotalValueSpan) cartTotalValueSpan.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+                if (cartListPopup && cartListPopup.classList.contains('show')) {
+                    renderCartList();
+                }
+                updateCartProductIcons();
+            }
+
+            function renderCartList() {
+                if (!cartItemsList) return;
+                cartItemsList.innerHTML = '';
+
+                if (cart.length === 0) {
+                    cartItemsList.innerHTML = '<li>Sua sacola está vazia.</li>';
+                    if (couponMessage) couponMessage.textContent = '';
+                    if (couponInput) couponInput.value = '';
+                } else {
+                    cart.forEach(product => {
+                        const listItem = document.createElement('li');
+                        listItem.classList.add('cart-item');
+                        const price = parseFloat(product.price);
+                        const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'N/A';
+
+                        listItem.innerHTML = `
+                            <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}" class="cart-item-image">
+                            <div class="cart-item-details">
+                                <p class="cart-item-name">${product.name || 'N/A'}</p>
+                                <p class="cart-item-price">${formattedPrice}</p>
+                                <div class="cart-item-quantity-controls">
+                                    <button class="quantity-decrease" data-product-id="${product.id}" title="Diminuir quantidade">-</button>
+                                    <span class="quantity-display">${product.quantity || 0}</span>
+                                    <button class="quantity-increase" data-product-id="${product.id}" title="Aumentar quantidade">+</button>
+                                </div>
+                            </div>
+                            <button class="remove-cart-item-btn" data-product-id="${product.id}" title="Remover item da sacola"><i class="fas fa-trash-alt"></i></button>
+                        `;
+                        cartItemsList.appendChild(listItem);
+                    });
+
+                    cartItemsList.querySelectorAll('.quantity-increase').forEach(button => {
+                        button.addEventListener('click', function (event) {
+                            event.stopPropagation();
+                            const productId = this.dataset.productId;
+                            increaseCartItemQuantity(productId);
+                        });
+                    });
+                    cartItemsList.querySelectorAll('.quantity-decrease').forEach(button => {
+                        button.addEventListener('click', function (event) {
+                            event.stopPropagation();
+                            const productId = this.dataset.productId;
+                            decreaseCartItemQuantity(productId);
+                        });
+                    });
+                    cartItemsList.querySelectorAll('.remove-cart-item-btn').forEach(button => {
+                        button.addEventListener('click', function (event) {
+                            event.stopPropagation();
+                            const productId = this.dataset.productId;
+                            removeProductCompletelyFromCart(productId);
+                        });
+                    });
+                }
+            }
+
+            function toggleProductInCart(productData) {
+                const priceAsNumber = parseFloat(productData.price);
+                if (isNaN(priceAsNumber)) {
+                    console.error("Erro: Preço inválido ao adicionar/remover do carrinho.", productData);
+                    return;
+                }
+                const product = { ...productData, price: priceAsNumber };
+                const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+                if (existingProductIndex > -1) {
+                    cart.splice(existingProductIndex, 1);
+                } else {
+                    cart.push({ ...product, quantity: 1 });
+                }
+                updateCartState();
+            }
+
+            function increaseCartItemQuantity(productId) {
+                const productIndex = cart.findIndex(item => item.id === productId);
+                if (productIndex > -1) {
+                    cart[productIndex].quantity = (cart[productIndex].quantity || 0) + 1;
+                    updateCartState();
+                }
+            }
+
+            function decreaseCartItemQuantity(productId) {
+                const productIndex = cart.findIndex(item => item.id === productId);
+                if (productIndex > -1) {
+                    cart[productIndex].quantity -= 1;
+                    if (cart[productIndex].quantity <= 0) {
+                        cart.splice(productIndex, 1);
+                    }
+                    updateCartState();
+                }
+            }
+
+            function removeProductCompletelyFromCart(productId) {
+                cart = cart.filter(item => item.id !== productId);
+                updateCartState();
+            }
+
+            function updateCartProductIcons() {
+                document.querySelectorAll('.cart-product-icon').forEach(icon => {
+                    const productElement = icon.closest('.product'); // Pode ser .product ou .swiper-slide
+                    if (!productElement) return;
+                    const productId = productElement.dataset.productId;
+                    if (cart.some(item => item.id === productId && item.quantity > 0)) {
+                        icon.classList.add('in-cart');
+                    } else {
+                        icon.classList.remove('in-cart');
+                    }
+                });
+            }
+
+            if (applyCouponBtn) {
+                applyCouponBtn.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    const couponCode = couponInput.value.trim().toUpperCase();
+                    if (validCoupons[couponCode] !== undefined) {
+                        currentDiscount = validCoupons[couponCode];
+                        localStorage.setItem('currentDiscount', currentDiscount.toString());
+                        if (couponMessage) {
+                            couponMessage.textContent = "Cupom aplicado com sucesso!";
+                            couponMessage.style.color = "green";
+                        }
+                    } else {
+                        if (couponMessage) {
+                            couponMessage.textContent = "Cupom inválido!";
+                            couponMessage.style.color = "red";
+                        }
+                    }
+                    updateCartState();
+                });
+            }
+
+            // --- Event Listeners para Ícones de Produto (Favoritar/Adicionar à Sacola) ---
+            document.querySelectorAll('.favorite-icon').forEach(icon => {
+                icon.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    const productElement = this.closest('.product');
+                    if (!productElement) return;
+                    const productData = {
+                        id: productElement.dataset.productId,
+                        name: productElement.dataset.productName,
+                        price: productElement.dataset.productPrice,
+                        image: productElement.dataset.productImage
+                    };
+                    toggleFavorite(productData.id, productData);
+                });
+            });
+
+            document.querySelectorAll('.cart-product-icon').forEach(icon => {
+                icon.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    const productElement = this.closest('.product');
+                    if (!productElement) return;
+                    const productData = {
+                        id: productElement.dataset.productId,
+                        name: productElement.dataset.productName,
+                        price: productElement.dataset.productPrice,
+                        image: productElement.dataset.productImage
+                    };
+                    toggleProductInCart(productData);
+                });
+            });
+
+            document.querySelectorAll('.buy-now-button').forEach(button => { // Altera de .comprar-btn para .buy-now-button
+                button.addEventListener('click', function () {
+                    const productElement = this.closest('.product');
+                    const productData = {
+                        id: productElement.dataset.productId,
+                        name: productElement.dataset.productName,
+                        price: parseFloat(productElement.dataset.productPrice),
+                        image: productElement.dataset.productImage
+                    };
+                    toggleProductInCart(productData); // Reusa toggle para adicionar/remover
+                    // Opcional: Abrir a sacola ou mostrar notificação
+                    // cartListPopup.classList.add('show');
+                    // renderCartList();
+                    // alert(`${productData.name} adicionado à sacola!`);
+                });
+            });
+
+            // --- Event Listeners para Popups (Abrir/Fechar) ---
+            if (favoriteCounterIcon) {
+                favoriteCounterIcon.addEventListener('click', function () {
+                    closeAllPopups();
+                    togglePopup(favoritesListPopup, [cartListPopup, accountPopup]);
+                    if (favoritesListPopup && favoritesListPopup.classList.contains('show')) {
+                        renderFavoritesList();
+                    }
+                });
+            }
+
+            if (cartCounterIcon) {
+                cartCounterIcon.addEventListener('click', function () {
+                    closeAllPopups();
+                    togglePopup(cartListPopup, [favoritesListPopup, accountPopup]);
+                    if (cartListPopup && cartListPopup.classList.contains('show')) {
+                        renderCartList();
+                        updateCartState();
+                    }
+                });
+            }
+
+            // --- Account Popup Logic ---
+            const accountIcon = document.querySelector('.account-icon');
+            const accountPopup = document.querySelector('.account-popup');
+            const loginBtn = document.getElementById('login-btn');
+            const createAccountBtn = document.getElementById('create-account-btn');
+            const backToOptionsBtns = document.querySelectorAll('.back-to-options-btn');
+            const submitLoginBtn = document.getElementById('submit-login-btn');
+            const submitCreateBtn = document.getElementById('submit-create-btn');
+            const welcomeMessage = document.getElementById('welcome-message');
+            const accountOptions = document.querySelector('.account-options');
+            const loginFormContainer = document.querySelector('.login-form-container');
+            const createAccountFormContainer = document.querySelector('.create-account-form-container');
+
+            function togglePopup(popupToToggle, otherPopupsToClose = []) {
+                otherPopupsToClose.forEach(p => p && p.classList.remove('show'));
+                if (popupToToggle) {
+                    popupToToggle.classList.toggle('show');
+                }
+            }
+
+            function resetAccountForms() {
+                if (accountOptions) accountOptions.style.display = 'flex';
+                if (loginFormContainer) loginFormContainer.style.display = 'none';
+                if (createAccountFormContainer) createAccountFormContainer.style.display = 'none';
+                loginFormContainer?.querySelectorAll('input')?.forEach(input => input.value = '');
+                createAccountFormContainer?.querySelectorAll('input')?.forEach(input => input.value = '');
+            }
+
+            if (accountIcon) {
+                accountIcon.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    const isOpening = !accountPopup.classList.contains('show');
+                    togglePopup(accountPopup, [favoritesListPopup, cartListPopup]);
+                    if (isOpening && accountPopup.classList.contains('show')) {
+                        resetAccountForms();
+                    }
+                });
+            }
+
+            if (loginBtn) {
+                loginBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    if (accountOptions) accountOptions.style.display = 'none';
+                    if (loginFormContainer) loginFormContainer.style.display = 'block';
+                });
+            }
+            if (createAccountBtn) {
+                createAccountBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    if (accountOptions) accountOptions.style.display = 'none';
+                    if (createAccountFormContainer) createAccountFormContainer.style.display = 'block';
+                });
+            }
+            backToOptionsBtns.forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    resetAccountForms();
+                });
+            });
+
+            function showWelcomeMessage(name) {
+                if (welcomeMessage) {
+                    welcomeMessage.textContent = `Bem-vindo, ${name}!`;
+                    welcomeMessage.classList.add('show');
+                    setTimeout(() => {
+                        welcomeMessage.classList.remove('show');
+                    }, 5000);
+                }
+                accountPopup?.classList.remove('show');
+            }
+
+            if (submitLoginBtn) {
+                submitLoginBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const emailInput = document.getElementById('login-email');
+                    const email = emailInput ? emailInput.value : '';
+                    const userName = email.split('@')[0] || "Usuário";
+                    showWelcomeMessage(userName);
+                });
+            }
+            if (submitCreateBtn) {
+                submitCreateBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const nameInput = document.getElementById('create-name');
+                    const name = nameInput ? nameInput.value.trim() : 'Usuário';
+                    showWelcomeMessage(name || "Usuário");
+                });
+            }
+
+
+            // --- Fechar Popups ---
+            // Fechar com botão "Fechar" genérico
+            document.querySelectorAll('.close-popup').forEach(button => { // Alterado para a classe padronizada .close-popup
+                button.addEventListener('click', function () {
+                    const popupToClose = this.closest('.popup');
+                    if (popupToClose) {
+                        popupToClose.classList.remove('show');
+                    }
+                });
+            });
+
+            // Fechar popups ao clicar fora
+            window.addEventListener('click', function (event) {
+                const openPopups = document.querySelectorAll('.popup.show');
+                openPopups.forEach(popup => {
+                    const parentContainer = popup.parentElement;
+                    const triggerIcon = parentContainer ? (parentContainer.querySelector('.favorite-counter-icon') || parentContainer.querySelector('.cart-counter-icon') || parentContainer.querySelector('.account-icon')) : null;
+
+                    if (!popup.contains(event.target) && (!triggerIcon || !triggerIcon.contains(event.target))) {
+                        if (popup === cartListPopup && event.target.closest('.cart-product-icon')) {
+                            return;
+                        }
+                        if (popup === favoritesListPopup && event.target.closest('.favorite-icon')) {
+                            return;
+                        }
+                        if (event.target.closest('model-viewer')) {
+                            if ((popup === cartListPopup && event.target.closest('.product')?.querySelector('.cart-product-icon')?.contains(event.target)) ||
+                                (popup === favoritesListPopup && event.target.closest('.product')?.querySelector('.favorite-icon')?.contains(event.target))) {
+                                return;
+                            }
+                        }
+                        popup.classList.remove('show');
+                    }
+                });
+            });
+
+            // --- Ordenação (Lógica de exemplo) ---
+            const sortBySelect = document.getElementById('sort-by');
+            if (sortBySelect) {
+                sortBySelect.addEventListener('change', function () {
+                    console.log(`Opção de ordenação alterada para: ${this.value}. Lógica de ordenação a ser implementada aqui.`);
+                    // Aqui iria a lógica para reordenar os produtos na página.
+                });
+            }
+
+            // --- Inicialização ---
+            updateFavoritesState();
+            updateCartState();
+        });
+    </script>
 </body>
 
 </html>

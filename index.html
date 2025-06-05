@@ -14,7 +14,7 @@
 
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 
-    
+
 </head>
 
 <body>
@@ -57,14 +57,14 @@
                                 <button id="login-btn" class="account-action-btn">Já possui uma conta?</button>
                                 <button id="create-account-btn" class="account-action-btn">Criar uma conta</button>
                             </div>
-                            <div class="login-form-container">
+                            <div class="login-form-container" style="display: none;">
                                 <h3>Acessar sua conta</h3>
                                 <input type="email" id="login-email" placeholder="E-mail">
                                 <input type="password" id="login-password" placeholder="Senha">
                                 <button id="submit-login-btn">Entrar</button>
                                 <button class="back-to-options-btn">Voltar</button>
                             </div>
-                            <div class="create-account-form-container">
+                            <div class="create-account-form-container" style="display: none;">
                                 <h3>Criar uma conta</h3>
                                 <input type="text" id="create-name" placeholder="Nome Completo">
                                 <input type="email" id="create-email" placeholder="E-mail">
@@ -76,7 +76,10 @@
                         </div>
                         <span id="welcome-message" class="welcome-message"></span>
                     </div>
-                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/55DDXXXXXXXXX" target="_blank" aria-label="Atendimento via WhatsApp"
+                        class="whatsapp-header-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
                 </div>
             </div>
             <div class="search-container-row">
@@ -98,7 +101,7 @@
                 <li>|</li>
                 <li><a href="iphones.html" class="nav-button">iPhones</a></li>
                 <li>|</li>
-                <li><a href="ipads.html" class="nav-button">iPads</a></li>
+                <li><a href="ipad.html" class="nav-button">iPads</a></li>
                 <li>|</li>
                 <li><a href="watches.html" class="nav-button">Watches</a></li>
                 <li>|</li>
@@ -121,7 +124,7 @@
                         </p>
                     </div>
                     <div class="header-bottom-side-right">
-                        <model-viewer src="images/products/macbook_pro_m3_16_inch_2024 (1).glb" alt="Macbook Pro M4"
+                        <model-viewer src="images/products/macbook_pro_m3_16_inch_2024%20(1).glb" alt="Macbook Pro M4"
                             auto-rotate camera-controls ar ar-modes="webxr scene-viewer quick-look" shadow-intensity="1"
                             environment-image="neutral" exposure="1">
                             <div class="progress-bar hide" slot="progress-bar">
@@ -143,10 +146,10 @@
     </header>
 
     <main>
-        <div class="gray-background">
+        <div class="gray-background first-section-spacing">
             <div class="page-inner-content">
-                <h3 class="selection-title">Navegue por Categorias</h3>
-                <div class="blue-line-full-width" style="margin-top: 5px; margin-bottom: 20px;"></div>
+                <h3 class="selection-title align-left">Navegue por Categorias</h3>
+                <div class="blue-line-full-width"></div>
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" data-product-id="ipad-air-5gen"
@@ -207,9 +210,9 @@
             </div>
         </div>
 
-        <section>
+        <section class="section-spacing">
             <div class="page-inner-content section-title-container">
-                <h3 class="selection-title">Mais Vistos</h3>
+                <h3 class="selection-title align-left">Mais Vistos</h3>
                 <div class="blue-line-full-width"></div>
             </div>
             <div class="page-inner-content">
@@ -269,9 +272,9 @@
             </div>
         </section>
 
-        <section>
+        <section class="section-spacing">
             <div class="page-inner-content section-title-container">
-                <h3 class="selection-title">Produtos em Promoção</h3>
+                <h3 class="selection-title align-left">Produtos em Promoção</h3>
                 <div class="blue-line-full-width"></div>
             </div>
             <div class="page-inner-content">
@@ -290,8 +293,8 @@
                     </div>
 
                     <div class="product" data-product-id="macbook-pro-m4" data-product-name="MacBook Pro M4 - 512GB SSD"
-                        data-product-price="18499.00" data-product-image="images/products/airtag4.png">
-                        <img src="images/products/airtag4.png" alt="MacBook Pro M4" />
+                        data-product-price="18499.00" data-product-image="images/products/airtag4.png"> <img
+                            src="images/products/airtag4.png" alt="MacBook Pro M4" />
                         <div class="product-icons">
                             <i class="far fa-heart favorite-icon"></i>
                             <i class="fas fa-shopping-bag cart-product-icon"></i>
@@ -330,22 +333,23 @@
             </div>
         </section>
 
-        <div class="gray-background">
+        <div class="gray-background section-spacing">
             <div class="page-inner-content">
                 <div class="header-bottom-side exclusive-container">
                     <div class="header-bottom-side-left">
                         <h2>Apple Watch Ultra – O Máximo em Performance, Resistência e Tecnologia</h2>
-                        <p>O relógio robusto e avançado da Apple. Com caixa de titânio de 49 mm, GPS de precisão, botão de Ação personalizável
-                        e bateria de até 60 horas. Resistente à água até 100 metros, traz recursos avançados de saúde, como ECG, oxigênio no
-                        sangue e detecção de acidentes. Perfeito para esportes, aventuras e o dia a dia.
+                        <p>O relógio robusto e avançado da Apple. Com caixa de titânio de 49 mm, GPS de precisão, botão
+                            de Ação personalizável
+                            e bateria de até 60 horas. Resistente à água até 100 metros, traz recursos avançados de
+                            saúde, como ECG, oxigênio no
+                            sangue e detecção de acidentes. Perfeito para esportes, aventuras e o dia a dia.
                         </p>
-                        <button>Ver Agora &#8594;</button>
                     </div>
                     <div class="header-bottom-side-right">
                         <model-viewer src="images/products/apple_watch_ultra_-_orange.glb"
                             alt="Apple Watch Ultra com pulseira laranja" auto-rotate camera-controls ar
                             ar-modes="webxr scene-viewer quick-look" shadow-intensity="0.8" environment-image="neutral"
-                            exposure="1.2" camera-orbit="0deg 75deg 105%" /* Ajuste inicial da câmera */ disable-zoom>
+                            exposure="1.2" camera-orbit="0deg 75deg 105%" disable-zoom>
                             <div class="progress-bar hide" slot="progress-bar">
                                 <div class="update-bar"></div>
                             </div>
@@ -355,9 +359,9 @@
             </div>
 
 
-            <div class="page-inner-content">
-                <h3 class="selection-title" style="margin-top: 40px;">Depoimentos</h3>
-                <div class="blue-line-full-width" style="margin-top: 5px; margin-bottom: 20px;"></div>
+            <div class="page-inner-content last-section-spacing">
+                <h3 class="selection-title align-left">FeedBacks</h3>
+                <div class="blue-line-full-width"></div>
                 <div class="testimonials">
                     <div class="testimonial">
                         <p>"</p>
@@ -386,6 +390,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Swiper Initialization
             var swiper = new Swiper(".mySwiper", {
                 loop: true,
                 autoplay: {
@@ -400,46 +405,104 @@
                     el: ".swiper-pagination",
                     clickable: true,
                 },
-                slidesPerView: 'auto',
+                slidesPerView: 'auto', // Deixa o CSS/Breakpoints do Swiper controlarem
                 spaceBetween: 15,
                 grabCursor: true,
                 watchOverflow: true,
-                breakpoints: {
-                    600: {
-                        slidesPerView: 2,
-                        spaceBetween: 15
-                    },
-                    768: {
-                        slidesPerView: 3,
-                        spaceBetween: 20
-                    },
-                    1024: {
-                        slidesPerView: 4,
-                        spaceBetween: 20
-                    },
-                    1200: {
-                        slidesPerView: 'auto',
-                        spaceBetween: 20
-                    }
+                breakpoints: { // Esses breakpoints são do Swiper, podem complementar ou sobrescrever CSS de tamanho do slide
+                    600: { slidesPerView: 2, spaceBetween: 15 },
+                    768: { slidesPerView: 3, spaceBetween: 20 },
+                    1024: { slidesPerView: 4, spaceBetween: 20 },
                 }
             });
 
-            function closeAllPopups() {
-                document.querySelectorAll('.popup').forEach(popup => {
-                    popup.classList.remove('show');
-                });
-            }
-
-            const favoriteCounterIcon = document.querySelector('.favorite-counter-icon');
+            // DOM Elements - Popups and Counters
             const favoritesCount = document.querySelector('.favorites-count');
             const favoritesListPopup = document.querySelector('.favorites-list-popup');
             const favoritesItemsList = document.getElementById('favorites-items');
-            const closeFavoritesPopupBtn = favoritesListPopup ? favoritesListPopup.querySelector('.close-popup') : null;
+            const closeFavoritesPopupBtn = favoritesListPopup?.querySelector('.close-popup');
+            const favoriteCounterIcon = document.querySelector('.favorite-counter-icon');
 
+            const cartCountSpan = document.querySelector('.cart-count');
+            const cartListPopup = document.querySelector('.cart-list-popup');
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotalValueSpan = document.getElementById('cart-total-value');
+            const closeCartPopupBtn = cartListPopup?.querySelector('.close-popup');
+            const cartCounterIcon = document.querySelector('.cart-counter-icon');
+
+            const accountIcon = document.querySelector('.account-icon');
+            const accountPopup = document.querySelector('.account-popup');
+
+            // Coupon Elements
+            const couponInput = document.getElementById('coupon-input');
+            const applyCouponBtn = document.getElementById('apply-coupon-btn');
+            const couponMessage = document.getElementById('coupon-message');
+
+            // Account Popup Elements
+            const accountOptions = document.querySelector('.account-options');
+            const loginFormContainer = document.querySelector('.login-form-container');
+            const createAccountFormContainer = document.querySelector('.create-account-form-container');
+            const loginBtn = document.getElementById('login-btn');
+            const createAccountBtn = document.getElementById('create-account-btn');
+            const backToOptionsBtns = document.querySelectorAll('.back-to-options-btn');
+            const submitLoginBtn = document.getElementById('submit-login-btn');
+            const submitCreateBtn = document.getElementById('submit-create-btn');
+            const welcomeMessage = document.getElementById('welcome-message');
+
+
+            // --- State Management ---
             let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let currentDiscount = parseFloat(localStorage.getItem('currentDiscount')) || 0;
+            const validCoupons = {
+                "DESCONTO10": 0.10, // 10% de desconto
+                "BLUESALE": 0.15, // 15% de desconto
+            };
 
-            function updateFavoritesCount() {
+            // --- Popup Management ---
+            function togglePopup(popupToToggle, otherPopupsToClose = []) {
+                otherPopupsToClose.forEach(p => p && p.classList.remove('show'));
+                if (popupToToggle) {
+                    popupToToggle.classList.toggle('show');
+                }
+            }
+
+            // Close popups when clicking outside
+            window.addEventListener('click', function (event) {
+                const openPopups = document.querySelectorAll('.popup.show');
+                openPopups.forEach(popup => {
+                    const parentContainer = popup.parentElement;
+                    const triggerIcon = parentContainer ? (parentContainer.querySelector('.favorite-counter-icon') || parentContainer.querySelector('.cart-counter-icon') || parentContainer.querySelector('.account-icon') || parentContainer.querySelector('.whatsapp-header-icon')) : null;
+
+                    if (!popup.contains(event.target) && (!triggerIcon || !triggerIcon.contains(event.target))) {
+                        if (popup === cartListPopup && event.target.closest('.cart-product-icon')) {
+                            return;
+                        }
+                        if (popup === favoritesListPopup && event.target.closest('.favorite-icon')) {
+                            return;
+                        }
+                        // Não fechar popups se o clique for dentro de um model-viewer (que pode estar em um card)
+                        if (event.target.closest('model-viewer')) {
+                            // Se o popup for de carrinho ou favoritos, e o clique for em um ícone de adicionar/favoritar DENTRO de um card com model-viewer
+                            if ((popup === cartListPopup && event.target.closest('.product')?.querySelector('.cart-product-icon')?.contains(event.target)) ||
+                                (popup === favoritesListPopup && event.target.closest('.product')?.querySelector('.favorite-icon')?.contains(event.target))) {
+                                return;
+                            }
+                        }
+                        popup.classList.remove('show');
+                    }
+                });
+            });
+
+
+            // --- Favorites Logic ---
+            function updateFavoritesState() {
+                localStorage.setItem('favorites', JSON.stringify(favorites));
                 if (favoritesCount) favoritesCount.textContent = favorites.length;
+                if (favoritesListPopup && favoritesListPopup.classList.contains('show')) {
+                    renderFavoritesList();
+                }
+                initializeFavoriteIcons();
             }
 
             function renderFavoritesList() {
@@ -452,441 +515,420 @@
                 favorites.forEach(product => {
                     const listItem = document.createElement('li');
                     listItem.classList.add('favorite-item');
-                    const price = typeof product.price === 'number' ? product.price : parseFloat(product.price);
-                    const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'Preço indisponível';
+                    const price = parseFloat(product.price);
+                    const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'Preço indisponível';
 
                     listItem.innerHTML = `
                         <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}" class="favorite-item-image">
                         <div class="favorite-item-details">
                             <p class="favorite-item-name">${product.name || 'Nome indisponível'}</p>
-                            <p class="favorite-item-price">R$ ${formattedPrice}</p>
+                            <p class="favorite-item-price">${formattedPrice}</p>
                         </div>
-                        <button class="remove-favorite-btn" data-product-id="${product.id}"><i class="fas fa-times-circle"></i></button>
+                        <button class="remove-favorite-btn" data-product-id="${product.id}" title="Remover dos favoritos"><i class="fas fa-times-circle"></i></button>
                     `;
                     favoritesItemsList.appendChild(listItem);
                 });
-                document.querySelectorAll('.remove-favorite-btn').forEach(button => {
-                    button.addEventListener('click', function () {
+
+                favoritesItemsList.querySelectorAll('.remove-favorite-btn').forEach(button => {
+                    button.addEventListener('click', function (event) {
+                        event.stopPropagation();
                         const productId = this.dataset.productId;
-                        removeFromFavorites(productId);
+                        toggleFavorite(productId);
                     });
                 });
             }
 
-            function addToFavorites(product) {
-                const priceAsNumber = parseFloat(product.price);
-                if (isNaN(priceAsNumber)) {
-                    console.error("Erro: Tentativa de adicionar produto com preço inválido aos favoritos.", product);
-                    return;
+            function toggleFavorite(productId, productData = null) {
+                const existingIndex = favorites.findIndex(fav => fav.id === productId);
+                if (existingIndex > -1) {
+                    favorites.splice(existingIndex, 1);
+                } else if (productData) {
+                    const priceAsNumber = parseFloat(productData.price);
+                    if (isNaN(priceAsNumber)) {
+                        console.error("Erro: Tentativa de adicionar produto com preço inválido aos favoritos.", productData);
+                        return;
+                    }
+                    favorites.push({ ...productData, price: priceAsNumber });
                 }
-                const productToAdd = { ...product, price: priceAsNumber };
-
-                if (!favorites.some(fav => fav.id === productToAdd.id)) {
-                    favorites.push(productToAdd);
-                    localStorage.setItem('favorites', JSON.stringify(favorites));
-                    updateFavoritesCount();
-                    renderFavoritesList();
-                    return true;
-                }
-                return false;
-            }
-
-            function removeFromFavorites(productId) {
-                const initialLength = favorites.length;
-                favorites = favorites.filter(fav => fav.id !== productId);
-
-                if (favorites.length < initialLength) {
-                    localStorage.setItem('favorites', JSON.stringify(favorites));
-                    updateFavoritesCount();
-                    renderFavoritesList();
-                    initializeFavoriteIcons();
-                    return true;
-                }
-                return false;
+                updateFavoritesState();
             }
 
             function initializeFavoriteIcons() {
                 document.querySelectorAll('.favorite-icon').forEach(icon => {
-                    const productElement = icon.closest('.product');
+                    const productElement = icon.closest('.product, .swiper-slide'); // Funciona para cards e swiper
                     if (!productElement) return;
                     const productId = productElement.dataset.productId;
 
                     if (favorites.some(fav => fav.id === productId)) {
-                        icon.classList.add('favorited');
+                        icon.classList.add('favorited', 'fas');
                         icon.classList.remove('far');
-                        icon.classList.add('fas');
                     } else {
-                        icon.classList.remove('favorited');
-                        icon.classList.remove('fas');
+                        icon.classList.remove('favorited', 'fas');
                         icon.classList.add('far');
                     }
                 });
             }
 
-            updateFavoritesCount();
-            initializeFavoriteIcons();
-
             document.querySelectorAll('.favorite-icon').forEach(icon => {
                 icon.addEventListener('click', function (event) {
                     event.stopPropagation();
-                    const productElement = this.closest('.product');
+                    const productElement = this.closest('.product, .swiper-slide');
                     if (!productElement) return;
-
-                    const productPriceStr = productElement.dataset.productPrice;
-                    const productPrice = parseFloat(productPriceStr);
-
-                    if (isNaN(productPrice)) {
-                        console.error("Preço do produto inválido no card:", productElement.dataset.productName, productPriceStr);
-                        return;
-                    }
-
-                    // Ajuste para pegar o src da imagem ou do model-viewer
-                    let productImageSrc = productElement.dataset.productImage;
-                    if (!productImageSrc) {
-                        const displayElement = productElement.querySelector('img, model-viewer');
-                        if (displayElement) {
-                            productImageSrc = displayElement.src; // .src para model-viewer também retorna o caminho do modelo
-                        }
-                    }
 
                     const product = {
                         id: productElement.dataset.productId,
                         name: productElement.dataset.productName,
-                        price: productPrice,
-                        image: productImageSrc
+                        price: productElement.dataset.productPrice,
+                        image: productElement.dataset.productImage || productElement.querySelector('img, model-viewer')?.src
                     };
-
-                    const isFavorited = this.classList.contains('favorited');
-
-                    if (isFavorited) {
-                        removeFromFavorites(product.id);
-                    } else {
-                        addToFavorites(product);
+                    if (!product.id || !product.name || !product.price) {
+                        console.error("Dados incompletos do produto para favoritar:", productElement.dataset);
+                        return;
                     }
-                    initializeFavoriteIcons();
+                    toggleFavorite(product.id, product);
                 });
             });
 
             if (favoriteCounterIcon) {
-                favoriteCounterIcon.addEventListener('click', function () {
-                    closeAllPopups();
-                    if (favoritesListPopup) favoritesListPopup.classList.toggle('show');
+                favoriteCounterIcon.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    togglePopup(favoritesListPopup, [cartListPopup, accountPopup]);
                     if (favoritesListPopup && favoritesListPopup.classList.contains('show')) {
                         renderFavoritesList();
                     }
                 });
             }
-
             if (closeFavoritesPopupBtn) {
-                closeFavoritesPopupBtn.addEventListener('click', function () {
-                    if (favoritesListPopup) favoritesListPopup.classList.remove('show');
+                closeFavoritesPopupBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    favoritesListPopup.classList.remove('show');
                 });
             }
 
-            const cartCounterIcon = document.querySelector('.cart-counter-icon');
-            const cartCountSpan = document.querySelector('.cart-count');
-            const cartListPopup = document.querySelector('.cart-list-popup');
-            const cartItemsList = document.getElementById('cart-items');
-            const cartTotalValueSpan = document.getElementById('cart-total-value');
-            const closeCartPopupBtn = cartListPopup ? cartListPopup.querySelector('.close-popup') : null;
-            const checkoutButton = document.querySelector('.checkout-button');
-            const couponInput = document.getElementById('coupon-input');
-            const applyCouponBtn = document.getElementById('apply-coupon-btn');
-            const couponMessage = document.getElementById('coupon-message');
 
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let currentDiscount = 0;
-            const validCoupons = {
-                "DESCONTO10": 0.10,
-                "FRETEGRATIS": 0
-            };
+            // --- Cart Logic ---
+            function updateCartState() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 0), 0);
+                if (cartCountSpan) cartCountSpan.textContent = totalItems;
 
-            function updateCartDisplay() {
-                if (cartCountSpan) cartCountSpan.textContent = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
-                let total = 0;
+                let subtotal = 0;
                 cart.forEach(item => {
-                    total += (parseFloat(item.price) * (item.quantity || 1));
+                    subtotal += (parseFloat(item.price) * (item.quantity || 0));
                 });
 
-                let discountedTotal = total - (total * currentDiscount);
-                if (cartTotalValueSpan) cartTotalValueSpan.textContent = discountedTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                const discountAmount = subtotal * currentDiscount;
+                const total = subtotal - discountAmount;
+
+                if (cartTotalValueSpan) cartTotalValueSpan.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+                if (cartListPopup && cartListPopup.classList.contains('show')) {
+                    renderCartList();
+                }
+                initializeCartIcons();
             }
 
             function renderCartList() {
                 if (!cartItemsList) return;
                 cartItemsList.innerHTML = '';
+
                 if (cart.length === 0) {
-                    cartItemsList.innerHTML = '<li>Nenhum item adicionado à sacola.</li>';
+                    cartItemsList.innerHTML = '<li>Sua sacola está vazia.</li>';
+                    if (couponMessage) couponMessage.textContent = '';
+                    if (couponInput) couponInput.value = '';
+                    // currentDiscount = 0; // Descomentar se quiser resetar cupom ao esvaziar carrinho manualmente
+                    // localStorage.removeItem('currentDiscount');
                 } else {
                     cart.forEach(product => {
-                        const price = typeof product.price === 'number' ? product.price : parseFloat(product.price);
-                        const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'N/A';
-
                         const listItem = document.createElement('li');
                         listItem.classList.add('cart-item');
+                        const price = parseFloat(product.price);
+                        const formattedPrice = !isNaN(price) ? price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'N/A';
+
                         listItem.innerHTML = `
                             <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}" class="cart-item-image">
                             <div class="cart-item-details">
                                 <p class="cart-item-name">${product.name || 'N/A'}</p>
-                                <p class="cart-item-price">R$ ${formattedPrice}</p>
-                                ${product.quantity ? `<p class="cart-item-quantity">Qtd: ${product.quantity}</p>` : ''}
+                                <p class="cart-item-price">${formattedPrice}</p>
+                                <div class="cart-item-quantity-controls">
+                                    <button class="quantity-decrease" data-product-id="${product.id}" title="Diminuir quantidade">-</button>
+                                    <span class="quantity-display">${product.quantity || 0}</span>
+                                    <button class="quantity-increase" data-product-id="${product.id}" title="Aumentar quantidade">+</button>
+                                </div>
                             </div>
-                            <button class="remove-cart-item-btn" data-product-id="${product.id}"><i class="fas fa-times-circle"></i></button>
+                            <button class="remove-cart-item-btn" data-product-id="${product.id}" title="Remover item da sacola"><i class="fas fa-trash-alt"></i></button>
                         `;
                         cartItemsList.appendChild(listItem);
                     });
-                }
-                updateCartDisplay();
 
-                document.querySelectorAll('.remove-cart-item-btn').forEach(button => {
-                    button.addEventListener('click', function () {
-                        const productId = this.dataset.productId;
-                        removeFromCart(productId);
+                    cartItemsList.querySelectorAll('.quantity-increase').forEach(button => {
+                        button.addEventListener('click', function (event) {
+                            event.stopPropagation();
+                            const productId = this.dataset.productId;
+                            increaseCartItemQuantity(productId);
+                        });
                     });
-                });
+                    cartItemsList.querySelectorAll('.quantity-decrease').forEach(button => {
+                        button.addEventListener('click', function (event) {
+                            event.stopPropagation();
+                            const productId = this.dataset.productId;
+                            decreaseCartItemQuantity(productId);
+                        });
+                    });
+                    cartItemsList.querySelectorAll('.remove-cart-item-btn').forEach(button => {
+                        button.addEventListener('click', function (event) {
+                            event.stopPropagation();
+                            const productId = this.dataset.productId;
+                            removeProductCompletelyFromCart(productId);
+                        });
+                    });
+                }
             }
 
-            function addToCart(product) {
-                const priceAsNumber = parseFloat(product.price);
+            function toggleProductInCart(productData) {
+                const priceAsNumber = parseFloat(productData.price);
                 if (isNaN(priceAsNumber)) {
-                    console.error("Erro: Tentativa de adicionar produto com preço inválido ao carrinho.", product);
+                    console.error("Erro: Preço inválido ao adicionar/remover do carrinho.", productData);
                     return;
                 }
-                const productToAdd = { ...product, price: priceAsNumber };
+                const product = { ...productData, price: priceAsNumber };
+                const existingProductIndex = cart.findIndex(item => item.id === product.id);
 
-                const existingProductIndex = cart.findIndex(item => item.id === productToAdd.id);
                 if (existingProductIndex > -1) {
-                    cart[existingProductIndex].quantity = (cart[existingProductIndex].quantity || 1) + 1;
+                    cart.splice(existingProductIndex, 1);
                 } else {
-                    cart.push({ ...productToAdd, quantity: 1 });
+                    cart.push({ ...product, quantity: 1 });
                 }
-
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartDisplay();
-                renderCartList();
-                return true;
+                updateCartState();
             }
 
-            function removeFromCart(productId) {
-                const initialCartCount = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
-
+            function increaseCartItemQuantity(productId) {
                 const productIndex = cart.findIndex(item => item.id === productId);
                 if (productIndex > -1) {
-                    cart[productIndex].quantity = (cart[productIndex].quantity || 1) - 1;
+                    cart[productIndex].quantity = (cart[productIndex].quantity || 0) + 1;
+                    updateCartState();
+                }
+            }
+
+            function decreaseCartItemQuantity(productId) {
+                const productIndex = cart.findIndex(item => item.id === productId);
+                if (productIndex > -1) {
+                    cart[productIndex].quantity -= 1;
                     if (cart[productIndex].quantity <= 0) {
                         cart.splice(productIndex, 1);
                     }
+                    updateCartState();
                 }
+            }
 
-                const finalCartCount = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
-
-                if (finalCartCount < initialCartCount || cart.length === 0) {
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    updateCartDisplay();
-                    renderCartList();
-                    initializeCartIcons();
-                    return true;
-                }
-                return false;
+            function removeProductCompletelyFromCart(productId) {
+                cart = cart.filter(item => item.id !== productId);
+                updateCartState();
             }
 
             function initializeCartIcons() {
                 document.querySelectorAll('.cart-product-icon').forEach(icon => {
-                    const productElement = icon.closest('.product');
+                    const productElement = icon.closest('.product, .swiper-slide'); // Funciona para cards e swiper
                     if (!productElement) return;
                     const productId = productElement.dataset.productId;
                     if (cart.some(item => item.id === productId && item.quantity > 0)) {
                         icon.classList.add('in-cart');
+                        // Se estiver usando FontAwesome 5+ e quiser alternar entre far e fas:
+                        // icon.classList.remove('far');
+                        // icon.classList.add('fas');
                     } else {
                         icon.classList.remove('in-cart');
+                        // icon.classList.remove('fas');
+                        // icon.classList.add('far');
                     }
                 });
             }
 
+            document.querySelectorAll('.cart-product-icon').forEach(icon => {
+                icon.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    const productElement = this.closest('.product, .swiper-slide');
+                    if (!productElement) return;
+
+                    const product = {
+                        id: productElement.dataset.productId,
+                        name: productElement.dataset.productName,
+                        price: productElement.dataset.productPrice,
+                        image: productElement.dataset.productImage || productElement.querySelector('img, model-viewer')?.src
+                    };
+                    if (!product.id || !product.name || !product.price) {
+                        console.error("Dados incompletos do produto para adicionar ao carrinho:", productElement.dataset);
+                        return;
+                    }
+                    toggleProductInCart(product);
+                });
+            });
+
+
+            if (cartCounterIcon) {
+                cartCounterIcon.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    togglePopup(cartListPopup, [favoritesListPopup, accountPopup]);
+                    if (cartListPopup && cartListPopup.classList.contains('show')) {
+                        renderCartList();
+                        updateCartState();
+                    }
+                });
+            }
+            if (closeCartPopupBtn) {
+                closeCartPopupBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    cartListPopup.classList.remove('show');
+                });
+            }
+
             if (applyCouponBtn) {
-                applyCouponBtn.addEventListener('click', function () {
+                applyCouponBtn.addEventListener('click', function (event) {
+                    event.stopPropagation();
                     const couponCode = couponInput.value.trim().toUpperCase();
                     if (validCoupons[couponCode] !== undefined) {
                         currentDiscount = validCoupons[couponCode];
+                        localStorage.setItem('currentDiscount', currentDiscount.toString());
                         if (couponMessage) {
                             couponMessage.textContent = "Cupom aplicado com sucesso!";
                             couponMessage.style.color = "green";
                         }
                     } else {
-                        currentDiscount = 0;
+                        // currentDiscount = 0; // Se quiser resetar o cupom com um inválido
+                        // localStorage.removeItem('currentDiscount');
                         if (couponMessage) {
                             couponMessage.textContent = "Cupom inválido!";
                             couponMessage.style.color = "red";
                         }
                     }
-                    updateCartDisplay();
+                    updateCartState();
                 });
             }
 
-
-            updateCartDisplay();
-            initializeCartIcons();
-
-            document.querySelectorAll('.cart-product-icon').forEach(icon => {
-                icon.addEventListener('click', function (event) {
-                    event.stopPropagation();
-                    const productElement = this.closest('.product');
-                    if (!productElement) return;
-
-                    const productPriceStr = productElement.dataset.productPrice;
-                    const productPrice = parseFloat(productPriceStr);
-                    if (isNaN(productPrice)) {
-                        console.error("Preço do produto inválido no card (carrinho):", productElement.dataset.productName, productPriceStr);
-                        return;
-                    }
-                    // Ajuste para pegar o src da imagem ou do model-viewer
-                    let productImageSrc = productElement.dataset.productImage;
-                    if (!productImageSrc) {
-                        const displayElement = productElement.querySelector('img, model-viewer');
-                        if (displayElement) {
-                            productImageSrc = displayElement.src;
-                        }
-                    }
-
-                    const product = {
-                        id: productElement.dataset.productId,
-                        name: productElement.dataset.productName,
-                        price: productPrice,
-                        image: productImageSrc
-                    };
-
-                    addToCart(product);
-                    initializeCartIcons();
-                });
-            });
-
-            if (cartCounterIcon) {
-                cartCounterIcon.addEventListener('click', function () {
-                    closeAllPopups();
-                    if (cartListPopup) cartListPopup.classList.toggle('show');
-                    if (cartListPopup && cartListPopup.classList.contains('show')) {
-                        renderCartList();
-                    }
-                });
+            // --- Account Popup Logic ---
+            function resetAccountForms() {
+                if (accountOptions) accountOptions.style.display = 'flex';
+                if (loginFormContainer) loginFormContainer.style.display = 'none';
+                if (createAccountFormContainer) createAccountFormContainer.style.display = 'none';
+                loginFormContainer?.querySelectorAll('input')?.forEach(input => input.value = '');
+                createAccountFormContainer?.querySelectorAll('input')?.forEach(input => input.value = '');
             }
-
-            if (closeCartPopupBtn) {
-                closeCartPopupBtn.addEventListener('click', function () {
-                    if (cartListPopup) cartListPopup.classList.remove('show');
-                    closeCartPopupBtn.classList.add('clicked');
-                    setTimeout(() => {
-                        closeCartPopupBtn.classList.remove('clicked');
-                    }, 200);
-                });
-            }
-
-            const accountIcon = document.querySelector('.account-icon');
-            const accountPopup = document.querySelector('.account-popup');
-            const accountOptions = document.querySelector('.account-options');
-            const loginFormContainer = document.querySelector('.login-form-container');
-            const createAccountFormContainer = document.querySelector('.create-account-form-container');
-            const loginBtn = document.getElementById('login-btn');
-            const createAccountBtn = document.getElementById('create-account-btn');
-            const backToOptionsBtns = document.querySelectorAll('.back-to-options-btn');
-            const submitLoginBtn = document.getElementById('submit-login-btn');
-            const submitCreateBtn = document.getElementById('submit-create-btn');
-            const welcomeMessage = document.getElementById('welcome-message');
-
-            if (accountPopup) accountPopup.classList.remove('show');
-            if (accountOptions) accountOptions.style.display = 'none';
-            if (loginFormContainer) loginFormContainer.style.display = 'none';
-            if (createAccountFormContainer) createAccountFormContainer.style.display = 'none';
 
             if (accountIcon) {
                 accountIcon.addEventListener('click', function (event) {
                     event.stopPropagation();
-                    closeAllPopups();
-                    if (accountPopup) accountPopup.classList.toggle('show');
-
-                    if (accountPopup && accountPopup.classList.contains('show')) {
-                        if (accountOptions) accountOptions.style.display = 'flex';
-                        if (loginFormContainer) loginFormContainer.style.display = 'none';
-                        if (createAccountFormContainer) createAccountFormContainer.style.display = 'none';
+                    const isOpening = !accountPopup.classList.contains('show');
+                    togglePopup(accountPopup, [favoritesListPopup, cartListPopup]);
+                    if (isOpening && accountPopup.classList.contains('show')) {
+                        resetAccountForms();
                     }
                 });
             }
 
             if (loginBtn) {
-                loginBtn.addEventListener('click', function () {
+                loginBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
                     if (accountOptions) accountOptions.style.display = 'none';
                     if (loginFormContainer) loginFormContainer.style.display = 'block';
                 });
             }
-
             if (createAccountBtn) {
-                createAccountBtn.addEventListener('click', function () {
+                createAccountBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
                     if (accountOptions) accountOptions.style.display = 'none';
                     if (createAccountFormContainer) createAccountFormContainer.style.display = 'block';
                 });
             }
-
             backToOptionsBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    if (loginFormContainer) loginFormContainer.style.display = 'none';
-                    if (createAccountFormContainer) createAccountFormContainer.style.display = 'none';
-                    if (accountOptions) accountOptions.style.display = 'flex';
+                btn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    resetAccountForms();
                 });
             });
+
+            function showWelcomeMessage(name) {
+                if (welcomeMessage) {
+                    welcomeMessage.textContent = `Bem-vindo, ${name}!`;
+                    welcomeMessage.classList.add('show');
+                    setTimeout(() => {
+                        welcomeMessage.classList.remove('show');
+                    }, 5000);
+                }
+                accountPopup?.classList.remove('show');
+            }
 
             if (submitLoginBtn) {
-                submitLoginBtn.addEventListener('click', function () {
+                submitLoginBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
                     const emailInput = document.getElementById('login-email');
                     const email = emailInput ? emailInput.value : '';
-
                     const userName = email.split('@')[0] || "Usuário";
-                    if (welcomeMessage) {
-                        welcomeMessage.textContent = `Bem-vindo, ${userName}!`;
-                        welcomeMessage.classList.add('show');
-                    }
-                    if (accountPopup) accountPopup.classList.remove('show');
-
-                    setTimeout(() => {
-                        if (welcomeMessage) welcomeMessage.classList.remove('show');
-                    }, 10000);
+                    showWelcomeMessage(userName);
                 });
             }
-
             if (submitCreateBtn) {
-                submitCreateBtn.addEventListener('click', function () {
+                submitCreateBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
                     const nameInput = document.getElementById('create-name');
-                    const name = nameInput ? nameInput.value : 'Usuário';
-
-                    if (welcomeMessage) {
-                        welcomeMessage.textContent = `Bem-vindo, ${name}!`;
-                        welcomeMessage.classList.add('show');
-                    }
-                    if (accountPopup) accountPopup.classList.remove('show');
-
-                    setTimeout(() => {
-                        if (welcomeMessage) welcomeMessage.classList.remove('show');
-                    }, 10000);
+                    const name = nameInput ? nameInput.value.trim() : 'Usuário';
+                    showWelcomeMessage(name || "Usuário");
                 });
             }
 
-            window.addEventListener('click', function (event) {
-                const openPopups = document.querySelectorAll('.popup.show');
-
-                openPopups.forEach(popup => {
-                    const iconContainer = popup.parentElement;
-                    const icon = iconContainer ? iconContainer.querySelector('i') : null;
-
-                    if (!popup.contains(event.target) && icon && !icon.contains(event.target) && !event.target.closest('.product-icons')) {
-                        popup.classList.remove('show');
-                    }
-                });
-
-                if (welcomeMessage && !welcomeMessage.contains(event.target) && welcomeMessage.classList.contains('show') && !event.target.closest('.account-container')) {
-
-                }
-            });
-
+            // Initial UI Update based on localStorage
+            updateFavoritesState();
+            updateCartState();
         });
     </script>
+
+    <footer class="footer">
+        <div class="footer-social-media">
+            <h3>Redes sociais</h3>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom-section">
+            <div class="footer-payment-methods">
+                <h3>Formas de pagamento</h3>
+                <div class="payment-icons">
+                    <img src="images/cards/visa.png" alt="Visa">
+                    <img src="images/cards/master.png" alt="Mastercard">
+                    <img src="images/cards/american-express.png" alt="American Express">
+                    <img src="images/cards/elo.png" alt="Elo">
+                    <img src="images/cards/hipercard.png" alt="Hipercard">
+                    <img src="images/cards/boleto.png" alt="Boleto">
+                    <img src="images/cards/pix.png" alt="Pix">
+                </div>
+            </div>
+            <div class="footer-security-seal">
+                <h3>Site seguro</h3>
+                <div class="security-badges">
+                    <img src="images/security/site-security.png" alt="Selo Diamond">
+                    <img src="images/security/site-seguro.png" alt="Selo Loja Confiável">
+                </div>
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>© 2025 BlueStore. Todos os direitos reservados.
+                Preços e condições exclusivos para o site www.bluestore.com.br e para o televendas, podendo sofrer
+                alterações sem prévia
+                notificação. bluestore.com.br é uma empresa BlueStore Comércio de Bens de Consumo Ltda, Rua Instituto
+                Metrópole Digital, nº 1351, sala 000 |
+                Natal - RN | CEP 59000-000 | CNPJ 00.000.000/0000-00 | Telefone: 0800 644 2255 ou 4020-2595. BlueStore é
+                uma empresa do
+                Grupo Carlos Lima (CNPJ: 00.000.000/0000-00).</p>
+        </div>
+    </footer>
+    <div class="whatsapp-fixed-button">
+        <a href="https://wa.me/55DDXXXXXXXXX" target="_blank" aria-label="Atendimento via WhatsApp">
+            <i class="fab fa-whatsapp"></i> Atendimento
+        </a>
+    </div>
 </body>
 
 </html>

@@ -95,7 +95,7 @@ body {
 }
 
 .whatsapp-header-icon:hover {
-    color: #25D366);
+    color: #25D366;
     /* Cor mais escura no hover */
 }
 
@@ -1200,10 +1200,6 @@ main {
 
 /* Notebooks e Desktops Menores (ex: 1280px) */
 @media (max-width: 1200px) {
-    .page-inner-content {
-        /* max-width é 1200px, então aqui já é o limite.
-           Padding lateral já está em .page-inner-content */
-    }
 
     .header-bottom-side-left,
     .exclusive-container .header-bottom-side-left {
@@ -1430,12 +1426,6 @@ main {
     .favorite-icon,
     .cart-product-icon {
         font-size: 1.2rem;
-    }
-
-
-    .swiper-slide {
-        /* Swiper já tem breakpoints, mas podemos forçar um tamanho se necessário */
-        /* width: 160px !important; Geralmente evitamos !important */
     }
 
     .swiper-slide img {

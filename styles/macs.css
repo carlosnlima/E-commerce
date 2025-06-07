@@ -21,6 +21,8 @@
     --box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
     --box-shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
     --box-shadow-heavy: 0 5px 15px rgba(0, 0, 0, 0.15);
+    --star-color: #FFD700;
+    /* Nova variável para a cor da estrela */
 }
 
 
@@ -587,7 +589,6 @@ main {
     position: absolute;
     top: 10px;
     right: 10px;
-    /* Movido para a direita para padrão comum */
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -631,31 +632,31 @@ main {
     width: 100%;
 }
 
+/* Estrelas douradas/amarelas */
 .product .rate {
-    color: #ffc107;
+    color: var(--star-color);
+    /* Usando a nova variável para a cor da estrela */
     font-size: 0.9rem;
     margin: 5px 0;
 }
 
-.product .original-price {
+/* Preço antigo riscado */
+.product .old-price {
     text-decoration: line-through;
     color: var(--text-color-light);
-    /* Usando text-color-light para consistência */
+    /* Cor padrão para preço riscado */
     font-size: 0.85em;
     margin: 0;
 }
 
+/* Preço normal e preço com desconto com a mesma cor */
 .product .product-price,
 .product .discounted-price {
     font-size: 1.15rem;
     color: var(--text-color-dark);
-    /* Mudado para text-color-dark para padronizar com HTML1 */
+    /* Todos os preços são dark */
     font-weight: bold;
     margin-top: 0;
-}
-
-.product .discounted-price {
-    color: var(--primary-color);
 }
 
 .product .pix-label {
@@ -667,6 +668,11 @@ main {
     margin-top: -3px;
 }
 
+/* Estilo para produtos em promoção - Não alteramos a cor do texto */
+.product.on-sale .product-price {
+    /* Mantém a cor original do text-color-dark */
+}
+
 /* Listagem de Produtos Específico */
 .product-listing {
     padding-top: 20px;
@@ -676,12 +682,10 @@ main {
 .listing-header {
     display: flex;
     justify-content: flex-end;
-    /* Padronizado com HTML1 */
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 15px;
     border-bottom: 1px solid var(--medium-gray-color);
-    /* Padronizado com medium-gray-color */
 }
 
 .sort-options label {
@@ -693,32 +697,25 @@ main {
 .sort-options select {
     padding: 8px 12px;
     border-radius: 5px;
-    /* Padronizado com 5px */
     border: 1px solid var(--dark-gray-color);
-    /* Padronizado com dark-gray-color */
     background-color: var(--white-color);
     font-size: 0.9em;
     cursor: pointer;
 }
 
-/* Padronizado com HTML1 - renomeado de .comprar-btn para .buy-now-button */
 .buy-now-button {
     background-color: var(--primary-color);
     color: var(--white-color);
     border: none;
     padding: 0.8rem 2rem;
-    /* Valores de padding do HTML1 */
     border-radius: 50px;
-    /* Mais arredondado */
     cursor: pointer;
     font-weight: 500;
     font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-decoration: none;
     width: auto;
-    /* Ajuste para o botão do card, não ser 100% */
     margin-top: 10px;
-    /* Espaçamento com o preço */
 }
 
 .buy-now-button:hover {
@@ -951,3 +948,283 @@ main {
     }
 }
 
+/* Footer */
+.footer {
+    background-color: var(--white-color);
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid var(--medium-gray-color);
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer h3 {
+    color: var(--text-color-dark);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-social-media {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 24px;
+}
+
+.social-icons a {
+    color: var(--text-color-dark);
+    transition: color 0.2s ease;
+}
+
+/* Estilos para que os ícones de redes sociais tenham suas cores originais */
+.social-icons .fab {
+    transition: color 0.2s ease, filter 0.2s ease;
+}
+
+.social-icons a[aria-label="Instagram"] .fab {
+    color: #C13584;
+}
+
+.social-icons a[aria-label="Facebook"] .fab {
+    color: #3b5998;
+}
+
+.social-icons a[aria-label="YouTube"] .fab {
+    color: #FF0000;
+}
+
+.social-icons a[aria-label="Pinterest"] .fab {
+    color: #E60023;
+}
+
+.social-icons a[aria-label="WhatsApp"] .fab {
+    color: #25D366;
+}
+
+.social-icons a:hover .fab {
+    filter: brightness(1.2);
+    color: inherit;
+}
+
+.footer-bottom-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 0 15px;
+}
+
+.footer-payment-methods,
+.footer-security-seal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 280px;
+    flex: 1;
+}
+
+.payment-icons {
+    display: flex;
+    /* Usar flexbox para alinhar as imagens */
+    flex-wrap: wrap;
+    /* Permite que as imagens quebrem linha */
+    justify-content: center;
+    /* Centraliza as imagens */
+    align-items: center;
+    /* Alinha verticalmente no centro */
+    gap: 15px;
+    /* Espaçamento entre as imagens */
+}
+
+.payment-icons img {
+    width: 60px;
+    /* Largura padrão para todas as imagens de pagamento */
+    height: 40px;
+    /* Altura padrão para todas as imagens de pagamento */
+    object-fit: contain;
+    /* Garante que a imagem se ajuste dentro das dimensões sem cortar */
+    filter: none;
+    /* Remove o filtro de grayscale */
+    opacity: 1;
+    /* Garante opacidade total */
+    transition: none;
+    /* Remove qualquer transição desnecessária aqui */
+}
+
+/* Remove o efeito de hover desnecessário já que as cores devem ser mantidas */
+.payment-icons img:hover {
+    filter: none;
+    opacity: 1;
+}
+
+
+.security-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.security-badges img {
+    height: 70px;
+    object-fit: contain;
+}
+
+.footer-info {
+    width: 100%;
+    max-width: 900px;
+    padding: 0 15px;
+    border-top: 1px solid var(--medium-gray-color);
+    padding-top: 25px;
+    margin-top: 15px;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    font-size: 0.85rem;
+    text-align: justify;
+}
+
+/* WhatsApp Fixed Button */
+.whatsapp-fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: var(--white-color);
+    padding: 12px 18px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 1000;
+}
+
+.whatsapp-fixed-button:hover {
+    transform: translateY(-3px);
+    background-color: #1DA851;
+}
+
+.whatsapp-fixed-button i {
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments for Footer */
+@media (max-width: 768px) {
+    .footer {
+        padding: 25px 15px;
+    }
+
+    .footer h3 {
+        margin-bottom: 15px;
+    }
+
+    .social-icons {
+        font-size: 22px;
+        gap: 20px;
+    }
+
+    .footer-bottom-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .footer-payment-methods,
+    .footer-security-seal {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .payment-icons img {
+        width: 50px;
+        /* Ajuste para telas menores */
+        height: 35px;
+        /* Ajuste para telas menores */
+        gap: 10px;
+    }
+
+    .security-badges {
+        gap: 15px;
+    }
+
+    .security-badges img {
+        height: 60px;
+    }
+
+    .footer-info {
+        padding-top: 20px;
+        font-size: 0.8rem;
+    }
+
+    .whatsapp-fixed-button {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .whatsapp-fixed-button i {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px 10px;
+    }
+
+    .social-icons {
+        font-size: 20px;
+        gap: 15px;
+    }
+
+    .footer-bottom-section {
+        gap: 20px;
+    }
+
+    .payment-icons img {
+        width: 45px;
+        /* Ajuste para telas muito pequenas */
+        height: 30px;
+        /* Ajuste para telas muito pequenas */
+        gap: 8px;
+    }
+
+    .security-badges img {
+        height: 50px;
+    }
+
+    .footer-info {
+        padding-top: 15px;
+        font-size: 0.75rem;
+    }
+
+    .whatsapp-fixed-button {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .whatsapp-fixed-button i {
+        font-size: 1rem;
+    }
+}

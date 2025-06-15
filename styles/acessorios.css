@@ -646,16 +646,38 @@ main {
     color: var(--text-color-light);
     font-size: 0.85em;
     margin: 0;
+    order: 3;
+    /* Define uma ordem para o preço antigo */
+    align-self: center;
+    /* Centraliza o preço antigo */
+    visibility: hidden;
+    /* Inicialmente oculto para ocupar espaço mas não ser visível */
+    height: 0;
+    /* Não ocupa altura quando invisível */
+    overflow: hidden;
+    /* Esconde o conteúdo */
 }
 
 /* Preço normal e preço com desconto com a mesma cor */
-.product .product-price,
-.product .discounted-price {
+.product .product-price {
     font-size: 1.15rem;
-    color: var(--text-color-dark);
+    color: #000;
     /* Todos os preços agora são pretos */
     font-weight: bold;
     margin-top: 0;
+    order: 4;
+    /* Define uma ordem para o preço atual */
+    align-self: center;
+    /* Centraliza o preço atual */
+}
+
+.product.on-sale .old-price {
+    visibility: visible;
+    /* Torna visível para produtos em promoção */
+    height: auto;
+    /* Ocupa altura quando visível */
+    margin-bottom: -10px;
+    /* Reduz o espaço entre o preço antigo e o novo */
 }
 
 .product .pix-label {
@@ -671,7 +693,7 @@ main {
 
 /* Estilo para produtos em promoção */
 .product.on-sale .product-price {
-    color: var(--text-color-dark);
+    color: #000;
     /* Também preto para consistência */
 }
 
@@ -688,21 +710,34 @@ main {
     margin-bottom: 30px;
     padding-bottom: 15px;
     border-bottom: 1px solid var(--medium-gray-color);
+    gap: 20px;
+    /* Adicionado para espaçamento entre os seletores */
 }
 
-.sort-options label {
+.sort-options,
+.filter-options {
+    display: flex;
+    align-items: center;
+    /* Garante que o label e o select estejam alinhados */
+}
+
+.sort-options label,
+.filter-options label {
     font-size: 0.9em;
     color: var(--text-color-light);
     margin-right: 10px;
 }
 
-.sort-options select {
+.sort-options select,
+.filter-options select {
     padding: 8px 12px;
     border-radius: 5px;
     border: 1px solid var(--dark-gray-color);
     background-color: var(--white-color);
     font-size: 0.9em;
     cursor: pointer;
+    min-width: 180px;
+    /* Para dar um tamanho mínimo ao seletor */
 }
 
 .buy-now-button {
@@ -718,6 +753,8 @@ main {
     text-decoration: none;
     width: auto;
     margin-top: 10px;
+    order: 5;
+    /* Garante que o botão Comprar venha depois dos preços */
 }
 
 .buy-now-button:hover {
@@ -750,6 +787,9 @@ main {
 
     .listing-header {
         justify-content: center;
+        flex-wrap: wrap;
+        /* Permite que os selects quebrem a linha */
+        gap: 15px;
     }
 
     .popup {
@@ -882,7 +922,8 @@ main {
         gap: 15px;
     }
 
-    .sort-options select {
+    .sort-options select,
+    .filter-options select {
         width: 100%;
         max-width: 280px;
     }
@@ -999,6 +1040,11 @@ main {
 
 .social-icons a[aria-label="Facebook"] .fab {
     color: #3b5998;
+}
+
+.social-icons a[aria-label="Twitter"] .fab {
+    color: #1DA1F2;
+    /* Cor mais aproximada para o X/Twitter */
 }
 
 .social-icons a[aria-label="YouTube"] .fab {

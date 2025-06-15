@@ -396,6 +396,8 @@ body {
     display: none;
     width: 100%;
     padding: 10px 0;
+    text-align: center;
+    /* Adicionado para centralizar conteúdo */
 }
 
 .account-options {
@@ -403,6 +405,8 @@ body {
     flex-direction: column;
     width: 100%;
     gap: 10px;
+    text-align: center;
+    /* Adicionado para centralizar conteúdo */
 }
 
 .account-popup input {

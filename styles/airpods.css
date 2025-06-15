@@ -5,10 +5,10 @@
     margin: 0;
 }
 
-/* Variáveis CSS Globais */
+/* Variáveis CSS Globais - CORRIGIDAS para manter azul e dourado */
 :root {
     --primary-color: #0077ff;
-    /* Cor azul da BlueStore */
+    /* Cor azul original da BlueStore */
     --primary-color-hover: #005bb5;
     /* Azul mais escuro para hover */
     --danger-color: #dc3545;
@@ -26,6 +26,7 @@
     --star-color: #FFD700;
     /* Dourado/Amarelo para as estrelas */
 }
+
 
 /* Estilos Globais do Corpo da Página */
 body {
@@ -123,7 +124,6 @@ body {
     font-size: 18px;
 }
 
-/* Containers de Ícones e Popups */
 .favorites-container,
 .cart-container,
 .account-container {
@@ -461,124 +461,6 @@ body {
     transform: translateY(0);
 }
 
-/* Pop-up de Compra (Novo) */
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1030;
-    display: none;
-}
-
-.popup-overlay.hidden {
-    display: none;
-}
-
-.buy-now-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--white-color);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow-heavy);
-    text-align: center;
-    z-index: 1040;
-    width: clamp(300px, 90%, 450px);
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.buy-now-popup.hidden {
-    display: none;
-    opacity: 0;
-    transform: translate(-50%, -60%);
-}
-
-.buy-now-popup:not(.hidden) {
-    display: flex;
-    opacity: 1;
-    transform: translate(-50%, -50%);
-}
-
-
-.buy-now-popup h3 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    padding-bottom: 0;
-    border-bottom: none;
-}
-
-.buy-now-popup p {
-    font-size: 1.1rem;
-    color: var(--text-color-dark);
-    margin-bottom: 20px;
-}
-
-.popup-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    width: 100%;
-}
-
-.popup-btn {
-    flex: 1;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
-}
-
-.popup-btn-primary {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-}
-
-.popup-btn-primary:hover {
-    background-color: var(--primary-color-hover);
-}
-
-.popup-btn-secondary {
-    background-color: var(--medium-gray-color);
-    color: var(--text-color-dark);
-    border: 1px solid var(--dark-gray-color);
-}
-
-.popup-btn-secondary:hover {
-    background-color: var(--dark-gray-color);
-}
-
-.close-popup-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: var(--text-color-light);
-    cursor: pointer;
-    padding: 5px;
-    transition: color 0.2s ease;
-}
-
-.close-popup-btn:hover {
-    color: var(--text-color-dark);
-}
-
-
 /* Barra de Navegação (Navbar) */
 .navbar {
     background-color: var(--white-color);
@@ -613,6 +495,7 @@ nav ul li a.nav-button {
 
 nav ul li a.nav-button:hover,
 nav ul li a.nav-button.active {
+    /* Adicionado .active para a página atual */
     background-color: var(--primary-color);
     color: var(--white-color);
     transform: translateY(-2px);
@@ -629,6 +512,7 @@ nav ul li:nth-child(even):hover {
     transform: none;
     color: var(--dark-gray-color);
 }
+
 
 /* Conteúdo Principal */
 main {
@@ -734,12 +618,15 @@ main {
     line-height: 1.4;
     margin: 0;
     height: 2.8em;
+    /* Garante altura fixa para nomes de 2 linhas */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    /* Limita a 2 linhas */
     -webkit-box-orient: vertical;
     width: 100%;
+    /* Ocupa a largura total do container */
 }
 
 /* Estrelas douradas/amarelas */
@@ -749,14 +636,18 @@ main {
     margin: 5px 0;
 }
 
-/* Contêiner para os preços para alinhamento */
+/* Novo contêiner para os preços para alinhamento */
 .price-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Centraliza preços horizontalmente */
     height: 4em;
+    /* Altura fixa para o container do preço, acomodando preço antigo e novo */
     justify-content: center;
+    /* Centraliza verticalmente o conteúdo dentro do container de preço */
     margin-bottom: 10px;
+    /* Adiciona margem entre o preço e o botão de compra */
 }
 
 /* Preço antigo riscado */
@@ -768,11 +659,12 @@ main {
     line-height: 1.2;
 }
 
-/* Preço normal e preço com desconto */
+/* Preço normal e preço com desconto com a mesma cor */
 .product .product-price,
 .product .discounted-price {
     font-size: 1.15rem;
     color: #000;
+    /* Força a cor preta para todos os preços */
     font-weight: bold;
     margin-top: 0;
     line-height: 1.2;
@@ -787,9 +679,10 @@ main {
     margin-top: -3px;
 }
 
-/* Estilo para produtos em promoção */
+/* Estilo para produtos em promoção - remover cor azul */
 .product.on-sale .product-price {
     color: #000;
+    /* Garante que o preço promocional seja preto */
 }
 
 /* Listagem de Produtos Específico */
@@ -834,6 +727,7 @@ main {
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-decoration: none;
     width: auto;
+    /* Remover margin-top: auto para evitar desalinhamento vertical */
 }
 
 .buy-now-button:hover {
@@ -845,17 +739,22 @@ main {
 
 /* Notebooks e Desktops Menores (ex: 1280px) */
 @media (max-width: 1200px) {
+    .page-inner-content {
+        /* max-width é 1200px, então aqui já é o limite.
+           Padding lateral já está em .page-inner-content */
+    }
 
-    /* Não há mudanças significativas no .page-inner-content pois ele já tem max-width */
     .cols-4 {
         gap: 20px;
     }
 }
 
+
 /* Tablets (ex: 768px a 1024px) */
 @media (max-width: 1024px) {
     .cols-4 {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* 2-3 colunas */
         gap: 20px;
     }
 
@@ -944,6 +843,7 @@ main {
 
     .cols-4 {
         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        /* Tentar manter 2 colunas se couber */
         gap: 12px;
     }
 
@@ -1014,6 +914,7 @@ main {
 
     .cols-4 {
         grid-template-columns: 1fr;
+        /* Forçar uma coluna em telas muito pequenas */
         gap: 15px;
     }
 
@@ -1057,19 +958,6 @@ main {
     .cart-item-quantity-controls .quantity-display {
         font-size: 13px;
     }
-
-    .buy-now-popup h3 {
-        font-size: 1.3rem;
-    }
-
-    .buy-now-popup p {
-        font-size: 1rem;
-    }
-
-    .popup-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
 }
 
 /* Footer */
@@ -1110,6 +998,7 @@ main {
     transition: color 0.2s ease;
 }
 
+/* Estilos para que os ícones de redes sociais tenham suas cores originais */
 .social-icons .fab {
     transition: color 0.2s ease, filter 0.2s ease;
 }
@@ -1130,15 +1019,13 @@ main {
     color: #E60023;
 }
 
-.social-icons a[aria-label="Twitter"] .fab {
-    color: #1DA1F2;
-    /* Cor original do Twitter/X */
+.social-icons a[aria-label="WhatsApp"] .fab {
+    color: #25D366;
 }
 
 .social-icons a:hover .fab {
     filter: brightness(1.2);
     color: inherit;
-    /* Mantém a cor original no hover, mas com brilho */
 }
 
 .footer-bottom-section {
@@ -1183,6 +1070,7 @@ main {
     filter: none;
     opacity: 1;
 }
+
 
 .security-badges {
     display: flex;

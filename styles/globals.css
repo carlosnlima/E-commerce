@@ -815,11 +815,12 @@ main {
 /* Swiper (Carrossel de Categorias/Produtos) */
 .swiper {
     width: 100%;
-    /* max-width: 900px; Removido, deixa o page-inner-content controlar */
     margin: 20px auto 40px auto;
     position: relative;
-    padding: 0 10px;
-    /* Espaço para setas não cobrirem os slides nas bordas */
+    padding: 0;
+    /* Removido o padding para os botões ficarem totalmente fora */
+    overflow: hidden;
+    /* Alterado para hidden para conter os slides */
 }
 
 .swiper-wrapper {
@@ -836,23 +837,58 @@ main {
     flex-shrink: 0;
     text-align: center;
     background-color: var(--white-color);
-    border-radius: 8px;
-    box-shadow: var(--box-shadow-light);
+    border-radius: 12px;
+    /* Aumentado o border-radius para um visual mais suave */
+    box-shadow: var(--box-shadow-medium);
+    /* Alterado para medium para mais destaque */
     overflow: hidden;
-    /* width: 200px !important; Removido, Swiper controla isso com slidesPerView */
     height: auto;
-    /* Para conteúdo dinâmico */
     padding-bottom: 15px;
-    /* Espaço interno inferior */
+    border: 1px solid var(--medium-gray-color);
+    /* Adicionado borda sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    /* Transições mais suaves */
 }
+
+.swiper-slide:hover {
+    transform: translateY(-8px);
+    /* Aumentado o translateY para um efeito mais pronunciado */
+    box-shadow: var(--box-shadow-heavy);
+    /* Sombra mais pesada no hover */
+    border-color: var(--primary-color);
+    /* Borda fica da cor primária no hover */
+}
+
+/* Estilo para o slide ativo (central) */
+.swiper-slide-active {
+    border: 2px solid var(--primary-color);
+    /* Borda azul para o item do meio */
+    transform: none;
+    /* Remove o translateY do hover para o slide ativo */
+    box-shadow: var(--box-shadow-heavy);
+    /* Mantém a sombra mais pesada */
+}
+
+.swiper-slide-active:hover {
+    transform: none;
+    /* Garante que não haja translate no hover para o slide ativo */
+    box-shadow: var(--box-shadow-heavy);
+    /* Mantém a sombra mais pesada */
+}
+
 
 .swiper-slide img {
     width: 100%;
-    height: 170px;
-    /* Ajustado */
+    height: 180px;
+    /* Ligeiramente aumentado para mais destaque */
     object-fit: contain;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 15px;
+    /* Aumentado padding interno da imagem */
+    background-color: var(--light-gray-color);
+    /* Fundo sutil para a imagem */
+    border-bottom: 1px solid var(--medium-gray-color);
+    /* Separador visual para a imagem */
 }
 
 .product-info {
@@ -860,123 +896,164 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    /* Ajustado */
-    padding: 0 10px;
+    gap: 8px;
+    /* Aumentado o gap */
+    padding: 0 15px;
+    /* Aumentado o padding horizontal */
     width: 100%;
     flex-grow: 1;
     /* Para ocupar espaço disponível */
 }
 
 .rating-stars {
-    font-size: 14px;
-    /* Ajustado */
+    font-size: 16px;
+    /* Aumentado para mais visibilidade */
     color: #ffc107;
+    margin-bottom: 5px;
+    /* Espaço abaixo das estrelas */
 }
 
 .product-name {
     /* Nome genérico do produto (Swiper, cards) */
-    font-size: 0.9rem;
+    font-size: 1rem;
+    /* Ligeiramente aumentado */
     color: var(--text-color-dark);
-    font-weight: 500;
-    line-height: 1.4;
-    /* Ajustado */
+    font-weight: 600;
+    /* Mais negrito */
+    line-height: 1.5;
+    /* Melhor legibilidade */
     margin: 0;
-    height: 2.8em;
-    /* Para aprox. 2 linhas, ajustado */
+    height: 3em;
+    /* Ajustado para aprox. 2 linhas */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     width: 100%;
-    /* Garante que o texto não ultrapasse o card */
+    text-align: center;
+    /* Centraliza o nome do produto */
 }
 
 .product-price {
     /* Preço genérico do produto (Swiper, cards) */
-    font-size: 1rem;
-    color: var(--text-color-dark);
-    /* Mudado para preto para destaque */
+    font-size: 1.2rem;
+    /* Aumentado para maior destaque */
+    color: var(--primary-color);
+    /* Cor primária para o preço */
     font-weight: bold;
     margin-top: auto;
-    /* Empurra o preço para baixo se houver espaço */
-    padding-top: 5px;
-    /* Espaço acima do preço */
+    padding-top: 10px;
+    /* Mais espaço acima do preço */
 }
 
+/* Botões de navegação do Swiper (genéricos e específicos dos carrosséis) */
 .swiper-button-next,
-.swiper-button-prev {
-    background-color: rgba(255, 255, 255, 0.85);
-    /* Mais opaco */
+.swiper-button-prev,
+.swiper-button-next-categories,
+.swiper-button-prev-categories,
+.swiper-button-next-most-viewed,
+.swiper-button-prev-most-viewed,
+.swiper-button-next-promotions,
+.swiper-button-prev-promotions {
+    background-color: var(--primary-color);
+    /* Cor primária para os botões */
     border-radius: 50%;
-    width: 40px;
-    /* Aumentado */
-    height: 40px;
-    box-shadow: var(--box-shadow-light);
-    color: var(--text-color-dark);
-    /* Cor da seta */
+    width: 50px;
+    /* Ligeiramente maior para um toque mais moderno */
+    height: 50px;
+    box-shadow: var(--box-shadow-medium);
+    /* Sombra mais visível */
+    color: var(--white-color);
+    /* Ícone branco */
     top: 50%;
     transform: translateY(-50%);
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    /* Transições mais suaves */
+    z-index: 10;
 }
 
 .swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+.swiper-button-prev:hover,
+.swiper-button-next-categories:hover,
+.swiper-button-prev-categories:hover,
+.swiper-button-next-most-viewed:hover,
+.swiper-button-prev-most-viewed:hover,
+.swiper-button-next-promotions:hover,
+.swiper-button-prev-promotions:hover {
+    background-color: var(--primary-color-hover);
+    transform: translateY(-50%) scale(1.05);
+    /* Pequeno zoom no hover */
+    box-shadow: var(--box-shadow-heavy);
 }
 
-.swiper-button-next {
-    right: -5px;
+.swiper-button-next,
+.swiper-button-next-categories,
+.swiper-button-next-most-viewed,
+.swiper-button-next-promotions {
+    right: 0px;
+    /* Alinha na borda direita do container swiper */
+    margin-right: 10px;
+    /* Adiciona uma margem para afastar do card */
 }
 
-/* Ajustado para melhor posicionamento */
-.swiper-button-prev {
-    left: -5px;
+.swiper-button-prev,
+.swiper-button-prev-categories,
+.swiper-button-prev-most-viewed,
+.swiper-button-prev-promotions {
+    left: 0px;
+    /* Alinha na borda esquerda do container swiper */
+    margin-left: 10px;
+    /* Adiciona uma margem para afastar do card */
 }
 
 .swiper-button-next::after,
-.swiper-button-prev::after {
-    font-size: 18px;
-    /* Aumentado */
+.swiper-button-prev::after,
+.swiper-button-next-categories::after,
+.swiper-button-prev-categories::after,
+.swiper-button-next-most-viewed::after,
+.swiper-button-prev-most-viewed::after,
+.swiper-button-next-promotions::after,
+.swiper-button-prev-promotions::after {
+    font-size: 22px;
+    /* Aumentado o tamanho do ícone */
     font-weight: bold;
 }
 
+
 .swiper-pagination {
     position: relative;
-    /* Ajustado para fluxo normal */
     bottom: auto;
-    margin-top: 25px;
-    /* Aumentado */
+    margin-top: 35px;
+    /* Mais espaço acima da paginação */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    /* Já é padrão */
     justify-content: center;
-    /* Centraliza os bullets */
-    gap: 8px;
-    /* Aumentado */
+    gap: 10px;
+    /* Aumentado o gap entre os bullets */
 }
 
 .swiper-pagination-bullet {
-    width: 10px;
-    /* Ajustado */
-    height: 10px;
+    width: 12px;
+    /* Ligeiramente maior */
+    height: 12px;
     background-color: var(--dark-gray-color);
     border-radius: 50%;
-    opacity: 0.7;
-    /* Ajustado */
-    transition: opacity 0.3s, background-color 0.3s;
+    opacity: 0.6;
+    /* Levemente mais visível */
+    transition: opacity 0.3s, background-color 0.3s, transform 0.3s;
 }
 
 .swiper-pagination-bullet-active {
     opacity: 1;
     background-color: var(--primary-color);
+    transform: scale(1.2);
+    /* Pequeno zoom no bullet ativo */
 }
 
 
-/* Grade de Produtos */
+/* Grade de Produtos (originalmente presente, mas agora os carrosséis usam swiper-slide) */
 .cols {
     display: grid;
     padding: 2rem 0;
@@ -990,11 +1067,12 @@ main {
     /* Responsividade automática */
 }
 
-.product {
-    /* Card de produto em grade */
+/* Os estilos abaixo se aplicam a .product (cards avulsos) E a .swiper-slide (itens do carrossel) */
+.product,
+.swiper-slide {
+    /* <-- Adicionado .swiper-slide aqui para reutilizar estilos de cards */
     background: var(--white-color);
     padding: 15px;
-    /* Ajustado */
     border-radius: 8px;
     box-shadow: var(--box-shadow-medium);
     text-align: center;
@@ -1002,25 +1080,25 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    /* Ajustado */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
-    /* Para product-icons */
     overflow: hidden;
-    /* Para garantir que nada escape */
 }
 
-.product:hover {
+.product:hover,
+.swiper-slide:not(.swiper-slide-active):hover {
+    /* Aplicar hover apenas para slides NÃO ativos */
+    /* <-- Adicionado .swiper-slide aqui */
     transform: translateY(-5px);
     box-shadow: var(--box-shadow-heavy);
 }
 
-.product img {
+.product img,
+.swiper-slide img {
+    /* <-- Adicionado .swiper-slide img aqui */
     width: 100%;
     max-width: 180px;
-    /* Aumentado */
     height: 180px;
-    /* Aumentado */
     object-fit: contain;
 }
 
@@ -1028,14 +1106,11 @@ main {
     position: absolute;
     top: 10px;
     right: 10px;
-    /* Movido para a direita para padrão comum */
     display: flex;
     flex-direction: column;
-    /* Ícones empilhados verticalmente */
     gap: 8px;
     z-index: 10;
     background-color: rgba(255, 255, 255, 0.7);
-    /* Fundo sutil para melhor visibilidade */
     padding: 5px;
     border-radius: 5px;
 }
@@ -1043,61 +1118,54 @@ main {
 .favorite-icon,
 .cart-product-icon {
     font-size: 1.4rem;
-    /* Ajustado */
     color: var(--dark-gray-color);
-    /* Cor padrão */
     cursor: pointer;
     transition: color 0.3s ease, transform 0.2s ease;
     padding: 3px;
-    /* Pequeno padding para área de clique */
 }
 
 .favorite-icon:hover,
 .cart-product-icon:hover {
     transform: scale(1.1);
-    /* Efeito de zoom no hover */
 }
 
 .favorite-icon.favorited,
 .cart-product-icon.in-cart {
-    /* .in-cart será adicionada via JS */
     color: var(--primary-color);
-    /* Cor quando ativo */
 }
 
-
-.product .product-name {
-    /* Nome do produto no card de grade */
+.product .product-name,
+.swiper-slide .product-name {
+    /* <-- Aplicado a ambos */
     font-size: 0.95rem;
-    /* Levemente maior */
     min-height: auto;
-    /* Removido min-height fixo, usa line-clamp */
     height: 2.8em;
-    /* Mantém consistência com swiper */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    width: 100%;
     margin-top: 5px;
-    /* Pequena margem superior */
 }
 
-.product .rate {
-    /* Estrelas no card de produto */
+.product .rate,
+.swiper-slide .rating-stars {
+    /* <-- Unificado para .rating-stars no swiper-slide */
     color: #ffc107;
     font-size: 0.9rem;
-    /* Ajustado */
     margin: 5px 0;
-    /* Espaçamento vertical */
 }
 
-.product .product-price {
-    /* Preço no card de produto */
+.product .product-price,
+.swiper-slide .product-price {
+    /* <-- Aplicado a ambos */
     font-size: 1.15rem;
-    /* Levemente maior */
     margin-top: auto;
-    /* Empurra para baixo */
 }
 
 /* Seção Exclusiva (Ex: Apple Watch Ultra) */
 .exclusive-container {
-    /* Reutiliza .header-bottom-side mas pode ter variações */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1107,45 +1175,35 @@ main {
 }
 
 .exclusive-container .header-bottom-side-left {
-    /* Estilos específicos se necessário */
     order: 1;
-    /* Padrão, texto à esquerda */
 }
 
 .exclusive-container .header-bottom-side-right {
     order: 2;
-    /* Padrão, imagem à direita */
 }
 
 .exclusive-container model-viewer {
     width: 100%;
     max-width: 420px;
-    /* Ajustado */
     height: 380px;
-    /* Ajustado */
     border-radius: 8px;
 }
 
 /* Depoimentos */
 .testimonials {
     display: grid;
-    /* Usando grid para melhor responsividade */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
-    /* Aumentado */
     padding: 2rem 0;
 }
 
 .testimonial {
     background: var(--white-color);
     padding: 2rem;
-    /* Aumentado */
     border-radius: 10px;
-    /* Aumentado */
     box-shadow: var(--box-shadow-medium);
     text-align: center;
     cursor: default;
-    /* Não precisa ser clicável a menos que leve a algum lugar */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1155,43 +1213,29 @@ main {
 }
 
 .testimonial p:first-child {
-    /* Aspas */
     font-weight: bold;
     font-size: 3.5rem;
-    /* Aumentado */
     color: var(--primary-color);
     line-height: 0.8;
-    /* Ajustado */
     margin-bottom: 0.8rem;
-    /* Aumentado */
 }
 
 .testimonial p:nth-child(2) {
-    /* Texto do depoimento */
     font-size: 1rem;
-    /* Aumentado */
     line-height: 1.6;
-    /* Aumentado */
     color: var(--text-color-light);
     margin-bottom: 1rem;
-    /* Aumentado */
     min-height: 3.2em;
-    /* Para aprox. 2 linhas de texto */
 }
 
 .testimonial .rate {
-    /* Estrelas no depoimento */
     margin-bottom: 1rem;
-    /* Aumentado */
     font-size: 1.1rem;
 }
 
 .testimonial p:last-child {
-    /* Nome do autor */
     font-weight: 600;
-    /* Mais destaque */
     font-size: 1.05rem;
-    /* Aumentado */
     color: var(--text-color-dark);
     margin-top: 0.5rem;
 }
@@ -1204,12 +1248,10 @@ main {
     .header-bottom-side-left,
     .exclusive-container .header-bottom-side-left {
         padding-right: 10px;
-        /* Reduz padding se necessário */
     }
 
     .header-bottom-side-left h2 {
         margin-left: 0;
-        /* Removendo margens específicas se houver */
         text-align: left;
     }
 
@@ -1228,7 +1270,6 @@ main {
 @media (max-width: 1024px) {
     .icon-group-left {
         gap: 20px;
-        /* Reduz gap entre ícones */
         font-size: 20px;
     }
 
@@ -1236,7 +1277,6 @@ main {
     .exclusive-container {
         flex-direction: column;
         text-align: center;
-        /* Centraliza texto quando empilhado */
     }
 
     .header-bottom-side-left,
@@ -1247,11 +1287,8 @@ main {
         padding-right: 0;
         margin-left: 0;
         width: 100%;
-        /* Ocupar toda a largura */
         max-width: 500px;
-        /* Limita a largura do conteúdo de texto */
         align-items: center;
-        /* Centraliza conteúdo interno */
     }
 
     .header-bottom-side-left h2,
@@ -1269,27 +1306,25 @@ main {
         order: 2;
     }
 
-    /* Texto abaixo da imagem */
     .exclusive-container .header-bottom-side-right {
         order: 1;
     }
 
     .popup {
-        /* Popups em telas menores */
         left: 50%;
         transform: translateX(-50%);
         right: auto;
         width: clamp(280px, 90vw, 350px);
-        /* Largura responsiva para popups */
     }
 
     .cols-4 {
-        /* Em tablets, 2 colunas */
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 15px;
     }
 
-    .product .product-name {
+    .product .product-name,
+    .swiper-slide .product-name {
+        /* <-- Aplicado a ambos */
         font-size: 0.9rem;
     }
 
@@ -1311,12 +1346,54 @@ main {
     /* Ajuste para títulos alinhados à esquerda em tablets */
     .selection-title.align-left {
         margin-left: 15px;
-        /* Alinha com o page-inner-content padding */
         margin-right: 15px;
     }
 
     .selection-title.align-left+.blue-line-full-width {
         margin-left: 15px;
+    }
+
+    /* Ajustes para os botões de navegação em telas menores */
+    .swiper {
+        padding: 0;
+        /* Remove padding */
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-button-next-categories,
+    .swiper-button-prev-categories,
+    .swiper-button-next-most-viewed,
+    .swiper-button-prev-most-viewed,
+    .swiper-button-next-promotions,
+    .swiper-button-prev-promotions {
+        width: 40px;
+        /* Reduz o tamanho em telas menores */
+        height: 40px;
+        margin: 0 5px;
+        /* Ajusta a margem para telas menores */
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after,
+    .swiper-button-next-categories::after,
+    .swiper-button-prev-categories::after,
+    .swiper-button-next-most-viewed::after,
+    .swiper-button-prev-most-viewed::after,
+    .swiper-button-next-promotions::after,
+    .swiper-button-prev-promotions::after {
+        font-size: 18px;
+        /* Reduz o ícone da seta em telas menores */
+    }
+
+    .swiper-pagination {
+        margin-top: 25px;
+        /* Reduz o espaçamento em tablets */
+    }
+
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
     }
 }
 
@@ -1342,7 +1419,6 @@ main {
     .cart-counter-icon,
     .account-icon,
     .whatsapp-header-icon {
-        /* Aplicar também ao ícone do cabeçalho */
         font-size: 20px;
     }
 
@@ -1358,15 +1434,11 @@ main {
 
     nav ul {
         justify-content: flex-start;
-        /* Alinha à esquerda */
         padding-left: 10px;
         padding-right: 10px;
         overflow-x: auto;
-        /* Rolagem horizontal para navbar */
         white-space: nowrap;
-        /* Impede quebra de linha dos itens */
         -webkit-overflow-scrolling: touch;
-        /* Melhora rolagem em iOS */
     }
 
     nav ul li {
@@ -1392,27 +1464,33 @@ main {
     }
 
     .cols-4 {
-        /* Em celulares, 1 ou 2 colunas dependendo do minmax */
         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-        /* Tentar manter 2 colunas se couber */
         gap: 12px;
     }
 
-    .product {
+    .product,
+    .swiper-slide {
+        /* <-- Aplicado a ambos */
         padding: 12px;
     }
 
-    .product img {
+    .product img,
+    .swiper-slide img {
+        /* <-- Aplicado a ambos */
         max-width: 140px;
         height: 140px;
     }
 
-    .product .product-name {
+    .product .product-name,
+    .swiper-slide .product-name {
+        /* <-- Aplicado a ambos */
         font-size: 0.85rem;
         height: 2.5em;
     }
 
-    .product .product-price {
+    .product .product-price,
+    .swiper-slide .product-price {
+        /* <-- Aplicado a ambos */
         font-size: 1rem;
     }
 
@@ -1428,12 +1506,6 @@ main {
         font-size: 1.2rem;
     }
 
-    .swiper-slide img {
-        height: 140px;
-    }
-
-    /* Ajuste para slides do Swiper */
-
     .selection-title {
         font-size: 1.6rem;
     }
@@ -1447,7 +1519,6 @@ main {
         gap: 20px;
     }
 
-    /* Uma coluna para depoimentos */
     .testimonial {
         padding: 1.5rem;
     }
@@ -1478,12 +1549,44 @@ main {
     /* Ajuste para títulos alinhados à esquerda em celulares */
     .selection-title.align-left {
         margin-left: 15px;
-        /* Alinha com o page-inner-content padding */
         margin-right: 15px;
     }
 
     .selection-title.align-left+.blue-line-full-width {
         margin-left: 15px;
+    }
+
+    /* Ajustes para os botões de navegação em telas menores */
+    .swiper {
+        padding: 0;
+        /* Remove padding */
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-button-next-categories,
+    .swiper-button-prev-categories,
+    .swiper-button-next-most-viewed,
+    .swiper-button-prev-most-viewed,
+    .swiper-button-next-promotions,
+    .swiper-button-prev-promotions {
+        width: 35px;
+        /* Reduz ainda mais para celulares */
+        height: 35px;
+        margin: 0 5px;
+        /* Ajusta a margem para telas menores */
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after,
+    .swiper-button-next-categories::after,
+    .swiper-button-prev-categories::after,
+    .swiper-button-next-most-viewed::after,
+    .swiper-button-prev-most-viewed::after,
+    .swiper-button-next-promotions::after,
+    .swiper-button-prev-promotions::after {
+        font-size: 16px;
+        /* Ícone menor */
     }
 }
 
@@ -1493,7 +1596,6 @@ main {
         gap: 10px;
     }
 
-    /* Ainda menor */
     .search-container input {
         font-size: 14px;
     }
@@ -1501,8 +1603,6 @@ main {
     .mic-icon {
         display: none;
     }
-
-    /* Opcional: esconder microfone se não houver espaço */
 
     .header-bottom-side-left h2 {
         font-size: 1.6rem;
@@ -1528,21 +1628,18 @@ main {
 
     .cols-4 {
         grid-template-columns: 1fr;
-        /* Forçar uma coluna em telas muito pequenas */
         gap: 15px;
     }
 
-    .product img {
+    .product img,
+    .swiper-slide img {
+        /* <-- Aplicado a ambos */
         max-width: 150px;
         height: 150px;
     }
 
-    /* Imagem pode ser um pouco maior em 1 coluna */
-
-
     .popup {
         width: calc(100vw - 30px);
-        /* Quase largura total com margens */
     }
 
     .favorite-item-image,
@@ -1589,21 +1686,32 @@ main {
     /* Ajuste para títulos alinhados à esquerda em celulares muito pequenos */
     .selection-title.align-left {
         margin-left: 15px;
-        /* Alinha com o page-inner-content padding */
         margin-right: 15px;
     }
 
     .selection-title.align-left+.blue-line-full-width {
         margin-left: 15px;
     }
+
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-button-next-categories,
+    .swiper-button-prev-categories,
+    .swiper-button-next-most-viewed,
+    .swiper-button-prev-most-viewed,
+    .swiper-button-next-promotions,
+    .swiper-button-prev-promotions {
+        width: 30px;
+        height: 30px;
+        margin: 0;
+        /* Remove margem para celulares muito pequenos e deixa-os na borda */
+    }
 }
 
 /* Ajustes específicos para model-viewer se necessário */
 model-viewer {
     display: block;
-    /* Garante que o model-viewer se comporte como um bloco */
     margin: 0 auto;
-    /* Centraliza se tiver largura definida menor que o pai */
 }
 
 /* Footer */
@@ -1697,33 +1805,21 @@ model-viewer {
 
 .payment-icons {
     display: flex;
-    /* Usar flexbox para alinhar as imagens */
     flex-wrap: wrap;
-    /* Permite que as imagens quebrem linha */
     justify-content: center;
-    /* Centraliza as imagens */
     align-items: center;
-    /* Alinha verticalmente no centro */
     gap: 15px;
-    /* Espaçamento entre as imagens */
 }
 
 .payment-icons img {
     width: 60px;
-    /* Largura padrão para todas as imagens de pagamento */
     height: 40px;
-    /* Altura padrão para todas as imagens de pagamento */
     object-fit: contain;
-    /* Garante que a imagem se ajuste dentro das dimensões sem cortar */
     filter: none;
-    /* Remove o filtro de grayscale */
     opacity: 1;
-    /* Garante opacidade total */
     transition: none;
-    /* Remove qualquer transição desnecessária aqui */
 }
 
-/* Remove o efeito de hover desnecessário já que as cores devem ser mantidas */
 .payment-icons img:hover {
     filter: none;
     opacity: 1;
@@ -1813,9 +1909,7 @@ model-viewer {
 
     .payment-icons img {
         width: 50px;
-        /* Ajuste para telas menores */
         height: 35px;
-        /* Ajuste para telas menores */
         gap: 10px;
     }
 
@@ -1860,9 +1954,7 @@ model-viewer {
 
     .payment-icons img {
         width: 45px;
-        /* Ajuste para telas muito pequenas */
         height: 30px;
-        /* Ajuste para telas muito pequenas */
         gap: 8px;
     }
 

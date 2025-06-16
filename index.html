@@ -76,10 +76,6 @@
                         </div>
                         <span id="welcome-message" class="welcome-message"></span>
                     </div>
-                    <a href="https://wa.me/55DDXXXXXXXXX" target="_blank" aria-label="Atendimento via WhatsApp"
-                        class="whatsapp-header-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
                 </div>
             </div>
             <div class="search-container-row">
@@ -134,13 +130,6 @@
                             </div>
                         </model-viewer>
                         <h3 class="product-name">MacBook Pro M4 - 512GB SSD</h3>
-                        <div class="product-rating">
-                            <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-                        </div>
-                        <div class="price-and-button">
-                            <p class="product-price">R$ 18.499,00</p>
-                            <button class="buy-now-button">Comprar Agora</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -198,6 +187,10 @@
                             data-product-name="MacBook Air M3 13' 256GB - Estelar" data-product-price="10999.00"
                             data-product-image="images/products/macbook-air-m3.png">
                             <img src="images/products/macbook-air-m3.png" alt="MacBook Air M3" />
+                            <div class="product-icons">
+                                <i class="far fa-heart favorite-icon"></i>
+                                <i class="fas fa-shopping-bag cart-product-icon"></i>
+                            </div>
                             <div class="product-info">
                                 <div class="rating-stars">★★★★★</div>
                                 <h3 class="product-name">MacBook Air M3 13" 256GB - Estelar</h3>
@@ -452,7 +445,7 @@
             // Swiper Initialization
             var swiperCategories = new Swiper(".swiper-categories", {
                 loop: true,
-                centeredSlides: true, // <--- ADICIONADO AQUI
+                centeredSlides: true,
                 autoplay: {
                     delay: 4500,
                     disableOnInteraction: false,
@@ -478,7 +471,7 @@
 
             var swiperMostViewed = new Swiper(".swiper-most-viewed", {
                 loop: true,
-                centeredSlides: true, // <--- ADICIONADO AQUI
+                centeredSlides: true,
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false,
@@ -504,7 +497,7 @@
 
             var swiperPromotions = new Swiper(".swiper-promotions", {
                 loop: true,
-                centeredSlides: true, // <--- ADICIONADO AQUI
+                centeredSlides: true,
                 autoplay: {
                     delay: 5500,
                     disableOnInteraction: false,

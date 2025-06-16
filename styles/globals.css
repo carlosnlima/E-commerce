@@ -38,20 +38,15 @@ body {
     background-color: var(--white-color);
     box-shadow: var(--box-shadow-light);
     position: sticky;
-    /* Adicionado para header fixo, se desejado */
     top: 0;
-    /* Adicionado para header fixo */
     z-index: 1020;
-    /* Garante que o header fique acima de outros conteúdos */
 }
 
 .page-inner-content {
     max-width: 1200px;
     margin: 0 auto;
     padding-left: 15px;
-    /* Padding base para telas menores */
     padding-right: 15px;
-    /* Padding base para telas menores */
 }
 
 .page-inner-content.header-content-wrapper {
@@ -61,7 +56,6 @@ body {
     width: 100%;
     gap: 15px;
     padding-left: 0;
-    /* Resetar padding para o wrapper interno do header */
     padding-right: 0;
 }
 
@@ -72,7 +66,6 @@ body {
     width: 100%;
     min-height: 40px;
     padding: 0 10px;
-    /* Adicionado padding para os ícones não colarem nas bordas */
 }
 
 .icon-group-left {
@@ -84,21 +77,6 @@ body {
     color: var(--text-color-dark);
 }
 
-/* Estilo para o ícone do WhatsApp no cabeçalho */
-.whatsapp-header-icon {
-    font-size: 22px;
-    color: var(--text-color-dark);
-    /* Cor do WhatsApp */
-    transition: color 0.2s ease;
-    text-decoration: none;
-    /* Remover sublinhado */
-}
-
-.whatsapp-header-icon:hover {
-    color: #25D366;
-    /* Cor mais escura no hover */
-}
-
 
 .search-container-row {
     display: flex;
@@ -106,7 +84,6 @@ body {
     align-items: center;
     width: 100%;
     padding: 0 10px;
-    /* Adicionado padding para a barra de busca não colar nas bordas */
 }
 
 .search-container {
@@ -127,7 +104,6 @@ body {
     padding: 10px;
     font-size: 16px;
     background-color: transparent;
-    /* Garante que o input não tenha fundo próprio */
 }
 
 .mic-icon {
@@ -143,7 +119,6 @@ body {
     color: var(--primary-color);
     padding: 0 10px;
     font-size: 18px;
-    /* Ajuste no tamanho do ícone da lupa */
 }
 
 .favorites-container,
@@ -188,7 +163,6 @@ body {
     display: none;
     position: absolute;
     top: 45px;
-    /* Aumentado para não sobrepor o ícone */
     right: 0;
     background-color: var(--white-color);
     border: 1px solid var(--border-color-light, #ddd);
@@ -196,13 +170,9 @@ body {
     border-radius: 8px;
     padding: 15px;
     width: 320px;
-    /* Largura padrão */
     z-index: 1050;
-    /* Acima do header sticky */
     max-height: calc(100vh - 100px);
-    /* Evita que o popup seja maior que a tela */
     overflow-y: auto;
-    /* Permite rolagem se o conteúdo for grande */
 }
 
 .account-popup {
@@ -218,42 +188,33 @@ body {
 
 .account-popup.show {
     display: flex;
-    /* Para sobrescrever o display: block se necessário */
 }
 
 .popup h3 {
     margin-top: 0;
     margin-bottom: 15px;
-    /* Aumentado espaçamento */
     color: var(--text-color-dark);
     border-bottom: 1px solid var(--medium-gray-color);
     padding-bottom: 10px;
-    /* Aumentado padding */
     text-align: center;
     width: 100%;
     font-size: 1.1rem;
-    /* Tamanho do título do popup */
 }
 
 .popup ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    /* Reset margin para ul */
     width: 100%;
     max-height: 280px;
-    /* Aumentado um pouco */
     overflow-y: auto;
-    /* Garante rolagem interna da lista */
 }
 
 .popup ul li {
-    /* Estilo para itens de lista em popups (favoritos, carrinho) */
     display: flex;
     align-items: center;
     margin-bottom: 12px;
     padding-bottom: 12px;
-    /* Aumentado padding */
     border-bottom: 1px dashed var(--medium-gray-color);
 }
 
@@ -265,15 +226,12 @@ body {
 .favorite-item-image,
 .cart-item-image {
     width: 60px;
-    /* Aumentado tamanho da imagem */
     height: 60px;
     object-fit: contain;
     margin-right: 12px;
-    /* Aumentado margem */
     border: 1px solid var(--medium-gray-color);
     border-radius: 4px;
     flex-shrink: 0;
-    /* Impede que a imagem encolha */
 }
 
 .favorite-item-details,
@@ -282,7 +240,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    /* Espaço entre nome, preço, controles */
 }
 
 .favorite-item-name,
@@ -297,7 +254,6 @@ body {
 .favorite-item-price,
 .cart-item-price {
     font-size: 14px;
-    /* Ajustado para consistência */
     color: var(--primary-color);
     font-weight: bold;
     margin: 0;
@@ -331,26 +287,21 @@ body {
     padding: 0 5px;
     font-size: 14px;
     min-width: 20px;
-    /* Para manter o alinhamento */
     text-align: center;
 }
 
 
 .remove-favorite-btn,
 .remove-cart-item-btn {
-    /* Agora é o botão de lixeira */
     background: none;
     border: none;
     color: var(--danger-color);
     font-size: 18px;
-    /* Ajustado */
     cursor: pointer;
     margin-left: 10px;
     padding: 5px;
-    /* Área de clique maior */
     transition: color 0.2s ease;
     align-self: center;
-    /* Alinha o botão de remover no centro do item */
 }
 
 .remove-favorite-btn:hover,
@@ -360,13 +311,10 @@ body {
 
 .cart-total {
     font-size: 1.1rem;
-    /* Aumentado */
     font-weight: bold;
     text-align: right;
     margin-top: 20px;
-    /* Aumentado */
     padding-top: 15px;
-    /* Aumentado */
     border-top: 1px solid var(--medium-gray-color);
 }
 
@@ -375,7 +323,6 @@ body {
 .account-popup button {
     border: none;
     padding: 10px 15px;
-    /* Aumentado padding */
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
@@ -383,13 +330,11 @@ body {
     transition: background-color 0.2s ease;
     font-weight: 500;
     font-size: 15px;
-    /* Ajustado */
 }
 
 .close-popup {
     background-color: var(--dark-gray-color, #ccc);
     color: var(--text-color-dark);
-    /* Mudado para melhor contraste */
 }
 
 .close-popup:hover {
@@ -416,7 +361,6 @@ body {
 .coupon-section input {
     flex: 1;
     padding: 10px;
-    /* Aumentado */
     border: 1px solid var(--dark-gray-color);
     border-radius: 4px;
     font-size: 14px;
@@ -427,7 +371,6 @@ body {
     color: var(--white-color);
     border: none;
     padding: 10px 15px;
-    /* Aumentado */
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -440,9 +383,7 @@ body {
 
 .coupon-message {
     font-size: 13px;
-    /* Aumentado */
     margin-top: 8px;
-    /* Aumentado */
     text-align: center;
     width: 100%;
     font-weight: bold;
@@ -460,23 +401,18 @@ body {
     flex-direction: column;
     width: 100%;
     gap: 10px;
-    /* Adicionado gap */
 }
 
 .account-popup input {
     width: 100%;
     padding: 12px;
-    /* Aumentado */
     margin-bottom: 12px;
-    /* Aumentado */
     border: 1px solid var(--border-color-light, #ddd);
     border-radius: 5px;
     font-size: 15px;
-    /* Ajustado */
 }
 
 .account-popup button {
-    /* Estilo geral para botões no popup de conta */
     background-color: var(--primary-color);
     color: var(--white-color);
 }
@@ -487,12 +423,10 @@ body {
 
 .account-options .account-action-btn {
     margin-bottom: 0;
-    /* Removido, usando gap do flex container */
 }
 
 .back-to-options-btn {
     background-color: var(--dark-gray-color, #ccc) !important;
-    /* Mantém !important se necessário para sobrescrever */
     color: var(--text-color-dark) !important;
     margin-top: 10px;
 }
@@ -503,43 +437,34 @@ body {
 
 .welcome-message {
     position: fixed;
-    /* Mudado para fixed para melhor visibilidade */
     top: 60px;
-    /* Ajustado para abaixo do header fixo */
     right: 20px;
     background-color: var(--primary-color);
     color: var(--white-color);
     padding: 10px 18px;
-    /* Aumentado */
     border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    /* Adicionada transição de transform */
     z-index: 1060;
-    /* Acima dos popups */
     display: none;
     transform: translateY(-20px);
-    /* Posição inicial para animação */
 }
 
 .welcome-message.show {
     opacity: 1;
     display: block;
     transform: translateY(0);
-    /* Posição final da animação */
 }
 
 /* Barra de Navegação (Navbar) */
 .navbar {
     background-color: var(--white-color);
     padding: 12px 0;
-    /* Ajustado */
     border-bottom: 1px solid var(--medium-gray-color);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    /* Sombra sutil */
 }
 
 nav ul {
@@ -548,28 +473,22 @@ nav ul {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    /* Permite quebra de linha em telas menores */
     gap: 5px 0;
-    /* Espaçamento vertical quando quebrar linha */
 }
 
 nav ul li {
     margin: 0 8px;
-    /* Ajustado */
 }
 
 nav ul li a.nav-button {
     color: var(--text-color-dark);
     text-decoration: none;
     font-size: 15px;
-    /* Ajustado */
     font-weight: 500;
     padding: 8px 15px;
-    /* Ajustado */
     border-radius: 20px;
     transition: all 0.2s ease;
     display: inline-block;
-    /* Para padding funcionar corretamente */
 }
 
 nav ul li a.nav-button:hover {
@@ -579,15 +498,12 @@ nav ul li a.nav-button:hover {
 }
 
 nav ul li:nth-child(even) {
-    /* Separador "|" */
     color: var(--dark-gray-color);
     cursor: default;
     user-select: none;
-    /* Impede seleção do separador */
 }
 
 nav ul li:nth-child(even):hover {
-    /* Garante que o separador não tenha hover */
     background-color: transparent;
     transform: none;
     color: var(--dark-gray-color);
@@ -596,38 +512,28 @@ nav ul li:nth-child(even):hover {
 
 /* Header Principal (com produto em destaque) */
 header {
-    /* Tag <header> do corpo */
     background-color: var(--light-gray-color);
-    /* Simplificado, gradiente pode ser pesado */
     padding: 2rem 0;
-    /* Adicionado padding vertical */
 }
 
 .header-bottom-side {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Melhor distribuição */
     padding: 2rem 0;
-    /* Removido padding horizontal, já no page-inner-content */
     flex-wrap: wrap;
     gap: 30px;
-    /* Espaçamento entre left e right quando empilhado */
 }
 
 .header-bottom-side-left {
     flex: 1;
     min-width: 300px;
-    /* Mantido */
     padding-right: 20px;
-    /* Espaçamento para o lado direito */
     text-align: left;
-    /* Alinhamento padrão para LTR */
 }
 
 .header-bottom-side-left h2 {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
-    /* Tamanho de fonte responsivo */
     margin-bottom: 1.5rem;
     color: var(--text-color-dark);
     line-height: 1.3;
@@ -635,11 +541,8 @@ header {
 
 .header-bottom-side-left p {
     line-height: 1.7;
-    /* Aumentado para melhor legibilidade */
     margin-bottom: 2rem;
-    /* Aumentado */
     font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-    /* Responsivo */
     color: var(--text-color-light);
 }
 
@@ -648,9 +551,7 @@ header {
     border: none;
     cursor: pointer;
     padding: 0.9rem 3rem;
-    /* Ajustado */
     border-radius: 50px;
-    /* Mais arredondado */
     color: var(--white-color);
     font-weight: 500;
     font-size: 1rem;
@@ -671,145 +572,77 @@ header {
     justify-content: center;
     text-align: center;
     gap: 10px;
-    /* Aumentado */
     position: relative;
-    /* Para elementos posicionados dentro, se houver */
 }
 
 .header-bottom-side-right model-viewer {
-    /* Estilo para model-viewer */
     width: 100%;
     max-width: 480px;
-    /* Ajustado */
     height: 400px;
-    /* Mantido, ajuste conforme o modelo */
     border-radius: 8px;
-    /* Opcional */
 }
 
 .header-bottom-side-right .product-name {
-    /* Nome do produto no header */
     font-size: 1.1rem;
     font-weight: 600;
     margin-top: 10px;
-}
-
-.header-bottom-side-right .product-rating {
-    color: #ffc107;
-    font-size: 1.1rem;
-    /* Ajustado */
-}
-
-.header-bottom-side-right .price-and-button {
-    display: flex;
-    flex-direction: column;
-    /* Empilhar em telas menores se necessário */
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    /* Mantido */
-    margin-top: 10px;
-}
-
-.header-bottom-side-right .product-price {
-    font-size: 1.6rem;
-    /* Aumentado */
-    font-weight: bold;
-    color: var(--text-color-dark);
-}
-
-.header-bottom-side-right .buy-now-button {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    border: none;
-    padding: 0.8rem 2rem;
-    /* Ajustado */
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-decoration: none;
-}
-
-.header-bottom-side-right .buy-now-button:hover {
-    background-color: var(--primary-color-hover);
-    transform: translateY(-2px);
 }
 
 /* Main Content */
 main {
     background-color: var(--white-color);
     padding-top: 1px;
-    /* Para evitar colapso de margem com o header, se não for sticky */
 }
 
 .gray-background {
     background-color: var(--light-gray-color);
-    /* Remove padding aqui para gerenciar via classes de espaçamento */
 }
 
 /* Classes para espaçamento padronizado */
 .section-spacing {
     padding: 60px 0;
-    /* Espaçamento padrão entre as seções */
 }
 
 .first-section-spacing {
     padding-top: 80px;
-    /* Maior espaçamento do topo da página (entre o header e a 1ª seção) */
     padding-bottom: 60px;
-    /* Mantém o espaçamento padrão abaixo */
 }
 
 .last-section-spacing {
     padding-top: 60px;
-    /* Mantém o espaçamento padrão acima */
     padding-bottom: 80px;
-    /* Maior espaçamento da parte inferior da página (entre a última seção e o footer) */
 }
 
 
 .section-title-container {
     margin-bottom: 20px;
-    /* Espaço após o título da seção */
 }
 
 .blue-line-full-width {
     width: clamp(500px, 100%, 1200px);
-    /* Linha responsiva, máximo 200px */
     height: 6px;
-    /* Aumentado */
     background-color: var(--primary-color);
     margin: 10px auto 30px auto;
-    /* Centralizado por padrão */
     border-radius: 20px;
 }
 
 /* Alinhamento dos títulos */
 .selection-title {
     text-align: center;
-    /* Padrão centralizado */
     font-size: clamp(1.8rem, 5vw, 2.2rem);
-    /* Responsivo */
     margin-bottom: 10px;
-    /* Ajustado */
     color: var(--text-color-dark);
     font-weight: 600;
 }
 
 .selection-title.align-left {
     text-align: left;
-    /* Alinha à esquerda */
     margin-left: 0;
-    /* Garante que não tenha margem de auto */
 }
 
 .selection-title.align-left+.blue-line-full-width {
     margin-left: 0;
-    /* Alinha a linha azul com o título à esquerda */
     margin-right: auto;
-    /* Garante que a linha azul não vá para a direita */
 }
 
 /* Swiper (Carrossel de Categorias/Produtos) */
@@ -817,56 +650,44 @@ main {
     width: 100%;
     margin: 20px auto 40px auto;
     position: relative;
-    padding: 0;
-    /* Removido o padding para os botões ficarem totalmente fora */
     overflow: hidden;
-    /* Alterado para hidden para conter os slides */
+    /* Garante que os slides não "fujam" do container */
 }
 
 .swiper-wrapper {
     display: flex;
-    /* Já é padrão do Swiper */
 }
 
 .swiper-slide {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* Para alinhar o conteúdo */
     align-items: center;
     flex-shrink: 0;
     text-align: center;
     background-color: var(--white-color);
     border-radius: 12px;
-    /* Aumentado o border-radius para um visual mais suave */
     box-shadow: var(--box-shadow-medium);
-    /* Alterado para medium para mais destaque */
     overflow: hidden;
     height: auto;
     padding-bottom: 15px;
     border: 1px solid var(--medium-gray-color);
-    /* Adicionado borda sutil */
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    /* Transições mais suaves */
+    /* Adicionada transição para borda */
 }
 
 .swiper-slide:hover {
     transform: translateY(-8px);
-    /* Aumentado o translateY para um efeito mais pronunciado */
     box-shadow: var(--box-shadow-heavy);
-    /* Sombra mais pesada no hover */
     border-color: var(--primary-color);
-    /* Borda fica da cor primária no hover */
 }
 
 /* Estilo para o slide ativo (central) */
 .swiper-slide-active {
     border: 2px solid var(--primary-color);
-    /* Borda azul para o item do meio */
     transform: none;
     /* Remove o translateY do hover para o slide ativo */
     box-shadow: var(--box-shadow-heavy);
-    /* Mantém a sombra mais pesada */
 }
 
 .swiper-slide-active:hover {
@@ -876,55 +697,39 @@ main {
     /* Mantém a sombra mais pesada */
 }
 
-
 .swiper-slide img {
     width: 100%;
     height: 180px;
-    /* Ligeiramente aumentado para mais destaque */
     object-fit: contain;
     margin-bottom: 10px;
     padding: 15px;
-    /* Aumentado padding interno da imagem */
     background-color: var(--light-gray-color);
-    /* Fundo sutil para a imagem */
     border-bottom: 1px solid var(--medium-gray-color);
-    /* Separador visual para a imagem */
 }
 
 .product-info {
-    /* Para Swiper e cards de produto */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    /* Aumentado o gap */
     padding: 0 15px;
-    /* Aumentado o padding horizontal */
     width: 100%;
     flex-grow: 1;
-    /* Para ocupar espaço disponível */
 }
 
 .rating-stars {
     font-size: 16px;
-    /* Aumentado para mais visibilidade */
     color: #ffc107;
     margin-bottom: 5px;
-    /* Espaço abaixo das estrelas */
 }
 
 .product-name {
-    /* Nome genérico do produto (Swiper, cards) */
     font-size: 1rem;
-    /* Ligeiramente aumentado */
     color: var(--text-color-dark);
     font-weight: 600;
-    /* Mais negrito */
     line-height: 1.5;
-    /* Melhor legibilidade */
     margin: 0;
     height: 3em;
-    /* Ajustado para aprox. 2 linhas */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -932,19 +737,14 @@ main {
     -webkit-box-orient: vertical;
     width: 100%;
     text-align: center;
-    /* Centraliza o nome do produto */
 }
 
 .product-price {
-    /* Preço genérico do produto (Swiper, cards) */
     font-size: 1.2rem;
-    /* Aumentado para maior destaque */
     color: var(--primary-color);
-    /* Cor primária para o preço */
     font-weight: bold;
     margin-top: auto;
     padding-top: 10px;
-    /* Mais espaço acima do preço */
 }
 
 /* Botões de navegação do Swiper (genéricos e específicos dos carrosséis) */
@@ -957,19 +757,14 @@ main {
 .swiper-button-next-promotions,
 .swiper-button-prev-promotions {
     background-color: var(--primary-color);
-    /* Cor primária para os botões */
     border-radius: 50%;
     width: 50px;
-    /* Ligeiramente maior para um toque mais moderno */
     height: 50px;
     box-shadow: var(--box-shadow-medium);
-    /* Sombra mais visível */
     color: var(--white-color);
-    /* Ícone branco */
     top: 50%;
     transform: translateY(-50%);
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    /* Transições mais suaves */
     z-index: 10;
 }
 
@@ -983,7 +778,6 @@ main {
 .swiper-button-prev-promotions:hover {
     background-color: var(--primary-color-hover);
     transform: translateY(-50%) scale(1.05);
-    /* Pequeno zoom no hover */
     box-shadow: var(--box-shadow-heavy);
 }
 
@@ -992,9 +786,7 @@ main {
 .swiper-button-next-most-viewed,
 .swiper-button-next-promotions {
     right: 0px;
-    /* Alinha na borda direita do container swiper */
     margin-right: 10px;
-    /* Adiciona uma margem para afastar do card */
 }
 
 .swiper-button-prev,
@@ -1002,9 +794,7 @@ main {
 .swiper-button-prev-most-viewed,
 .swiper-button-prev-promotions {
     left: 0px;
-    /* Alinha na borda esquerda do container swiper */
     margin-left: 10px;
-    /* Adiciona uma margem para afastar do card */
 }
 
 .swiper-button-next::after,
@@ -1016,7 +806,6 @@ main {
 .swiper-button-next-promotions::after,
 .swiper-button-prev-promotions::after {
     font-size: 22px;
-    /* Aumentado o tamanho do ícone */
     font-weight: bold;
 }
 
@@ -1025,23 +814,19 @@ main {
     position: relative;
     bottom: auto;
     margin-top: 35px;
-    /* Mais espaço acima da paginação */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
     gap: 10px;
-    /* Aumentado o gap entre os bullets */
 }
 
 .swiper-pagination-bullet {
     width: 12px;
-    /* Ligeiramente maior */
     height: 12px;
     background-color: var(--dark-gray-color);
     border-radius: 50%;
     opacity: 0.6;
-    /* Levemente mais visível */
     transition: opacity 0.3s, background-color 0.3s, transform 0.3s;
 }
 
@@ -1049,7 +834,6 @@ main {
     opacity: 1;
     background-color: var(--primary-color);
     transform: scale(1.2);
-    /* Pequeno zoom no bullet ativo */
 }
 
 
@@ -1057,20 +841,16 @@ main {
 .cols {
     display: grid;
     padding: 2rem 0;
-    /* Padding vertical */
     gap: 20px;
-    /* Espaçamento padrão */
 }
 
 .cols-4 {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    /* Responsividade automática */
 }
 
 /* Os estilos abaixo se aplicam a .product (cards avulsos) E a .swiper-slide (itens do carrossel) */
 .product,
 .swiper-slide {
-    /* <-- Adicionado .swiper-slide aqui para reutilizar estilos de cards */
     background: var(--white-color);
     padding: 15px;
     border-radius: 8px;
@@ -1087,15 +867,12 @@ main {
 
 .product:hover,
 .swiper-slide:not(.swiper-slide-active):hover {
-    /* Aplicar hover apenas para slides NÃO ativos */
-    /* <-- Adicionado .swiper-slide aqui */
     transform: translateY(-5px);
     box-shadow: var(--box-shadow-heavy);
 }
 
 .product img,
 .swiper-slide img {
-    /* <-- Adicionado .swiper-slide img aqui */
     width: 100%;
     max-width: 180px;
     height: 180px;
@@ -1136,7 +913,6 @@ main {
 
 .product .product-name,
 .swiper-slide .product-name {
-    /* <-- Aplicado a ambos */
     font-size: 0.95rem;
     min-height: auto;
     height: 2.8em;
@@ -1151,7 +927,6 @@ main {
 
 .product .rate,
 .swiper-slide .rating-stars {
-    /* <-- Unificado para .rating-stars no swiper-slide */
     color: #ffc107;
     font-size: 0.9rem;
     margin: 5px 0;
@@ -1159,7 +934,6 @@ main {
 
 .product .product-price,
 .swiper-slide .product-price {
-    /* <-- Aplicado a ambos */
     font-size: 1.15rem;
     margin-top: auto;
 }
@@ -1324,7 +1098,6 @@ main {
 
     .product .product-name,
     .swiper-slide .product-name {
-        /* <-- Aplicado a ambos */
         font-size: 0.9rem;
     }
 
@@ -1356,7 +1129,6 @@ main {
     /* Ajustes para os botões de navegação em telas menores */
     .swiper {
         padding: 0;
-        /* Remove padding */
     }
 
     .swiper-button-next,
@@ -1368,10 +1140,8 @@ main {
     .swiper-button-next-promotions,
     .swiper-button-prev-promotions {
         width: 40px;
-        /* Reduz o tamanho em telas menores */
         height: 40px;
         margin: 0 5px;
-        /* Ajusta a margem para telas menores */
     }
 
     .swiper-button-next::after,
@@ -1383,12 +1153,10 @@ main {
     .swiper-button-next-promotions::after,
     .swiper-button-prev-promotions::after {
         font-size: 18px;
-        /* Reduz o ícone da seta em telas menores */
     }
 
     .swiper-pagination {
         margin-top: 25px;
-        /* Reduz o espaçamento em tablets */
     }
 
     .swiper-pagination-bullet {
@@ -1417,8 +1185,7 @@ main {
 
     .favorite-counter-icon,
     .cart-counter-icon,
-    .account-icon,
-    .whatsapp-header-icon {
+    .account-icon {
         font-size: 20px;
     }
 
@@ -1470,27 +1237,23 @@ main {
 
     .product,
     .swiper-slide {
-        /* <-- Aplicado a ambos */
         padding: 12px;
     }
 
     .product img,
     .swiper-slide img {
-        /* <-- Aplicado a ambos */
         max-width: 140px;
         height: 140px;
     }
 
     .product .product-name,
     .swiper-slide .product-name {
-        /* <-- Aplicado a ambos */
         font-size: 0.85rem;
         height: 2.5em;
     }
 
     .product .product-price,
     .swiper-slide .product-price {
-        /* <-- Aplicado a ambos */
         font-size: 1rem;
     }
 
@@ -1559,7 +1322,6 @@ main {
     /* Ajustes para os botões de navegação em telas menores */
     .swiper {
         padding: 0;
-        /* Remove padding */
     }
 
     .swiper-button-next,
@@ -1571,10 +1333,8 @@ main {
     .swiper-button-next-promotions,
     .swiper-button-prev-promotions {
         width: 35px;
-        /* Reduz ainda mais para celulares */
         height: 35px;
         margin: 0 5px;
-        /* Ajusta a margem para telas menores */
     }
 
     .swiper-button-next::after,
@@ -1586,7 +1346,6 @@ main {
     .swiper-button-next-promotions::after,
     .swiper-button-prev-promotions::after {
         font-size: 16px;
-        /* Ícone menor */
     }
 }
 
@@ -1633,7 +1392,6 @@ main {
 
     .product img,
     .swiper-slide img {
-        /* <-- Aplicado a ambos */
         max-width: 150px;
         height: 150px;
     }
@@ -1704,7 +1462,6 @@ main {
         width: 30px;
         height: 30px;
         margin: 0;
-        /* Remove margem para celulares muito pequenos e deixa-os na borda */
     }
 }
 
@@ -1771,10 +1528,6 @@ model-viewer {
 
 .social-icons a[aria-label="Pinterest"] .fab {
     color: #E60023;
-}
-
-.social-icons a[aria-label="WhatsApp"] .fab {
-    color: #25D366;
 }
 
 .social-icons a:hover .fab {
@@ -1911,10 +1664,6 @@ model-viewer {
         width: 50px;
         height: 35px;
         gap: 10px;
-    }
-
-    .security-badges {
-        gap: 15px;
     }
 
     .security-badges img {

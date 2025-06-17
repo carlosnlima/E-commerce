@@ -1005,6 +1005,7 @@ main {
 .testimonial .rate {
     margin-bottom: 1rem;
     font-size: 1.1rem;
+    color: #ffc107;
 }
 
 .testimonial p:last-child {

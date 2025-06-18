@@ -739,11 +739,6 @@ main {
 
 /* Notebooks e Desktops Menores (ex: 1280px) */
 @media (max-width: 1200px) {
-    .page-inner-content {
-        /* max-width é 1200px, então aqui já é o limite.
-           Padding lateral já está em .page-inner-content */
-    }
-
     .cols-4 {
         gap: 20px;
     }
@@ -1019,9 +1014,6 @@ main {
     color: #E60023;
 }
 
-.social-icons a[aria-label="WhatsApp"] .fab {
-    color: #25D366;
-}
 
 .social-icons a:hover .fab {
     filter: brightness(1.2);
@@ -1097,35 +1089,6 @@ main {
     text-align: justify;
 }
 
-/* WhatsApp Fixed Button */
-.whatsapp-fixed-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
-    color: var(--white-color);
-    padding: 12px 18px;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    text-decoration: none;
-    box-shadow: var(--box-shadow-medium);
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    z-index: 1000;
-}
-
-.whatsapp-fixed-button:hover {
-    transform: translateY(-3px);
-    background-color: #1DA851;
-}
-
-.whatsapp-fixed-button i {
-    font-size: 1.2rem;
-}
-
 /* Responsive adjustments for Footer */
 @media (max-width: 768px) {
     .footer {
@@ -1171,17 +1134,6 @@ main {
         padding-top: 20px;
         font-size: 0.8rem;
     }
-
-    .whatsapp-fixed-button {
-        bottom: 15px;
-        right: 15px;
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
-
-    .whatsapp-fixed-button i {
-        font-size: 1.1rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1211,16 +1163,5 @@ main {
     .footer-info {
         padding-top: 15px;
         font-size: 0.75rem;
-    }
-
-    .whatsapp-fixed-button {
-        bottom: 10px;
-        right: 10px;
-        padding: 8px 12px;
-        font-size: 0.85rem;
-    }
-
-    .whatsapp-fixed-button i {
-        font-size: 1rem;
     }
 }

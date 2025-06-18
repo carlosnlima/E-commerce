@@ -766,11 +766,6 @@ main {
 
 /* Notebooks e Desktops Menores (ex: 1280px) */
 @media (max-width: 1200px) {
-    .page-inner-content {
-        /* max-width é 1200px, então aqui já é o limite.
-           Padding lateral já está em .page-inner-content */
-    }
-
     .cols-4 {
         gap: 20px;
     }

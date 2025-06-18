@@ -500,7 +500,8 @@ nav ul li a.nav-button {
     display: inline-block;
 }
 
-nav ul li a.nav-button:hover {
+nav ul li a.nav-button:hover,
+nav ul li a.nav-button.active {
     background-color: var(--primary-color);
     color: var(--white-color);
     transform: translateY(-2px);
@@ -644,7 +645,6 @@ main {
 .product .old-price {
     text-decoration: line-through;
     color: var(--text-color-light);
-    /* Cor padrão para preço riscado */
     font-size: 0.85em;
     margin: 0;
 }
@@ -654,7 +654,7 @@ main {
 .product .discounted-price {
     font-size: 1.15rem;
     color: var(--text-color-dark);
-    /* Todos os preços são dark */
+    /* Corrigido para text-color-dark */
     font-weight: bold;
     margin-top: 0;
 }
@@ -666,11 +666,6 @@ main {
     margin-left: 5px;
     display: block;
     margin-top: -3px;
-}
-
-/* Estilo para produtos em promoção - Não alteramos a cor do texto */
-.product.on-sale .product-price {
-    /* Mantém a cor original do text-color-dark */
 }
 
 /* Listagem de Produtos Específico */
@@ -727,11 +722,6 @@ main {
 
 /* Notebooks e Desktops Menores (ex: 1280px) */
 @media (max-width: 1200px) {
-    .page-inner-content {
-        /* max-width é 1200px, então aqui já é o limite.
-           Padding lateral já está em .page-inner-content */
-    }
-
     .cols-4 {
         gap: 20px;
     }
@@ -742,7 +732,6 @@ main {
 @media (max-width: 1024px) {
     .cols-4 {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        /* 2-3 colunas */
         gap: 20px;
     }
 
@@ -831,7 +820,6 @@ main {
 
     .cols-4 {
         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-        /* Tentar manter 2 colunas se couber */
         gap: 12px;
     }
 
@@ -902,7 +890,6 @@ main {
 
     .cols-4 {
         grid-template-columns: 1fr;
-        /* Forçar uma coluna em telas muito pequenas */
         gap: 15px;
     }
 
@@ -945,6 +932,106 @@ main {
 
     .cart-item-quantity-controls .quantity-display {
         font-size: 13px;
+    }
+}
+
+/* Pop-up de confirmação de compra */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+    transition: opacity 0.2s;
+}
+
+.popup-overlay.hidden {
+    display: none;
+}
+
+.buy-now-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    padding: 32px 28px 24px 28px;
+    z-index: 1001;
+    min-width: 320px;
+    max-width: 90vw;
+    text-align: center;
+    font-family: inherit;
+}
+
+.buy-now-popup.hidden {
+    display: none;
+}
+
+.buy-now-popup h3 {
+    margin-top: 0;
+    color: #0077ff;
+    font-size: 1.25rem;
+}
+
+.popup-buttons {
+    margin: 18px 0 10px 0;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.popup-btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.popup-btn-primary {
+    background: #0077ff;
+    color: #fff;
+}
+
+.popup-btn-primary:hover {
+    background: #005bb5;
+}
+
+.popup-btn-secondary {
+    background: #e3e7fa;
+    color: #0077ff;
+}
+
+.popup-btn-secondary:hover {
+    background: #c5cae9;
+}
+
+.close-popup-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-popup-btn:hover {
+    color: #0077ff;
+}
+
+@media (max-width: 600px) {
+    .buy-now-popup {
+        min-width: 90vw;
+        padding: 18px 8px 16px 8px;
     }
 }
 
@@ -999,6 +1086,10 @@ main {
     color: #3b5998;
 }
 
+.social-icons a[aria-label="Twitter"] .fab {
+    color: #1DA1F2;
+}
+
 .social-icons a[aria-label="YouTube"] .fab {
     color: #FF0000;
 }
@@ -1039,33 +1130,21 @@ main {
 
 .payment-icons {
     display: flex;
-    /* Usar flexbox para alinhar as imagens */
     flex-wrap: wrap;
-    /* Permite que as imagens quebrem linha */
     justify-content: center;
-    /* Centraliza as imagens */
     align-items: center;
-    /* Alinha verticalmente no centro */
     gap: 15px;
-    /* Espaçamento entre as imagens */
 }
 
 .payment-icons img {
     width: 60px;
-    /* Largura padrão para todas as imagens de pagamento */
     height: 40px;
-    /* Altura padrão para todas as imagens de pagamento */
     object-fit: contain;
-    /* Garante que a imagem se ajuste dentro das dimensões sem cortar */
     filter: none;
-    /* Remove o filtro de grayscale */
     opacity: 1;
-    /* Garante opacidade total */
     transition: none;
-    /* Remove qualquer transição desnecessária aqui */
 }
 
-/* Remove o efeito de hover desnecessário já que as cores devem ser mantidas */
 .payment-icons img:hover {
     filter: none;
     opacity: 1;
@@ -1155,9 +1234,7 @@ main {
 
     .payment-icons img {
         width: 50px;
-        /* Ajuste para telas menores */
         height: 35px;
-        /* Ajuste para telas menores */
         gap: 10px;
     }
 
@@ -1202,9 +1279,7 @@ main {
 
     .payment-icons img {
         width: 45px;
-        /* Ajuste para telas muito pequenas */
         height: 30px;
-        /* Ajuste para telas muito pequenas */
         gap: 8px;
     }
 

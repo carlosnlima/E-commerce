@@ -461,16 +461,16 @@ body {
     transform: translateY(0);
 }
 
-/* Pop-up de Compra (Novo) */
+/* Pop-up de confirmação de compra */
 .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1030;
-    display: none;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+    transition: opacity 0.2s;
 }
 
 .popup-overlay.hidden {
@@ -482,100 +482,83 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--white-color);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow-heavy);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    padding: 32px 28px 24px 28px;
+    z-index: 1001;
+    min-width: 320px;
+    max-width: 90vw;
     text-align: center;
-    z-index: 1040;
-    width: clamp(300px, 90%, 450px);
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-family: inherit;
 }
 
 .buy-now-popup.hidden {
     display: none;
-    opacity: 0;
-    transform: translate(-50%, -60%);
 }
-
-.buy-now-popup:not(.hidden) {
-    display: flex;
-    opacity: 1;
-    transform: translate(-50%, -50%);
-}
-
 
 .buy-now-popup h3 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    padding-bottom: 0;
-    border-bottom: none;
-}
-
-.buy-now-popup p {
-    font-size: 1.1rem;
-    color: var(--text-color-dark);
-    margin-bottom: 20px;
+    margin-top: 0;
+    color: #0077ff;
+    font-size: 1.25rem;
 }
 
 .popup-buttons {
+    margin: 18px 0 10px 0;
     display: flex;
-    gap: 15px;
+    gap: 12px;
     justify-content: center;
-    width: 100%;
 }
 
 .popup-btn {
-    flex: 1;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    padding: 8px 18px;
+    border-radius: 6px;
     border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
 }
 
 .popup-btn-primary {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+    background: #0077ff;
+    color: #fff;
 }
 
 .popup-btn-primary:hover {
-    background-color: var(--primary-color-hover);
+    background: #005bb5;
 }
 
 .popup-btn-secondary {
-    background-color: var(--medium-gray-color);
-    color: var(--text-color-dark);
-    border: 1px solid var(--dark-gray-color);
+    background: #e3e7fa;
+    color: #0077ff;
 }
 
 .popup-btn-secondary:hover {
-    background-color: var(--dark-gray-color);
+    background: #c5cae9;
 }
 
 .close-popup-btn {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 10px;
+    right: 12px;
     background: none;
     border: none;
-    font-size: 24px;
-    color: var(--text-color-light);
+    font-size: 1.2rem;
+    color: #888;
     cursor: pointer;
-    padding: 5px;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
 }
 
 .close-popup-btn:hover {
-    color: var(--text-color-dark);
+    color: #0077ff;
+}
+
+@media (max-width: 600px) {
+    .buy-now-popup {
+        min-width: 90vw;
+        padding: 18px 8px 16px 8px;
+    }
 }
 
 

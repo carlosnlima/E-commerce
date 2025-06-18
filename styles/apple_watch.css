@@ -223,7 +223,6 @@ body {
     margin-bottom: 0;
 }
 
-/* Padronizado com HTML1 */
 .favorite-item-image,
 .cart-item-image {
     width: 60px;
@@ -235,7 +234,6 @@ body {
     flex-shrink: 0;
 }
 
-/* Padronizado com HTML1 */
 .favorite-item-details,
 .cart-item-details {
     flex-grow: 1;
@@ -244,7 +242,6 @@ body {
     gap: 4px;
 }
 
-/* Padronizado com HTML1 */
 .favorite-item-name,
 .cart-item-name {
     font-size: 14px;
@@ -254,7 +251,6 @@ body {
     line-height: 1.3;
 }
 
-/* Padronizado com HTML1 */
 .favorite-item-price,
 .cart-item-price {
     font-size: 14px;
@@ -288,15 +284,12 @@ body {
 }
 
 .cart-item-quantity-controls .quantity-display {
-    /* Alterado de cart-item-quantity-value para quantity-display */
     padding: 0 5px;
     font-size: 14px;
     min-width: 20px;
     text-align: center;
 }
 
-
-/* Padronizado com HTML1 */
 .remove-favorite-btn,
 .remove-cart-item-btn {
     background: none;
@@ -325,7 +318,6 @@ body {
 }
 
 .close-popup,
-/* Padronizado para close-popup */
 .checkout-button,
 .account-popup button {
     border: none;
@@ -498,7 +490,8 @@ nav ul li a.nav-button {
     display: inline-block;
 }
 
-nav ul li a.nav-button:hover {
+nav ul li a.nav-button:hover,
+nav ul li a.nav-button.active {
     background-color: var(--primary-color);
     color: var(--white-color);
     transform: translateY(-2px);
@@ -525,7 +518,6 @@ main {
 
 .section-title-container {
     padding-top: 30px;
-    /* Adicionado padding para o topo da seção */
     margin-bottom: 20px;
 }
 
@@ -550,7 +542,6 @@ main {
     display: grid;
     padding: 2rem 0;
     gap: 20px;
-    /* Adicionado para garantir alinhamento central */
     justify-items: center;
 }
 
@@ -563,22 +554,16 @@ main {
     padding: 15px;
     border-radius: 8px;
     box-shadow: var(--box-shadow-medium);
-    /* Alterado para flexbox para controle de alinhamento vertical */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Centraliza itens horizontalmente */
     justify-content: space-between;
-    /* Distribui espaço verticalmente */
     gap: 12px;
-    /* Espaçamento entre os elementos do card */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     overflow: hidden;
     width: 100%;
-    /* Garante que ocupe a largura da coluna do grid */
     text-align: center;
-    /* Centraliza o texto dentro do card */
 }
 
 .product:hover {
@@ -591,7 +576,6 @@ main {
     max-width: 180px;
     height: 180px;
     object-fit: contain;
-    /* Certifica-se de que a imagem está centralizada e não quebrada */
     display: block;
     margin: 0 auto;
 }
@@ -642,7 +626,6 @@ main {
     -webkit-box-orient: vertical;
     width: 100%;
     text-align: center;
-    /* Garante que o texto esteja centralizado */
 }
 
 .product .rate {
@@ -650,27 +633,22 @@ main {
     font-size: 0.9rem;
     margin: 5px 0;
     text-align: center;
-    /* Garante que as estrelas estejam centralizadas */
 }
 
 .product .original-price {
     text-decoration: line-through;
     color: var(--text-color-light);
-    /* Usando text-color-light para consistência */
     font-size: 0.85em;
     margin: 0;
     text-align: center;
-    /* Garante que o texto esteja centralizado */
 }
 
 .product .product-price,
 .product .discounted-price {
     font-size: 1.15rem;
     color: var(--text-color-dark);
-    /* Mudado para text-color-dark para padronizar com HTML1 */
     font-weight: bold;
     margin-top: 0;
-    /* Alinha o preço e o label pix horizontalmente */
     display: flex;
     align-items: baseline;
     justify-content: center;
@@ -687,11 +665,8 @@ main {
     color: var(--text-color-light);
     margin-left: 5px;
     display: inline;
-    /* Faz com que o "no pix" fique na mesma linha */
-    margin-top: 0;
 }
 
-/* Listagem de Produtos Específico */
 .product-listing {
     padding-top: 20px;
     padding-bottom: 30px;
@@ -700,14 +675,11 @@ main {
 .listing-header {
     display: flex;
     justify-content: flex-end;
-    /* Padronizado com HTML1 */
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 15px;
     border-bottom: 1px solid var(--medium-gray-color);
-    /* Padronizado com medium-gray-color */
     position: relative;
-    /* Para posicionar as sugestões */
     z-index: 100;
 }
 
@@ -720,54 +692,10 @@ main {
 .sort-options select {
     padding: 8px 12px;
     border-radius: 5px;
-    /* Padronizado com 5px */
     border: 1px solid var(--dark-gray-color);
-    /* Padronizado com dark-gray-color */
     background-color: var(--white-color);
     font-size: 0.9em;
     cursor: pointer;
-}
-
-/* Estilos para a busca de sugestões */
-.search-suggestions {
-    position: absolute;
-    top: 100%;
-    /* Abaixo do cabeçalho */
-    left: 0;
-    background-color: var(--white-color);
-    border: 1px solid var(--dark-gray-color);
-    border-radius: 5px;
-    box-shadow: var(--box-shadow-light);
-    width: 100%;
-    /* Ocupa a largura total do listing-header */
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 1000;
-    display: none;
-    /* Escondido por padrão, JavaScript o mostra */
-}
-
-.search-suggestions ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.search-suggestions ul li {
-    padding: 10px 15px;
-    cursor: pointer;
-    border-bottom: 1px solid var(--medium-gray-color);
-    font-size: 0.95rem;
-    color: var(--text-color-dark);
-    transition: background-color 0.2s ease;
-}
-
-.search-suggestions ul li:last-child {
-    border-bottom: none;
-}
-
-.search-suggestions ul li:hover {
-    background-color: var(--light-gray-color);
 }
 
 .no-results-message {
@@ -777,28 +705,21 @@ main {
     color: var(--text-color-light);
     font-size: 1.1rem;
     grid-column: 1 / -1;
-    /* Ocupa toda a largura do grid */
 }
 
-
-/* Padronizado com HTML1 - renomeado de .comprar-btn para .buy-now-button */
 .buy-now-button {
     background-color: var(--primary-color);
     color: var(--white-color);
     border: none;
     padding: 0.8rem 2rem;
-    /* Valores de padding do HTML1 */
     border-radius: 50px;
-    /* Mais arredondado */
     cursor: pointer;
     font-weight: 500;
     font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-decoration: none;
     width: auto;
-    /* Ajuste para o botão do card, não ser 100% */
     margin-top: 10px;
-    /* Espaçamento com o preço */
 }
 
 .buy-now-button:hover {
@@ -806,75 +727,20 @@ main {
     transform: translateY(-2px);
 }
 
-/* --- ESTILOS RESPONSIVOS --- */
-
-/* Notebooks e Desktops Menores (ex: 1280px) */
-@media (max-width: 1200px) {
-    /* .page-inner-content já se ajusta */
-
-    .cols-4 {
-        gap: 20px;
-    }
-}
-
-
-/* Tablets (ex: 768px a 1024px) */
 @media (max-width: 1024px) {
     .cols-4 {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        /* 2-3 colunas */
         gap: 20px;
     }
 
     .listing-header {
         justify-content: center;
         flex-direction: column;
-        /* Altera para coluna em tablets */
         gap: 15px;
-        /* Espaçamento entre os elementos do cabeçalho */
         align-items: center;
-        /* Centraliza itens */
-    }
-
-    .search-suggestions {
-        position: relative;
-        /* Ajusta o posicionamento para ser relativo ao listing-header */
-        top: auto;
-        left: auto;
-        width: 100%;
-        max-width: 500px;
-        /* Limita a largura em tablets */
-        margin-top: 10px;
-    }
-
-    .popup {
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
-        width: clamp(280px, 90vw, 350px);
-    }
-
-    .selection-title {
-        font-size: 1.8rem;
-    }
-
-    .product .product-name {
-        font-size: 0.95rem;
-    }
-
-    .icon-group-left {
-        gap: 20px;
-        font-size: 20px;
-    }
-
-    .favorite-counter-icon,
-    .cart-counter-icon,
-    .account-icon {
-        font-size: 20px;
     }
 }
 
-/* Celulares Maiores e Tablets Menores (ex: até 767px) */
 @media (max-width: 767px) {
     .header {
         padding: 10px 15px;
@@ -914,7 +780,6 @@ main {
         padding-right: 10px;
         overflow-x: auto;
         white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
     }
 
     nav ul li {
@@ -928,7 +793,6 @@ main {
 
     .cols-4 {
         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-        /* Tentar manter 2 colunas se couber */
         gap: 12px;
     }
 
@@ -983,97 +847,24 @@ main {
     }
 }
 
-/* Celulares menores (ex: abaixo de 480px) */
 @media (max-width: 480px) {
-    .icon-group-left {
-        gap: 10px;
-    }
-
-    .search-container input {
-        font-size: 14px;
-    }
-
-    .mic-icon {
-        display: none;
-    }
-
     .cols-4 {
         grid-template-columns: 1fr;
-        /* Forçar uma coluna em telas muito pequenas */
         gap: 15px;
-    }
-
-    .product img {
-        max-width: 150px;
-        height: 150px;
-    }
-
-    .popup {
-        width: calc(100vw - 30px);
-        max-width: none;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 15px;
-        max-height: 90vh;
-    }
-
-    .favorite-item-image,
-    .cart-item-image {
-        width: 50px;
-        height: 50px;
-        margin-right: 10px;
-    }
-
-    .favorite-item-name,
-    .cart-item-name {
-        font-size: 13px;
-    }
-
-    .favorite-item-price,
-    .cart-item-price {
-        font-size: 13px;
-    }
-
-    .cart-item-quantity-controls button {
-        padding: 2px 7px;
-        font-size: 13px;
-    }
-
-    .cart-item-quantity-controls .quantity-display {
-        font-size: 13px;
-    }
-
-    .search-suggestions {
-        width: 100%;
-        max-width: none;
     }
 }
 
-/* Footer */
+/* Footer (Simplified) */
 .footer {
     background-color: var(--white-color);
     padding: 30px 20px;
     margin-top: 40px;
     border-top: 1px solid var(--medium-gray-color);
-    font-size: 0.9rem;
-    color: var(--text-color-light);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
 }
 
 .footer h3 {
-    color: var(--text-color-dark);
-    font-size: 1.1rem;
     margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.footer-social-media {
-    margin-bottom: 30px;
-    width: 100%;
 }
 
 .social-icons {
@@ -1081,252 +872,161 @@ main {
     justify-content: center;
     gap: 20px;
     font-size: 24px;
+    margin-bottom: 30px;
 }
 
 .social-icons a {
     color: var(--text-color-dark);
-    transition: color 0.2s ease;
-}
-
-/* Estilos para que os ícones de redes sociais tenham suas cores originais */
-.social-icons .fab {
-    transition: color 0.2s ease, filter 0.2s ease;
-}
-
-.social-icons a[aria-label="Instagram"] .fab {
-    color: #C13584;
-}
-
-.social-icons a[aria-label="Facebook"] .fab {
-    color: #3b5998;
-}
-
-.social-icons a[aria-label="YouTube"] .fab {
-    color: #FF0000;
-}
-
-.social-icons a[aria-label="Pinterest"] .fab {
-    color: #E60023;
-}
-
-.social-icons a[aria-label="WhatsApp"] .fab {
-    color: #25D366;
-}
-
-.social-icons a:hover .fab {
-    filter: brightness(1.2);
-    color: inherit;
 }
 
 .footer-bottom-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1200px;
     gap: 30px;
     margin-bottom: 30px;
-    padding: 0 15px;
-}
-
-.footer-payment-methods,
-.footer-security-seal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 280px;
-    flex: 1;
 }
 
 .payment-icons {
     display: flex;
-    /* Usar flexbox para alinhar as imagens */
     flex-wrap: wrap;
-    /* Permite que as imagens quebrem linha */
     justify-content: center;
-    /* Centraliza as imagens */
-    align-items: center;
-    /* Alinha verticalmente no centro */
     gap: 15px;
-    /* Espaçamento entre as imagens */
 }
 
 .payment-icons img {
-    width: 60px;
-    /* Largura padrão para todas as imagens de pagamento */
     height: 40px;
-    /* Altura padrão para todas as imagens de pagamento */
-    object-fit: contain;
-    /* Garante que a imagem se ajuste dentro das dimensões sem cortar */
-    filter: none;
-    /* Remove o filtro de grayscale */
-    opacity: 1;
-    /* Garante opacidade total */
-    transition: none;
-    /* Remove qualquer transição desnecessária aqui */
 }
-
-/* Remove o efeito de hover desnecessário já que as cores devem ser mantidas */
-.payment-icons img:hover {
-    filter: none;
-    opacity: 1;
-}
-
 
 .security-badges {
     display: flex;
-    justify-content: center;
     gap: 20px;
-    align-items: center;
 }
 
 .security-badges img {
     height: 70px;
-    object-fit: contain;
 }
 
 .footer-info {
-    width: 100%;
-    max-width: 900px;
-    padding: 0 15px;
-    border-top: 1px solid var(--medium-gray-color);
-    padding-top: 25px;
-    margin-top: 15px;
-    line-height: 1.6;
-    color: var(--text-color-light);
     font-size: 0.85rem;
-    text-align: justify;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 15px auto 0;
+    padding-top: 25px;
+    border-top: 1px solid var(--medium-gray-color);
 }
 
-/* WhatsApp Fixed Button */
 .whatsapp-fixed-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background-color: #25D366;
-    color: var(--white-color);
+    color: white;
     padding: 12px 18px;
     border-radius: 30px;
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    text-decoration: none;
-    box-shadow: var(--box-shadow-medium);
-    transition: transform 0.2s ease, background-color 0.2s ease;
     z-index: 1000;
 }
 
-.whatsapp-fixed-button:hover {
-    transform: translateY(-3px);
-    background-color: #1DA851;
+/* ESTILOS DO POP-UP ADICIONADOS */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+    transition: opacity 0.2s;
 }
 
-.whatsapp-fixed-button i {
+.popup-overlay.hidden {
+    display: none;
+}
+
+.buy-now-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    padding: 32px 28px 24px 28px;
+    z-index: 1001;
+    min-width: 320px;
+    max-width: 90vw;
+    text-align: center;
+    font-family: inherit;
+}
+
+.buy-now-popup.hidden {
+    display: none;
+}
+
+.buy-now-popup h3 {
+    margin-top: 0;
+    color: #0077ff;
+    font-size: 1.25rem;
+}
+
+.popup-buttons {
+    margin: 18px 0 10px 0;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.popup-btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.popup-btn-primary {
+    background: #0077ff;
+    color: #fff;
+}
+
+.popup-btn-primary:hover {
+    background: #005bb5;
+}
+
+.popup-btn-secondary {
+    background: #e3e7fa;
+    color: #0077ff;
+}
+
+.popup-btn-secondary:hover {
+    background: #c5cae9;
+}
+
+.close-popup-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
     font-size: 1.2rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
-/* Responsive adjustments for Footer */
-@media (max-width: 768px) {
-    .footer {
-        padding: 25px 15px;
-    }
-
-    .footer h3 {
-        margin-bottom: 15px;
-    }
-
-    .social-icons {
-        font-size: 22px;
-        gap: 20px;
-    }
-
-    .footer-bottom-section {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-
-    .footer-payment-methods,
-    .footer-security-seal {
-        width: 100%;
-        min-width: unset;
-    }
-
-    .payment-icons img {
-        width: 50px;
-        /* Ajuste para telas menores */
-        height: 35px;
-        /* Ajuste para telas menores */
-        gap: 10px;
-    }
-
-    .security-badges {
-        gap: 15px;
-    }
-
-    .security-badges img {
-        height: 60px;
-    }
-
-    .footer-info {
-        padding-top: 20px;
-        font-size: 0.8rem;
-    }
-
-    .whatsapp-fixed-button {
-        bottom: 15px;
-        right: 15px;
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
-
-    .whatsapp-fixed-button i {
-        font-size: 1.1rem;
-    }
+.close-popup-btn:hover {
+    color: #0077ff;
 }
 
-@media (max-width: 480px) {
-    .footer {
-        padding: 20px 10px;
-    }
-
-    .social-icons {
-        font-size: 20px;
-        gap: 15px;
-    }
-
-    .footer-bottom-section {
-        gap: 20px;
-    }
-
-    .payment-icons img {
-        width: 45px;
-        /* Ajuste para telas muito pequenas */
-        height: 30px;
-        /* Ajuste para telas muito pequenas */
-        gap: 8px;
-    }
-
-    .security-badges img {
-        height: 50px;
-    }
-
-    .footer-info {
-        padding-top: 15px;
-        font-size: 0.75rem;
-    }
-
-    .whatsapp-fixed-button {
-        bottom: 10px;
-        right: 10px;
-        padding: 8px 12px;
-        font-size: 0.85rem;
-    }
-
-    .whatsapp-fixed-button i {
-        font-size: 1rem;
+@media (max-width: 600px) {
+    .buy-now-popup {
+        min-width: 90vw;
+        padding: 18px 8px 16px 8px;
     }
 }

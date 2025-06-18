@@ -1255,3 +1255,103 @@ main {
         font-size: 1rem;
     }
 }
+
+/* Pop-up de confirmação de compra */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+    transition: opacity 0.2s;
+}
+
+.popup-overlay.hidden {
+    display: none;
+}
+
+.buy-now-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    padding: 32px 28px 24px 28px;
+    z-index: 1001;
+    min-width: 320px;
+    max-width: 90vw;
+    text-align: center;
+    font-family: inherit;
+}
+
+.buy-now-popup.hidden {
+    display: none;
+}
+
+.buy-now-popup h3 {
+    margin-top: 0;
+    color: #0077ff;
+    font-size: 1.25rem;
+}
+
+.popup-buttons {
+    margin: 18px 0 10px 0;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.popup-btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.popup-btn-primary {
+    background: #0077ff;
+    color: #fff;
+}
+
+.popup-btn-primary:hover {
+    background: #005bb5;
+}
+
+.popup-btn-secondary {
+    background: #e3e7fa;
+    color: #0077ff;
+}
+
+.popup-btn-secondary:hover {
+    background: #c5cae9;
+}
+
+.close-popup-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-popup-btn:hover {
+    color: #0077ff;
+}
+
+@media (max-width: 600px) {
+    .buy-now-popup {
+        min-width: 90vw;
+        padding: 18px 8px 16px 8px;
+    }
+}

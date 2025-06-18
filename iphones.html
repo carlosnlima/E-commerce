@@ -2038,52 +2038,28 @@
                 });
             }
 
-            // --- Lógica do Pop-up de Compra (NOVO) ---
+            // --- Lógica do Pop-up de Compra ---
             const buyNowPopup = document.getElementById('buy-now-popup');
             const popupOverlay = document.getElementById('popup-overlay');
-            const finalizarCompraBtn = document.getElementById('finalizar-compra-btn');
+            const closePopupBtn = document.querySelector('#buy-now-popup .close-popup-btn');
             const continuarComprandoBtn = document.getElementById('continuar-comprando-btn');
-            const closePopupBtn = document.querySelector('.close-popup-btn'); // Botão de fechar o pop-up
+            const finalizarCompraBtn = document.getElementById('finalizar-compra-btn');
 
             function showBuyNowPopup() {
                 if (buyNowPopup && popupOverlay) {
-                    buyNowPopup.classList.remove('hidden');
                     popupOverlay.classList.remove('hidden');
-                    buyNowPopup.focus(); // Foco no pop-up para acessibilidade
-                    popupOverlay.setAttribute('aria-hidden', 'false');
-                    buyNowPopup.setAttribute('aria-hidden', 'false');
+                    buyNowPopup.classList.remove('hidden');
                 }
             }
 
             function hideBuyNowPopup() {
                 if (buyNowPopup && popupOverlay) {
-                    buyNowPopup.classList.add('hidden');
                     popupOverlay.classList.add('hidden');
-                    popupOverlay.setAttribute('aria-hidden', 'true');
-                    buyNowPopup.setAttribute('aria-hidden', 'true');
+                    buyNowPopup.classList.add('hidden');
                 }
             }
 
-            if (finalizarCompraBtn) {
-                finalizarCompraBtn.addEventListener('click', () => {
-                    hideBuyNowPopup();
-                    window.location.href = 'checkout.html'; // Redireciona para a página de checkout
-                });
-            }
-
-            if (continuarComprandoBtn) {
-                continuarComprandoBtn.addEventListener('click', hideBuyNowPopup);
-            }
-
-            if (closePopupBtn) {
-                closePopupBtn.addEventListener('click', hideBuyNowPopup);
-            }
-
-            if (popupOverlay) {
-                popupOverlay.addEventListener('click', hideBuyNowPopup);
-            }
-
-            // --- Event Listeners para Ícones de Produto ---
+            // --- Event Listeners para Ícones de Produto e Botão Comprar ---
             document.querySelectorAll('.favorite-icon').forEach(icon => {
                 icon.addEventListener('click', function (event) {
                     event.stopPropagation();
@@ -2114,7 +2090,6 @@
                 });
             });
 
-            // Adicionar funcionalidade ao botão "Comprar"
             document.querySelectorAll('.buy-now-button').forEach(button => {
                 button.addEventListener('click', function () {
                     const productElement = this.closest('.product');
@@ -2125,7 +2100,6 @@
                         image: productElement.dataset.productImage
                     };
 
-                    // Adicionar o produto à sacola (ou aumentar a quantidade se já estiver lá)
                     const existingProduct = cart.find(item => item.id === productData.id);
                     if (existingProduct) {
                         increaseCartItemQuantity(productData.id);
@@ -2134,11 +2108,23 @@
                             ...productData,
                             quantity: 1
                         });
-                        updateCartState(); // Atualiza o estado do carrinho após adicionar um novo produto
+                        updateCartState();
                     }
-                    showBuyNowPopup(); // Exibe o pop-up
+                    showBuyNowPopup();
                 });
             });
+
+            // Listeners para fechar/interagir com o pop-up de compra
+            if (closePopupBtn) closePopupBtn.addEventListener('click', hideBuyNowPopup);
+            if (popupOverlay) popupOverlay.addEventListener('click', hideBuyNowPopup);
+            if (continuarComprandoBtn) continuarComprandoBtn.addEventListener('click', hideBuyNowPopup);
+
+            if (finalizarCompraBtn) {
+                finalizarCompraBtn.addEventListener('click', () => {
+                    alert('Redirecionando para a finalização da compra! (Simulação)');
+                    hideBuyNowPopup();
+                });
+            }
 
 
             // --- Event Listeners para Popups (Abrir/Fechar) ---
